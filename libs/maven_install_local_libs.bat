@@ -1,0 +1,1 @@
+mvn install:install-file -Dfile=./KettlePluginTools.jar -DgroupId=br.ufrj.ppgi.greco.kettle -DartifactId=KettlePluginTools -Dversion=1.0 -Dpackaging=jar

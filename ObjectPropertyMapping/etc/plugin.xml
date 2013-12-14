@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+   id="ObjectPropertyMappingPlugin"
+   iconfile="icon.png"
+   description="Object Property Mapping"
+   tooltip="Transform input data into RDF triples, using a defined Object Property mapping."
+   category="UFRJ_PPGI_GRECO"
+   classname="br.ufrj.ppgi.greco.lodbr.plugin.triplemapping.ObjectPropertyMappingStepMeta">
+   <libraries>
+		<library name="ObjectPropertyMapping.jar"/>
+		<library name="KettlePluginTools.jar"/>
+		<library name="xstream-1.3.1.jar"/>		
+    </libraries>
+</plugin>
