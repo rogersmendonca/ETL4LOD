@@ -8,5 +8,6 @@
    classname="br.ufrj.ppgi.greco.trans.step.ntriplegenerator.NTripleGeneratorStepMeta">
    <libraries>
 		<library name="ntriplegenerator.jar"/>
+		<library name="KettlePluginTools.jar"/>
 	</libraries>
 </plugin>
