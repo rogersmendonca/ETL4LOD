@@ -5,7 +5,7 @@
 	<groupId>br.ufrj.ppgi.greco.kettle</groupId>
 	<artifactId>etl4lod-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0</version>
+    <version>1.1</version>
     <name>ETL4LOD</name>
     <description>Componentes do Kettle relacionados a Linked Data</description>
 	<url>https://github.com/rogersmendonca/etl4lod.git</url>
@@ -32,17 +32,26 @@
 			<url>http://repo.pentaho.org/artifactory/third-party/</url>
 		</repository>
 		
+		<!-- Rogers (07/2014) -->
+		<!-- O componente Any23 foi incorporado ao repositorio Maven Central. -->
+		<!-- Por isso, os 2 repositorios do googlecope nao sao mais necessarios. -->
+		
 		<!-- Specific repository for Any23 dependencies without a dedicated repository. -->
+		<!--
 		<repository>
 			<id>any23-repository-external</id>
 			<url>http://any23.googlecode.com/svn/repo-ext</url>
 		</repository>
+		-->
+		
 		<!-- The Any23 modules repository. -->
+		<!--
 		<repository>
 			<id>any23-repository</id>
 			<url>http://any23.googlecode.com/svn/repo</url>
 		</repository>
-	
+		-->
+		
 		<!-- Run ${basedir}/libs/maven_install_libs.bat to install the local libraries 
 			into maven local repository -->
 		<repository>
