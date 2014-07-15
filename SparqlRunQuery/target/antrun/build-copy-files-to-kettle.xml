@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="copy-files-to-kettle"  >
+<target name="copy-files-to-kettle">
+  <echo message="Copying C:\Users\Kelli\Dropbox\ETL4LOD-master\SparqlRunQuery\etc\*.[png,xml,properties] to C:/Users/Kelli/Desktop/data-integration4.1/plugins/steps/SparqlRunQuery"/>
+  <copy todir="C:/Users/Kelli/Desktop/data-integration4.1/plugins/steps/SparqlRunQuery" overwrite="true">
+    <fileset dir="C:\Users\Kelli\Dropbox\ETL4LOD-master\SparqlRunQuery/etc" includes="**/*.png,**/*.xml,**/*.properties"/>
+  </copy>
+  <echo message="Copying C:\Users\Kelli\Dropbox\ETL4LOD-master\SparqlRunQuery\libs\*.jar to C:/Users/Kelli/Desktop/data-integration4.1/plugins/steps/SparqlRunQuery"/>
+  <copy todir="C:/Users/Kelli/Desktop/data-integration4.1/plugins/steps/SparqlRunQuery" overwrite="true">
+    <fileset dir="C:\Users\Kelli\Dropbox\ETL4LOD-master\SparqlRunQuery/../libs" includes="**/*.jar"/>
+  </copy>
+  <copy todir="C:/Users/Kelli/Desktop/data-integration4.1/plugins/steps/SparqlRunQuery" overwrite="true">
+    <fileset dir="C:\Users\Kelli\Dropbox\ETL4LOD-master\SparqlRunQuery/libs" includes="**/*.jar"/>
+  </copy>
+  <echo message="Copying C:\Users\Kelli\Dropbox\ETL4LOD-master\SparqlRunQuery\target\SparqlRunQuery-1.0.jar to C:/Users/Kelli/Desktop/data-integration4.1/plugins/steps/SparqlRunQuery"/>
+  <copy file="C:\Users\Kelli\Dropbox\ETL4LOD-master\SparqlRunQuery\target/SparqlRunQuery-1.0.jar" tofile="C:/Users/Kelli/Desktop/data-integration4.1/plugins/steps/SparqlRunQuery/SparqlRunQuery.jar" overwrite="true"/>
+</target>
+</project>
