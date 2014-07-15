@@ -1,0 +1,10 @@
+De;Para
+"ToWarehouse/Facility/Office";"laiid:sentTo"
+"TypeofTransport";"laiid:TransportVehicle"
+"DateSent";"time:hasDateTimeDescription"
+"TypeofTransport";"laiid:TransportVehicle"
+"Name";"rdfs:label"
+"City/Municipality";"place:Municipality"
+"Region";"wsg84_pos:location"
+"Province";"place:Province"
+"http://laiid.greco.ppgi.ufrj.br/SahanaEden/Shipment";"laiid:shipment"

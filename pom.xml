@@ -68,7 +68,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>		
 			
 		<pdi.version>4.3.0-stable</pdi.version>
-		<pdi.home>D:/programas/pdi-ce-4.3.0-stable</pdi.home>
+		<pdi.home>C:/Users/Camila/Documents/Camila/Faculdade/IC/data-integration4.1</pdi.home>
 		<pdi.plugin.dir>plugins/steps/${project.name}</pdi.plugin.dir>
 		<pdi.plugin.lib_name>${project.artifactId}</pdi.plugin.lib_name>
 	</properties>	
@@ -79,6 +79,7 @@
         <module>ObjectPropertyMapping</module>
         <module>SparqlEndpoint</module>
 		<module>SparqlUpdateOutput</module>
+		<module>Annotator</module>
     </modules>
 
     <build>
