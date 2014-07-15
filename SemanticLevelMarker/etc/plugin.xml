@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+   id="SemanticLevelMarkerStepPlugin"
+   iconfile="iconMarker.png"
+   description="Semantic Level Marker"
+   tooltip="Identify a triple semantic level and mark it with the corresponding marker"
+   category="LinkedDataBR"
+   classname="br.ufrj.ppgi.greco.trans.step.SemanticLevelMarker.SemanticLevelMarkerStepMeta">
+   <libraries>
+		<library name="SemanticLevelMarker.jar"/>
+		<library name="KettlePluginTools.jar"/>
+	</libraries>
+</plugin>

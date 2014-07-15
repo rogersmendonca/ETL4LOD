@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="copy-files-to-kettle"  >
+<target name="copy-files-to-kettle">
+  <echo message="Copying C:\Users\Kelli\Dropbox\ETL4LOD-master\SemanticLevelMarker\etc\*.[png,xml,properties] to C:/Users/Kelli/Desktop/data-integration4.1/plugins/steps/SemanticLevelMarker"/>
+  <copy todir="C:/Users/Kelli/Desktop/data-integration4.1/plugins/steps/SemanticLevelMarker" overwrite="true">
+    <fileset dir="C:\Users\Kelli\Dropbox\ETL4LOD-master\SemanticLevelMarker/etc" includes="**/*.png,**/*.xml,**/*.properties"/>
+  </copy>
+  <echo message="Copying C:\Users\Kelli\Dropbox\ETL4LOD-master\SemanticLevelMarker\libs\*.jar to C:/Users/Kelli/Desktop/data-integration4.1/plugins/steps/SemanticLevelMarker"/>
+  <copy todir="C:/Users/Kelli/Desktop/data-integration4.1/plugins/steps/SemanticLevelMarker" overwrite="true">
+    <fileset dir="C:\Users\Kelli\Dropbox\ETL4LOD-master\SemanticLevelMarker/../libs" includes="**/*.jar"/>
+  </copy>
+  <echo message="Copying C:\Users\Kelli\Dropbox\ETL4LOD-master\SemanticLevelMarker\target\SemanticLevelMarker-1.0.jar to C:/Users/Kelli/Desktop/data-integration4.1/plugins/steps/SemanticLevelMarker"/>
+  <copy file="C:\Users\Kelli\Dropbox\ETL4LOD-master\SemanticLevelMarker\target/SemanticLevelMarker-1.0.jar" tofile="C:/Users/Kelli/Desktop/data-integration4.1/plugins/steps/SemanticLevelMarker/SemanticLevelMarker.jar" overwrite="true"/>
+</target>
+</project>
