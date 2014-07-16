@@ -36,15 +36,6 @@
 			<organization>UFRJ (PPGI/GRECO)</organization>
 			<organizationUrl>http://greco.ppgi.ufrj.br</organizationUrl>			
 		</developer>
-		
-		<developer>
-			<id>kelli.faria</id>
-			<name>Kelli de Faria Cordeiro</name>
-			<email>kelli.faria@gmail.com</email>
-			<organization>UFRJ (PPGI/GRECO)</organization>
-			<organizationUrl>http://greco.ppgi.ufrj.br</organizationUrl>			
-		</developer>
-
 	</developers>
 
 	<dependencies>		
@@ -56,7 +47,13 @@
 			<version>1.0</version>
 		</dependency>		
 		 -->
-		<!-- Rogers (07/2014): Atualizacao da dependencia any23 --> 		
+		<!-- Rogers (07/2014): Atualizacao da dependencia any23 --> 
+
+		<dependency>
+			<groupId>org.apache.any23</groupId>
+			<artifactId>apache-any23-core</artifactId>
+			<version>1.0</version>
+		</dependency>			
 		
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>

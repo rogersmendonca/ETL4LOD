@@ -41,7 +41,7 @@ public class Main
 	    
 	    System.out.println("delete graph: "+su.deleteGraph(graph));
 	    System.out.println("create graph: "+su.createGraph(graph));
-	    System.out.println("insert data:  "+su.insertTriples(graph,rdf));
+	    //System.out.println("insert data:  "+su.insertTriples(graph,rdf));
 	    f.close();
 	}
 

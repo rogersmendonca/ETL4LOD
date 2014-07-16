@@ -23,13 +23,13 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HTTP;
-import org.deri.any23.Any23;
-import org.deri.any23.source.DocumentSource;
-import org.deri.any23.source.StringDocumentSource;
-import org.deri.any23.writer.NTriplesWriter;
-import org.deri.any23.writer.RDFXMLWriter;
-import org.deri.any23.writer.TripleHandler;
-import org.deri.any23.writer.TurtleWriter;
+import org.apache.any23.Any23;
+import org.apache.any23.source.DocumentSource;
+import org.apache.any23.source.StringDocumentSource;
+import org.apache.any23.writer.NTriplesWriter;
+import org.apache.any23.writer.RDFXMLWriter;
+import org.apache.any23.writer.TripleHandler;
+import org.apache.any23.writer.TurtleWriter;
 
 public class SparqlUpdate
 {
