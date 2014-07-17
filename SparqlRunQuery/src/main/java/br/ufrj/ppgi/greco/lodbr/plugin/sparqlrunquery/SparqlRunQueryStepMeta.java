@@ -32,17 +32,13 @@ public class SparqlRunQueryStepMeta extends BaseStepMeta implements StepMetaInte
 	public enum Field {
 		//RDF_CONTENT,
 		QUERY_CONTENT, 
-		GRAPH_URI, CLEAR_GRAPH,
 		PROTOCOL, HOSTNAME, PORT, PATH, USERNAME, PASSWORD, ENDPOINT_URL,
 		OUT_CODE, OUT_MESSAGE
 	}
 
 	
 	// Values - tipo refere-se ao tipo destas variaveis
-	//private String rdfContentFieldName;
 	private String queryTextContentFieldName;
-	private String graphUriValue;
-	private Boolean clearGraph;
 	private String endpointUrl;
 	private String username;
 	private String password;
@@ -64,21 +60,11 @@ public class SparqlRunQueryStepMeta extends BaseStepMeta implements StepMetaInte
 			StepMeta stepMeta, RowMetaInterface prev, String[] input, String[] output,
 			RowMetaInterface info) {
 
-
-//		if (Const.isEmpty(fieldName)) {
-//			CheckResultInterface error = new CheckResult(
-//					CheckResult.TYPE_RESULT_ERROR,
-//					"error rorororroroo",
-//					stepMeta);
-//			remarks.add(error);
-//		}
-//		else {
 			CheckResultInterface ok = new CheckResult(
 					CheckResult.TYPE_RESULT_OK,
 					"",
 					stepMeta);
 			remarks.add(ok);
-//		}
 		
 	}
 
@@ -106,10 +92,7 @@ public class SparqlRunQueryStepMeta extends BaseStepMeta implements StepMetaInte
 	public void loadXML(Node stepDomNode, List<DatabaseMeta> databases,
 			Map<String, Counter> sequenceCounters) throws KettleXMLException {
 
-		//rdfContentFieldName = XMLHandler.getTagValue(stepDomNode, Field.RDF_CONTENT.name());
 		queryTextContentFieldName = XMLHandler.getTagValue(stepDomNode, Field.QUERY_CONTENT.name());
-		graphUriValue = XMLHandler.getTagValue(stepDomNode, Field.GRAPH_URI.name());
-		clearGraph = "Y".equals(XMLHandler.getTagValue(stepDomNode, Field.CLEAR_GRAPH.name()));
 		endpointUrl = XMLHandler.getTagValue(stepDomNode, Field.ENDPOINT_URL.name());
 		username = XMLHandler.getTagValue(stepDomNode, Field.USERNAME.name());
 		password = XMLHandler.getTagValue(stepDomNode, Field.PASSWORD.name());
@@ -120,10 +103,7 @@ public class SparqlRunQueryStepMeta extends BaseStepMeta implements StepMetaInte
 	@Override
 	public String getXML() throws KettleException {
 		StringBuilder xml = new StringBuilder();
-		//xml.append(XMLHandler.addTagValue(Field.RDF_CONTENT.name(), rdfContentFieldName));
 		xml.append(XMLHandler.addTagValue(Field.QUERY_CONTENT.name(), queryTextContentFieldName));
-		xml.append(XMLHandler.addTagValue(Field.GRAPH_URI.name(), graphUriValue));
-		xml.append(XMLHandler.addTagValue(Field.CLEAR_GRAPH.name(), clearGraph));
 		xml.append(XMLHandler.addTagValue(Field.ENDPOINT_URL.name(), endpointUrl));
 		xml.append(XMLHandler.addTagValue(Field.USERNAME.name(), username));
 		xml.append(XMLHandler.addTagValue(Field.PASSWORD.name(), password));
@@ -139,8 +119,6 @@ public class SparqlRunQueryStepMeta extends BaseStepMeta implements StepMetaInte
 
 		//rdfContentFieldName = repository.getStepAttributeString(stepIdInRepository, Field.RDF_CONTENT.name());
 		queryTextContentFieldName = repository.getStepAttributeString(stepIdInRepository, Field.QUERY_CONTENT.name());
-		graphUriValue = repository.getStepAttributeString(stepIdInRepository, Field.GRAPH_URI.name());
-		clearGraph = repository.getStepAttributeBoolean(stepIdInRepository, Field.CLEAR_GRAPH.name());
 		endpointUrl = repository.getStepAttributeString(stepIdInRepository, Field.ENDPOINT_URL.name());
 		username = repository.getStepAttributeString(stepIdInRepository, Field.USERNAME.name());
 		password = repository.getStepAttributeString(stepIdInRepository, Field.PASSWORD.name());
@@ -152,10 +130,7 @@ public class SparqlRunQueryStepMeta extends BaseStepMeta implements StepMetaInte
 	public void saveRep(Repository repository, ObjectId idOfTransformation, ObjectId idOfStep)
 			throws KettleException {
 		
-		//repository.saveStepAttribute(idOfTransformation, idOfStep, Field.RDF_CONTENT.name(), rdfContentFieldName);
 		repository.saveStepAttribute(idOfTransformation, idOfStep, Field.QUERY_CONTENT.name(), queryTextContentFieldName);
-		repository.saveStepAttribute(idOfTransformation, idOfStep, Field.GRAPH_URI.name(), graphUriValue);
-		repository.saveStepAttribute(idOfTransformation, idOfStep, Field.CLEAR_GRAPH.name(), clearGraph);
 		repository.saveStepAttribute(idOfTransformation, idOfStep, Field.ENDPOINT_URL.name(), endpointUrl);
 		repository.saveStepAttribute(idOfTransformation, idOfStep, Field.USERNAME.name(), username);
 		repository.saveStepAttribute(idOfTransformation, idOfStep, Field.PASSWORD.name(), password);
@@ -166,14 +141,11 @@ public class SparqlRunQueryStepMeta extends BaseStepMeta implements StepMetaInte
 	@Override
 	public void setDefault() {
 		
-		graphUriValue = "";
-		//rdfContentFieldName = "";
-		queryTextContentFieldName = "QueryTextFieldName";
-		clearGraph = true;
+		queryTextContentFieldName = "QueryText";
 
 		endpointUrl = "http://localhost:8890/sparql";
-		username = "username";
-		password = "";
+		username = "sparql";
+		password = "sparql";
 		
 		resultCodeFieldName = "status_code";
 		resultMessageFieldName = "status_message";
@@ -185,7 +157,6 @@ public class SparqlRunQueryStepMeta extends BaseStepMeta implements StepMetaInte
 	public int getFieldType(Field field) {
 		if (field == Field.PORT) return ValueMetaInterface.TYPE_INTEGER;
 		if (field == Field.OUT_CODE) return ValueMetaInterface.TYPE_INTEGER;
-		else if (field == Field.CLEAR_GRAPH) return ValueMetaInterface.TYPE_BOOLEAN;
 		else return ValueMetaInterface.TYPE_STRING;
 	}
 	
@@ -210,39 +181,14 @@ public class SparqlRunQueryStepMeta extends BaseStepMeta implements StepMetaInte
 	
 	
 	// Getters & Setters
-/*
-	public String getRdfContentFieldName() {
-		return rdfContentFieldName;
-	}
-
-	public void setRdfContentFieldName(String value) {
-		rdfContentFieldName = value;
-	}
-	*/	
 	public String getQueryTextContentFieldName() {
 		return queryTextContentFieldName;
 	}
 
 	public void setQueryTextContentFieldName(String value) {
-		queryTextContentFieldName = value;
+		this.queryTextContentFieldName = value;
 	}
 
-	public String getGraphUriValue() {
-		return graphUriValue;
-	}
-
-	public void setGraphUriValue(String graphUriValue) {
-		this.graphUriValue = graphUriValue;
-	}
-
-	public Boolean getClearGraph() {
-		return clearGraph;
-	}
-
-	public void setClearGraph(Boolean clearGraph) {
-		this.clearGraph = clearGraph;
-	}
-	
 	public String getEndpointUrl() {
 		return endpointUrl;
 	}

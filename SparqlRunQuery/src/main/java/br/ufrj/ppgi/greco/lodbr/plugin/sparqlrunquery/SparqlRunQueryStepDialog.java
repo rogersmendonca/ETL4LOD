@@ -5,7 +5,6 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.events.ShellAdapter;
 import org.eclipse.swt.events.ShellEvent;
 import org.eclipse.swt.layout.FormAttachment;
@@ -24,6 +23,7 @@ import org.pentaho.di.core.Const;
 import org.pentaho.di.trans.TransMeta;
 import org.pentaho.di.trans.step.BaseStepMeta;
 import org.pentaho.di.trans.step.StepDialogInterface;
+import org.pentaho.di.ui.core.widget.ComboVar;
 import org.pentaho.di.ui.core.widget.TextVar;
 import org.pentaho.di.ui.trans.step.BaseStepDialog;
 
@@ -36,10 +36,7 @@ public class SparqlRunQueryStepDialog extends BaseStepDialog implements
     private SparqlRunQueryStepMeta input;
     private SwtHelper swthlp;
 
-    private TextVar wGraphUri;
-    //private TextVar wRdfFieldName;
-    private TextVar wQueryTextFieldName;
-    private Button wClearGraph;
+    private ComboVar wQueryTextFieldName;
     private TextVar wEndpointUrl;
     private TextVar wUserName;
     private TextVar wPassword;
@@ -117,51 +114,31 @@ public class SparqlRunQueryStepDialog extends BaseStepDialog implements
 
         // Adiciona
         Group wGroup1 = swthlp.appendGroup(shell, lastControl,
-                "Grafo e triplas");
+                "Query");
         {
-           // wRdfFieldName = swthlp.appendTextVarRow(wGroup1, null,
-             //       "Query Text", lsMod);
-        	wQueryTextFieldName = swthlp.appendTextVarRow(wGroup1, null,
+        	wQueryTextFieldName = swthlp.appendComboVarRow(wGroup1, null,
                     "Query Text Field Name", lsMod);
-           
-            wGraphUri = swthlp.appendTextVarRow(wGroup1, wQueryTextFieldName,
-                    "Graph URI", lsMod);
-            wClearGraph = swthlp.appendCheckboxRow(wGroup1, wGraphUri,
-                    "Limpar grafo antes da inserção", new SelectionListener()
-                    {
-                        @Override
-                        public void widgetSelected(SelectionEvent arg0)
-                        {
-                            input.setChanged();
-                        }
-
-                        @Override
-                        public void widgetDefaultSelected(SelectionEvent arg0)
-                        {
-                            input.setChanged();
-                        }
-                    });
         }
 
         Group wGroup2 = swthlp.appendGroup(shell, wGroup1,
-                "Configuração de conexão");
+                "Connection setup");
         {
             wEndpointUrl = swthlp.appendTextVarRow(wGroup2, null,
                     "URL do Sparql Update Endpoint", lsMod);
 
             wUserName = swthlp.appendTextVarRow(wGroup2, wEndpointUrl,
-                    "Nome de usuário", lsMod);
+                    "User Name", lsMod);
 
-            wPassword = swthlp.appendTextVarRow(wGroup2, wUserName, "Senha",
+            wPassword = swthlp.appendTextVarRow(wGroup2, wUserName, "Passowrd",
                     lsMod, true);
         }
 
-        Group wGroup3 = swthlp.appendGroup(shell, wGroup2, "Campos de saída");
+        Group wGroup3 = swthlp.appendGroup(shell, wGroup2, "Output fields");
         {
             wStatusCode = swthlp.appendTextVarRow(wGroup3, null,
-                    "Campo do código de status", lsMod);
+                    "Status Code", lsMod);
             wStatusMsg = swthlp.appendTextVarRow(wGroup3, wStatusCode,
-                    "Campo da mensagem de status", lsMod);
+                    "Status Message", lsMod);
         }
 
         lastControl = wGroup3;
@@ -170,7 +147,7 @@ public class SparqlRunQueryStepDialog extends BaseStepDialog implements
         wOK = new Button(shell, SWT.PUSH);
         wOK.setText("OK"); //$NON-NLS-1$
         wCancel = new Button(shell, SWT.PUSH);
-        wCancel.setText("Cancelar"); //$NON-NLS-1$
+        wCancel.setText("Cancel"); //$NON-NLS-1$
 
         setButtonPositions(new Button[] { wOK, wCancel }, margin, lastControl);
 
@@ -202,9 +179,7 @@ public class SparqlRunQueryStepDialog extends BaseStepDialog implements
         };
 
         wStepname.addSelectionListener(lsDef);
-        //wRdfFieldName.addSelectionListener(lsDef);
         wQueryTextFieldName.addSelectionListener(lsDef);
-        wGraphUri.addSelectionListener(lsDef);
         wEndpointUrl.addSelectionListener(lsDef);
         wUserName.addSelectionListener(lsDef);
         wPassword.addSelectionListener(lsDef);
@@ -243,12 +218,8 @@ public class SparqlRunQueryStepDialog extends BaseStepDialog implements
 
         try
         {
-    //        wRdfFieldName
-      //              .setText(Const.NVL(input.getRdfContentFieldName(), ""));
             wQueryTextFieldName
             			.setText(Const.NVL(input.getQueryTextContentFieldName(), ""));
-            wGraphUri.setText(Const.NVL(input.getGraphUriValue(), ""));
-            wClearGraph.setSelection(input.getClearGraph());
             wEndpointUrl.setText(Const.NVL(input.getEndpointUrl(), ""));
             wUserName.setText(Const.NVL(input.getUsername(), ""));
             wPassword.setText(Const.NVL(input.getPassword(), ""));
@@ -281,10 +252,7 @@ public class SparqlRunQueryStepDialog extends BaseStepDialog implements
 
         try
         {
-        	//input.setRdfContentFieldName(wRdfFieldName.getText());
         	input.setQueryTextContentFieldName(wQueryTextFieldName.getText());
-            input.setGraphUriValue(wGraphUri.getText());
-            input.setClearGraph(wClearGraph.getSelection());
             input.setEndpointUrl(wEndpointUrl.getText());
             input.setUsername(wUserName.getText());
             input.setPassword(wPassword.getText());

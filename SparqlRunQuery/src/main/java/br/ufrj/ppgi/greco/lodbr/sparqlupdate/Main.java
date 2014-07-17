@@ -1,8 +1,5 @@
 package br.ufrj.ppgi.greco.lodbr.sparqlupdate;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 
 
 
@@ -27,6 +24,7 @@ public class Main
 
 	public static void main(String[] args) throws Exception 
 	{	
+		/*
 		SparqlUpdate su = new SparqlUpdate("http", "146.164.3.27", "sparql-auth", 8890, "lodbr", "123456");
 
 		//File file = new File("C:\\Users\\Expedito\\Downloads\\download.rdf");
@@ -39,10 +37,10 @@ public class Main
 	  
 	    String graph = "http://www.lodbr.com.br";
 	    
-	    System.out.println("delete graph: "+su.deleteGraph(graph));
-	    System.out.println("create graph: "+su.createGraph(graph));
+	  //  System.out.println("delete graph: "+su.deleteGraph(graph));
+	  //  System.out.println("create graph: "+su.createGraph(graph));
 	    //System.out.println("insert data:  "+su.insertTriples(graph,rdf));
-	    f.close();
+	    f.close();*/
 	}
 
 }
