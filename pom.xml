@@ -5,7 +5,7 @@
 	<groupId>br.ufrj.ppgi.greco.kettle</groupId>
 	<artifactId>etl4lod-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.1</version>
+    <version>1.0</version>
     <name>ETL4LOD</name>
     <description>Componentes do Kettle relacionados a Linked Data</description>
 	<url>https://github.com/rogersmendonca/etl4lod.git</url>
@@ -67,18 +67,20 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>		
 			
-		<pdi.version>4.3.0-stable</pdi.version>
-		<pdi.home>D:/programas/pdi-ce-4.3.0-stable</pdi.home>
+		<pdi.version>5.0.5</pdi.version>
+		<pdi.home>C:/Pentaho/design-tools/data-integration</pdi.home>
 		<pdi.plugin.dir>plugins/steps/${project.name}</pdi.plugin.dir>
 		<pdi.plugin.lib_name>${project.artifactId}</pdi.plugin.lib_name>
 	</properties>	
 
     <modules>
         <module>DataPropertyMapping</module>
-        <module>ntriplegenerator</module>
         <module>ObjectPropertyMapping</module>
+        <module>ntriplegenerator</module>
         <module>SparqlEndpoint</module>
+		<module>SemanticLevelMarker</module>
 		<module>SparqlUpdateOutput</module>
+		<module>SparqlRunQuery</module>
     </modules>
 
     <build>
@@ -109,19 +111,21 @@
 	</build>
 	  
 	<dependencies>
+	
+		<!-- Kelli (07/2014) -->
+		<!-- Kettle dependency updates to Pentaho 5.1.0 -->
 		<!-- Kettle dependencies (start) -->
 		<dependency>
-			<groupId>pentaho-kettle</groupId>
-			<artifactId>kettle-core</artifactId>
-			<version>${pdi.version}</version>
+				<groupId>pentaho-kettle</groupId>
+				<artifactId>kettle-core</artifactId>
+				<version>${pdi.version}</version>
 			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
-			<groupId>pentaho-kettle</groupId>
-			<artifactId>kettle-db</artifactId>
-			<version>${pdi.version}</version>
-			<scope>provided</scope>
+		  <groupId>pentaho-kettle</groupId>
+		  <artifactId>kettle-db</artifactId>
+		  <version>4.4.3.3</version>
 		</dependency>
 
 		<dependency>
@@ -139,10 +143,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>pentaho-kettle</groupId>
-			<artifactId>kettle-test</artifactId>
-			<version>${pdi.version}</version>
-			<scope>provided</scope>
+		  <groupId>pentaho-kettle</groupId>
+		  <artifactId>kettle-test</artifactId>
+		  <version>4.4.3.3</version>
 		</dependency>
 
 		<dependency>
