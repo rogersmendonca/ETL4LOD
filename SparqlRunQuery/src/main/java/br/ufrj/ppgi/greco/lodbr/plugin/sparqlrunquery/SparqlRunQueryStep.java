@@ -26,6 +26,14 @@ import org.pentaho.di.trans.step.StepMetaInterface;
 import br.ufrj.ppgi.greco.lodbr.sparqlupdate.Response;
 import br.ufrj.ppgi.greco.lodbr.sparqlupdate.SparqlUpdate;
 
+/**
+ * Step SparqlRunQuery.
+ * 
+ * Runs a query sparql, define on the previous step, against a sparql endpoint
+ * 
+ * @author Kelli
+ * 
+ */
 public class SparqlRunQueryStep extends BaseStep implements StepInterface
 {
 

@@ -11,10 +11,7 @@ br\ufrj\ppgi\greco\lodbr\sparqlupdate\Response.class
 br\ufrj\ppgi\greco\lodbr\plugin\sparqlrunquery\SparqlRunQueryStepData.class
 br\ufrj\ppgi\greco\lodbr\plugin\sparqlrunquery\SparqlRunQueryStep.class
 br\ufrj\ppgi\greco\lodbr\sparqlupdate\Main.class
-br\ufrj\ppgi\greco\lodbr\sparqlupdate\SparqlUpdate$Format.class
 br\ufrj\ppgi\greco\lodbr\plugin\sparqlrunquery\TripleSerializationException.class
 br\ufrj\ppgi\greco\lodbr\plugin\sparqlrunquery\SparqlRunQueryStepDialog.class
 br\ufrj\ppgi\greco\lodbr\plugin\sparqlrunquery\SparqlRunQueryStepDialog$3.class
 br\ufrj\ppgi\greco\lodbr\sparqlupdate\SparqlUpdate.class
-br\ufrj\ppgi\greco\lodbr\sparqlupdate\SparqlUpdate$1.class
-br\ufrj\ppgi\greco\lodbr\plugin\sparqlrunquery\SparqlRunQueryStepDialog$6.class

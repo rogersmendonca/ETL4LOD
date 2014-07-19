@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <plugin
    id="NTripleGeneratorPlugin"
-   iconfile="icon.png"
+   iconfile="iconNTripleGenerator.png"
    description="NTriple Generator"
    tooltip="Generate NTriple format's RDF statements."
-   category="UFRJ_PPGI_GRECO"
+   category="LinkedDataBR"
    classname="br.ufrj.ppgi.greco.trans.step.ntriplegenerator.NTripleGeneratorStepMeta">
    <libraries>
 		<library name="ntriplegenerator.jar"/>

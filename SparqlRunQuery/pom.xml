@@ -13,20 +13,13 @@
 	</parent>
 	
 	<developers>
+
 		<developer>
-			<id>cristiano.expedito</id>
-			<name>Cristiano Expedito Ribeiro</name>
-			<email>expedit@gmail.com</email>
+			<id>kelli.faria</id>
+			<name>Kelli de Faria Cordeiro</name>
+			<email>kelli.faria@gmail.com</email>
 			<organization>UFRJ (PPGI/GRECO)</organization>
-			<organizationUrl>http://greco.ppgi.ufrj.br</organizationUrl>			
-		</developer>
-	
-		<developer>
-			<id>fabricio.firmino</id>
-			<name>Fabricio Firmino de Faria</name>
-			<email>firminodefaria@gmail.com</email>
-			<organization>UFRJ (PPGI/GRECO)</organization>
-			<organizationUrl>http://greco.ppgi.ufrj.br</organizationUrl>			
+			<organizationUrl>http://greco.ppgi.ufrj.brlodbr</organizationUrl>			
 		</developer>
 	
 		<developer>
