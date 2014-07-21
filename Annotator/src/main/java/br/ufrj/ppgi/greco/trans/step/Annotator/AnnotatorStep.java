@@ -1,13 +1,18 @@
 package br.ufrj.ppgi.greco.trans.step.Annotator;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.Iterator;
+import java.io.File;
 
+import org.w3c.dom.*;
+
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
 import org.pentaho.di.core.exception.KettleException;
 import org.pentaho.di.core.row.RowDataUtil;
 import org.pentaho.di.core.row.RowMeta;
@@ -108,7 +113,7 @@ public class AnnotatorStep extends BaseStep implements StepInterface
 	        String outputPredicate = inputPredicate;
 	        String outputObject = inputObject;
 	        
-	        try {
+	        /*try {
 				FileInputStream arquivo = new FileInputStream(meta.getBrowseFilename());
 				InputStreamReader console = new InputStreamReader(arquivo);
 				IterableFile entrada = new IterableFile(console);
@@ -138,7 +143,55 @@ public class AnnotatorStep extends BaseStep implements StepInterface
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				 inputPredicate = "falha teste4";
+			}*/
+	        
+    
+			try {
+				DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+	            DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+	            Document doc = docBuilder.parse (new File(meta.getBrowseFilename()));
+	            NodeList listOfMaps = doc.getElementsByTagName("map");
+	            int totalMaps = listOfMaps.getLength();
+	            for(int i=0; i<totalMaps; i++){
+	            	Node fromMapNode = listOfMaps.item(i);
+	                if(fromMapNode.getNodeType() == Node.ELEMENT_NODE){
+	                	Element fromMapElement = (Element)fromMapNode;
+	                	NodeList fromList = fromMapElement.getElementsByTagName("from");
+	                	Element fromElement = (Element)fromList.item(0);
+	                	NodeList textFList = fromElement.getChildNodes();
+	                	NodeList toList = fromMapElement.getElementsByTagName("to");
+	                    Element toElement = (Element)toList.item(0);
+	                    NodeList textTList = toElement.getChildNodes();
+	                    if(((Node)textFList.item(0)).getNodeValue().trim().contains(inputSubject)){
+	                    	outputSubject = ((Node)textTList.item(0)).getNodeValue().trim();
+	                    }
+	                    if(((Node)textFList.item(0)).getNodeValue().trim().contains(inputPredicate)){
+	                    	outputPredicate = ((Node)textTList.item(0)).getNodeValue().trim();
+	                    }
+	                    if(((Node)textFList.item(0)).getNodeValue().trim().contains(inputObject)){
+	                    	outputObject = ((Node)textTList.item(0)).getNodeValue().trim();
+	                    }
+	                }
+	            }
+	            
+			} catch (ParserConfigurationException e) {
+				// TODO Auto-generated catch block
+				outputSubject = "erro1";
+				e.printStackTrace();
+			} catch (SAXException e) {
+				// TODO Auto-generated catch block
+				outputSubject = "erro2";
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				outputSubject = "erro3";
+				e.printStackTrace();
 			}
+            
+            
+	        
+
+	 
 	        
         // Geracao do campo de saida
 	        if(inputObject.contains("\"")){

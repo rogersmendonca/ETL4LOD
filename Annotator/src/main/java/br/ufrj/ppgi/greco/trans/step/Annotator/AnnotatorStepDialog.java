@@ -428,7 +428,7 @@ public class AnnotatorStepDialog extends BaseStepDialog implements
 				public void widgetSelected(SelectionEvent e) 
 				{
 					FileDialog dialog = new FileDialog(shell, SWT.OPEN);
-					dialog.setFilterExtensions(new String[] {"*.txt;*.TXT", "*"});
+					dialog.setFilterExtensions(new String[] {"*.xml;*.XML", "*"});
 					if (wBrowse.getText()!=null)
 					{
 						dialog.setFileName(wBrowse.getText());
