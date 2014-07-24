@@ -1,10 +1,7 @@
 package br.ufrj.ppgi.greco.trans.step.SemanticLevelFramework;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.Reader;
-import java.util.Iterator;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -152,16 +149,28 @@ public class SemanticLevelFrameworkStep extends BaseStep implements StepInterfac
 				e.printStackTrace();
 				 inputPredicate = "falha teste4";
 			}*/
+	       
 	        
 	        try {
-	        	DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+	        	DocumentBuilderFactory docBuilderFactory2 = DocumentBuilderFactory.newInstance();
+	            DocumentBuilder docBuilder2 = docBuilderFactory2.newDocumentBuilder();
+	            Document doc2 = docBuilder2.parse (new File(meta.getBrowseFilename()));      	            
+				
+				DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
 	            DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
-	            Document doc = docBuilder.parse (new File(meta.getBrowseFilename()));
-	            NodeList listOfFrames = doc.getElementsByTagName("Frame");
+	            Document doc = docBuilder.parse (new File(meta.getRulesFilename()));
+	            NodeList listOfFrames = doc.getElementsByTagName("Frame");          
 	            int totalFrames = listOfFrames.getLength();
 	            i.set("inputSubject", inputSubject);
 				i.set("inputPredicate", inputPredicate);
 				i.set("inputObject", inputObject);
+				String prefixo = "";
+				if(inputPredicate.contains(":")){
+					int index = inputPredicate.indexOf(":");
+					prefixo = inputPredicate.substring(0, index);
+				}	
+				i.set("isVocabulary", isVocabulary(prefixo, doc2));
+				i.set("isOntology", isOntology(prefixo, doc2));
 	            for(int k=0; k<totalFrames; k++){
 	            	Node ruleFrameNode = listOfFrames.item(k);
 	            	if(ruleFrameNode.getNodeType() == Node.ELEMENT_NODE){
@@ -172,10 +181,11 @@ public class SemanticLevelFrameworkStep extends BaseStep implements StepInterfac
 	                	NodeList levelList = ruleFrameElement.getElementsByTagName("Level");
 	                    Element levelElement = (Element)levelList.item(0);
 	                    NodeList textLList = levelElement.getChildNodes();
+	                    String sl1 = textRList.item(0).getNodeValue().trim();
 	                    if((Boolean)i.eval(textRList.item(0).getNodeValue().trim())){
 	                    	outputNTriple = textLList.item(0).getNodeValue().trim();
 	                    	//TODO avaliar sair do for
-	                    }                  
+	                    }       
 	            	}		 
 	            }
 	            
@@ -220,53 +230,57 @@ public class SemanticLevelFrameworkStep extends BaseStep implements StepInterfac
         return true;
     }
 
+	private boolean isOntology(String prefix, Document doc) {
+		NodeList listOfResults = doc.getElementsByTagName("result");
+		int totalResults = listOfResults.getLength();
+		for(int k=0; k<totalResults; k++){
+			Node resultNode = listOfResults.item(k);
+			Element resultElement = (Element)resultNode;
+        	NodeList bindingList = resultElement.getElementsByTagName("binding");
+        	Element bindingPrefixElement = (Element)bindingList.item(0);
+        	NodeList literalList = bindingPrefixElement.getElementsByTagName("literal");
+        	Element literalElement = (Element)literalList.item(0);
+        	NodeList textLiList = literalElement.getChildNodes();
+        	String sl = textLiList.item(0).getNodeValue().trim();
+        	if(prefix.equals(textLiList.item(0).getNodeValue().trim())){
+        		Element bindingDescElement = (Element)bindingList.item(3); 
+        		NodeList literalDescList = bindingDescElement.getElementsByTagName("literal");
+            	Element literalDescElement = (Element)literalDescList.item(0);
+            	NodeList textDescList = literalDescElement.getChildNodes();
+            	if(textDescList.item(0).getNodeValue().trim().toLowerCase().contains("ontology")){
+            		return true;
+            	}
+        	}
+		}
+		return false;
+	}
 
-    /**
-     * Le o arquivo linha a linha
-     * 
-     */
-    
-    public class IterableFile extends BufferedReader implements Iterable<String> {
-
-    	public IterableFile(Reader in) {
-    		super(in); // faça o que a classe pai faria
-    	}
-    	
-    	public StringIterator iterator() {
-    		return new StringIterator();
-    	}
-    	
-    	public class StringIterator implements Iterator<String> {
-    		private String linha = null;
-    		
-    		public StringIterator() {
-    			try {
-    				linha = readLine();
-    			} catch (IOException e) {
-    				linha = null;
-    			}
-    		}
-    		
-    		public boolean hasNext() {
-    			return linha != null;
-    		}
-    		
-    		public String next() {
-    			String aux = linha;
-    			try {
-    				linha = readLine();
-    			} catch (IOException e) {
-    				linha = null;
-    			}
-    			return aux;
-    		}
-    		
-    		public void remove() {
-    			
-    		}
-    	}
-
-    }
+	
+	
+	public boolean isVocabulary(String prefix, Document doc) {
+		NodeList listOfResults = doc.getElementsByTagName("result");
+		int totalResults = listOfResults.getLength();
+		for(int k=0; k<totalResults; k++){
+			Node resultNode = listOfResults.item(k);
+			Element resultElement = (Element)resultNode;
+        	NodeList bindingList = resultElement.getElementsByTagName("binding");
+        	Element bindingPrefixElement = (Element)bindingList.item(0);
+        	NodeList literalList = bindingPrefixElement.getElementsByTagName("literal");
+        	Element literalElement = (Element)literalList.item(0);
+        	NodeList textLiList = literalElement.getChildNodes();
+        	String sl = textLiList.item(0).getNodeValue().trim();
+        	if(prefix.equals(textLiList.item(0).getNodeValue().trim())){
+        		Element bindingDescElement = (Element)bindingList.item(3); 
+        		NodeList literalDescList = bindingDescElement.getElementsByTagName("literal");
+            	Element literalDescElement = (Element)literalDescList.item(0);
+            	NodeList textDescList = literalDescElement.getChildNodes();
+            	if(textDescList.item(0).getNodeValue().trim().toLowerCase().contains("vocabulary")){
+            		return true;
+            	}
+        	}
+		}
+		return false;
+	}
 
 }
 

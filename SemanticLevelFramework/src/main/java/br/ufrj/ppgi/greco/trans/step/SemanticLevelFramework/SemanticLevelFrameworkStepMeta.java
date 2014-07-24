@@ -48,6 +48,7 @@ public class SemanticLevelFrameworkStepMeta extends BaseStepMeta implements
         OUTPUT_NTRIPLE_FIELD_NAME,
         INNER_KEEP_INPUT_VALUE,
         INPUT_BROWSE_FILE_NAME,
+        INPUT_RULES_FILE_NAME,
     }
 
     // Campos Step - Input
@@ -55,6 +56,7 @@ public class SemanticLevelFrameworkStepMeta extends BaseStepMeta implements
     private String inputPredicate;
     private String inputObject;
     public String browseFilename;
+    public String rulesFilename;
 
     // Campos Step - Output
     private String outputNTriple;
@@ -79,6 +81,16 @@ public class SemanticLevelFrameworkStepMeta extends BaseStepMeta implements
         remarks.add(ok);
         // }
         if (browseFilename==null || browseFilename.length()==0 )
+		{
+        	ok = new CheckResult(CheckResult.TYPE_RESULT_ERROR, "No files can be found to read.", stepMeta);
+			remarks.add(ok);
+		}
+		else
+		{
+			ok = new CheckResult(CheckResult.TYPE_RESULT_OK, "Both shape file and the DBF file are defined.", stepMeta);
+			remarks.add(ok);
+		}
+        if (rulesFilename==null || rulesFilename.length()==0 )
 		{
         	ok = new CheckResult(CheckResult.TYPE_RESULT_ERROR, "No files can be found to read.", stepMeta);
 			remarks.add(ok);
@@ -127,6 +139,7 @@ public class SemanticLevelFrameworkStepMeta extends BaseStepMeta implements
         innerKeepInputFields = "Y".equals(XMLHandler.getTagValue(stepDomNode,
                 Field.INNER_KEEP_INPUT_VALUE.name()));
         browseFilename = XMLHandler.getTagValue(stepDomNode, Field.INPUT_BROWSE_FILE_NAME.name());
+        rulesFilename = XMLHandler.getTagValue(stepDomNode, Field.INPUT_RULES_FILE_NAME.name());
     }
 
     // Gerar XML para salvar um .ktr
@@ -146,6 +159,7 @@ public class SemanticLevelFrameworkStepMeta extends BaseStepMeta implements
         xml.append(XMLHandler.addTagValue(Field.INNER_KEEP_INPUT_VALUE.name(),
                 innerKeepInputFields));
         xml.append(XMLHandler.addTagValue(Field.INPUT_BROWSE_FILE_NAME.name(), browseFilename));
+        xml.append(XMLHandler.addTagValue(Field.INPUT_RULES_FILE_NAME.name(), rulesFilename));
 
         return xml.toString();
     }
@@ -167,6 +181,7 @@ public class SemanticLevelFrameworkStepMeta extends BaseStepMeta implements
         innerKeepInputFields = repository.getStepAttributeBoolean(
                 stepIdInRepository, Field.INNER_KEEP_INPUT_VALUE.name());
         browseFilename = repository.getStepAttributeString(stepIdInRepository, Field.INPUT_BROWSE_FILE_NAME.name());
+        rulesFilename = repository.getStepAttributeString(stepIdInRepository, Field.INPUT_RULES_FILE_NAME.name());
     }
 
     // Persistir campos no repositorio
@@ -186,6 +201,8 @@ public class SemanticLevelFrameworkStepMeta extends BaseStepMeta implements
                 Field.INNER_KEEP_INPUT_VALUE.name(), innerKeepInputFields);
         repository.saveStepAttribute(idOfTransformation, idOfStep,
                 Field.INPUT_BROWSE_FILE_NAME.name(), browseFilename);
+        repository.saveStepAttribute(idOfTransformation, idOfStep,
+                Field.INPUT_RULES_FILE_NAME.name(), rulesFilename);
     }
 
     // Inicializacoes default
@@ -198,6 +215,7 @@ public class SemanticLevelFrameworkStepMeta extends BaseStepMeta implements
         outputNTriple = "output";
         innerKeepInputFields = false;
         browseFilename = "";
+        rulesFilename = "";
     }
 
     /**
@@ -259,6 +277,58 @@ public class SemanticLevelFrameworkStepMeta extends BaseStepMeta implements
     			ValueMetaInterface m = new ValueMeta("measure", ValueMetaInterface.TYPE_NUMBER);
     			m.setOrigin(name);
     			inputRowMeta.addValueMeta( m );
+    			
+    			// The filename...
+    			ValueMetaInterface filename2 = new ValueMeta("filename", ValueMetaInterface.TYPE_STRING);
+    			filename2.setOrigin(name);
+    			filename2.setLength(255);
+    			inputRowMeta.addValueMeta(filename2);
+    			
+    			// The file type
+    			ValueMetaInterface ft2 = new ValueMeta("filetype", ValueMetaInterface.TYPE_STRING);
+    			ft2.setLength(50);
+    			ft2.setOrigin(name);
+    			inputRowMeta.addValueMeta( ft2 ); 
+    			
+    			// The shape nr
+    			ValueMetaInterface shnr2 = new ValueMeta("shapenr", ValueMetaInterface.TYPE_INTEGER);
+    			shnr2.setOrigin(name);
+    			inputRowMeta.addValueMeta( shnr2 ); 
+
+    			// The part nr
+    			ValueMetaInterface pnr2 = new ValueMeta("partnr", ValueMetaInterface.TYPE_INTEGER);
+    			pnr2.setOrigin(name);
+    			inputRowMeta.addValueMeta( pnr2 ); 
+
+    			// The part nr
+    			ValueMetaInterface nrp2 = new ValueMeta("nrparts", ValueMetaInterface.TYPE_INTEGER);
+    			nrp2.setOrigin(name);
+    			inputRowMeta.addValueMeta( nrp2 ); 
+
+    			// The point nr
+    			ValueMetaInterface ptnr2 = new ValueMeta("pointnr", ValueMetaInterface.TYPE_INTEGER);
+    			ptnr2.setOrigin(name);
+    			inputRowMeta.addValueMeta( ptnr2 ); 
+
+    			// The nr of points
+    			ValueMetaInterface nrpt2 = new ValueMeta("nrpointS", ValueMetaInterface.TYPE_INTEGER);
+    			nrpt2.setOrigin(name);
+    			inputRowMeta.addValueMeta( nrpt2 ); 
+
+    			// The X coordinate
+    			ValueMetaInterface x2 = new ValueMeta("x", ValueMetaInterface.TYPE_NUMBER);
+    			x2.setOrigin(name);
+    			inputRowMeta.addValueMeta( x2 );
+
+    			// The Y coordinate
+    			ValueMetaInterface y2 = new ValueMeta("y", ValueMetaInterface.TYPE_NUMBER);
+    			y2.setOrigin(name);
+    			inputRowMeta.addValueMeta( y2 );
+
+    			// The measure
+    			ValueMetaInterface m2 = new ValueMeta("measure", ValueMetaInterface.TYPE_NUMBER);
+    			m2.setOrigin(name);
+    			inputRowMeta.addValueMeta( m2 );
     			
         if (!innerKeepInputFields)
         {
@@ -336,5 +406,15 @@ public class SemanticLevelFrameworkStepMeta extends BaseStepMeta implements
     public void setBrowseFilename(String browseFilename)
     {
     	this.browseFilename = browseFilename;
+    }
+    
+    public String getRulesFilename()
+    {
+    	return rulesFilename;
+    }
+    
+    public void setRulesFilename(String rulesFilename)
+    {
+    	this.rulesFilename = rulesFilename;
     }
 }
