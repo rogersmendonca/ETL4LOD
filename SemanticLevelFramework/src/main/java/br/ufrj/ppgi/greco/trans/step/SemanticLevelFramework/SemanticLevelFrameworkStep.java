@@ -181,7 +181,6 @@ public class SemanticLevelFrameworkStep extends BaseStep implements StepInterfac
 	                	NodeList levelList = ruleFrameElement.getElementsByTagName("Level");
 	                    Element levelElement = (Element)levelList.item(0);
 	                    NodeList textLList = levelElement.getChildNodes();
-	                    String sl1 = textRList.item(0).getNodeValue().trim();
 	                    if((Boolean)i.eval(textRList.item(0).getNodeValue().trim())){
 	                    	outputNTriple = textLList.item(0).getNodeValue().trim();
 	                    	//TODO avaliar sair do for
@@ -241,13 +240,19 @@ public class SemanticLevelFrameworkStep extends BaseStep implements StepInterfac
         	NodeList literalList = bindingPrefixElement.getElementsByTagName("literal");
         	Element literalElement = (Element)literalList.item(0);
         	NodeList textLiList = literalElement.getChildNodes();
-        	String sl = textLiList.item(0).getNodeValue().trim();
         	if(prefix.equals(textLiList.item(0).getNodeValue().trim())){
-        		Element bindingDescElement = (Element)bindingList.item(3); 
+        		Element bindingDescElement = (Element)bindingList.item(3);
         		NodeList literalDescList = bindingDescElement.getElementsByTagName("literal");
             	Element literalDescElement = (Element)literalDescList.item(0);
             	NodeList textDescList = literalDescElement.getChildNodes();
+        		Element bindingTitleElement = (Element)bindingList.item(2); 
+        		NodeList literalTitleList = bindingTitleElement.getElementsByTagName("literal");
+        		Element literalTitleElement = (Element)literalTitleList.item(0);
+        		NodeList textTitleList = literalTitleElement.getChildNodes();
             	if(textDescList.item(0).getNodeValue().trim().toLowerCase().contains("ontology")){
+            		return true;
+            	}
+            	if(textTitleList.item(0).getNodeValue().trim().toLowerCase().contains("ontology")){
             		return true;
             	}
         	}
@@ -268,13 +273,19 @@ public class SemanticLevelFrameworkStep extends BaseStep implements StepInterfac
         	NodeList literalList = bindingPrefixElement.getElementsByTagName("literal");
         	Element literalElement = (Element)literalList.item(0);
         	NodeList textLiList = literalElement.getChildNodes();
-        	String sl = textLiList.item(0).getNodeValue().trim();
         	if(prefix.equals(textLiList.item(0).getNodeValue().trim())){
         		Element bindingDescElement = (Element)bindingList.item(3); 
         		NodeList literalDescList = bindingDescElement.getElementsByTagName("literal");
             	Element literalDescElement = (Element)literalDescList.item(0);
             	NodeList textDescList = literalDescElement.getChildNodes();
+            	Element bindingTitleElement = (Element)bindingList.item(2); 
+        		NodeList literalTitleList = bindingTitleElement.getElementsByTagName("literal");
+        		Element literalTitleElement = (Element)literalTitleList.item(0);
+        		NodeList textTitleList = literalTitleElement.getChildNodes();
             	if(textDescList.item(0).getNodeValue().trim().toLowerCase().contains("vocabulary")){
+            		return true;
+            	}
+            	if(textTitleList.item(0).getNodeValue().trim().toLowerCase().contains("vocabulary")){
             		return true;
             	}
         	}

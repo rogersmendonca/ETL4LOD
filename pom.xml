@@ -80,6 +80,7 @@
         <module>SparqlEndpoint</module>
 		<module>SparqlUpdateOutput</module>
 		<module>Annotator</module>
+		<module>SemanticLevelFramework</module>
     </modules>
 
     <build>
