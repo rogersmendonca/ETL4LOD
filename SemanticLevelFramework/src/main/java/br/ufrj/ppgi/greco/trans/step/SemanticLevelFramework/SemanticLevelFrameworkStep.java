@@ -114,9 +114,44 @@ public class SemanticLevelFrameworkStep extends BaseStep implements StepInterfac
 	                meta.getInputObject(), "");
 	        
 	        Interpreter i = new Interpreter();
+	        
+	        /*try {
+				FileInputStream arquivo = new FileInputStream(meta.getBrowseFilename());
+				InputStreamReader console = new InputStreamReader(arquivo);
+				IterableFile entrada = new IterableFile(console);
+			
+				for(String linha : entrada) {
+					 String parte[] = linha.split(";");
+					 String regra = parte[0];
+					 String nivel = parte[1];
+					 i.set("inputSubject", inputSubject);
+					 i.set("inputPredicate", inputPredicate);
+					 i.set("inputObject", inputObject);
+					 try {
+					 if((Boolean)i.eval(regra)){
+						 outputNTriple = nivel;
+					 }
+					 } catch (EvalError e) {
+				            // TODO Auto-generated catch block
+						     inputPredicate = "falha teste1";
+				            e.printStackTrace();
+				     }
+				}
+	
+				entrada.close();
+					
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				 inputPredicate = "falha teste32";
+				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				 inputPredicate = "falha teste4";
+			}*/
 	       
+	        
 	        try {
-	        	//abre arquivos xml
 	        	DocumentBuilderFactory docBuilderFactory2 = DocumentBuilderFactory.newInstance();
 	            DocumentBuilder docBuilder2 = docBuilderFactory2.newDocumentBuilder();
 	            Document doc2 = docBuilder2.parse (new File(meta.getBrowseFilename()));      	            
@@ -126,20 +161,16 @@ public class SemanticLevelFrameworkStep extends BaseStep implements StepInterfac
 	            Document doc = docBuilder.parse (new File(meta.getRulesFilename()));
 	            NodeList listOfFrames = doc.getElementsByTagName("Frame");          
 	            int totalFrames = listOfFrames.getLength();
-	            //valida variaveis para o interpreter
 	            i.set("inputSubject", inputSubject);
 				i.set("inputPredicate", inputPredicate);
 				i.set("inputObject", inputObject);
 				String prefixo = "";
-				//pega prefixo
 				if(inputPredicate.contains(":")){
 					int index = inputPredicate.indexOf(":");
 					prefixo = inputPredicate.substring(0, index);
 				}	
-				//verifica se é vocabulario ou ontologia
 				i.set("isVocabulary", isVocabulary(prefixo, doc2));
 				i.set("isOntology", isOntology(prefixo, doc2));
-				//busca as regras
 	            for(int k=0; k<totalFrames; k++){
 	            	Node ruleFrameNode = listOfFrames.item(k);
 	            	if(ruleFrameNode.getNodeType() == Node.ELEMENT_NODE){
@@ -150,7 +181,6 @@ public class SemanticLevelFrameworkStep extends BaseStep implements StepInterfac
 	                	NodeList levelList = ruleFrameElement.getElementsByTagName("Level");
 	                    Element levelElement = (Element)levelList.item(0);
 	                    NodeList textLList = levelElement.getChildNodes();
-	                    //valida a regra
 	                    if((Boolean)i.eval(textRList.item(0).getNodeValue().trim())){
 	                    	outputNTriple = textLList.item(0).getNodeValue().trim();
 	                    	//TODO avaliar sair do for
@@ -175,6 +205,17 @@ public class SemanticLevelFrameworkStep extends BaseStep implements StepInterfac
 				outputNTriple = "erro4";
 				e.printStackTrace();
 			}
+	        
+        // Geracao do campo de saida
+	     /*   if(inputObject.contains("\"")){
+	        	outputNTriple = String.format(LITERAL_OBJECT_TRIPLE_FORMAT,
+                        outputSubject, outputPredicate, outputObject);
+	        }
+	        else{
+	        	outputNTriple = String.format(URI_OBJECT_TRIPLE_FORMAT,
+                        outputSubject, outputPredicate, outputObject);
+	        }*/
+            
 
         // Set output row
       Object[] outputRow = meta.getInnerKeepInputFields() ? row
@@ -200,12 +241,10 @@ public class SemanticLevelFrameworkStep extends BaseStep implements StepInterfac
         	Element literalElement = (Element)literalList.item(0);
         	NodeList textLiList = literalElement.getChildNodes();
         	if(prefix.equals(textLiList.item(0).getNodeValue().trim())){
-        		//busca se é ontologia no 'vocabDescription'
         		Element bindingDescElement = (Element)bindingList.item(3);
         		NodeList literalDescList = bindingDescElement.getElementsByTagName("literal");
             	Element literalDescElement = (Element)literalDescList.item(0);
             	NodeList textDescList = literalDescElement.getChildNodes();
-            	//busca se é ontologia no 'vocabTitle'
         		Element bindingTitleElement = (Element)bindingList.item(2); 
         		NodeList literalTitleList = bindingTitleElement.getElementsByTagName("literal");
         		Element literalTitleElement = (Element)literalTitleList.item(0);
@@ -235,12 +274,10 @@ public class SemanticLevelFrameworkStep extends BaseStep implements StepInterfac
         	Element literalElement = (Element)literalList.item(0);
         	NodeList textLiList = literalElement.getChildNodes();
         	if(prefix.equals(textLiList.item(0).getNodeValue().trim())){
-        		//busca se é vocabulario no 'vocabDescription'
         		Element bindingDescElement = (Element)bindingList.item(3); 
         		NodeList literalDescList = bindingDescElement.getElementsByTagName("literal");
             	Element literalDescElement = (Element)literalDescList.item(0);
             	NodeList textDescList = literalDescElement.getChildNodes();
-            	//busca se é vocabulario no 'vocabTitle'
             	Element bindingTitleElement = (Element)bindingList.item(2); 
         		NodeList literalTitleList = bindingTitleElement.getElementsByTagName("literal");
         		Element literalTitleElement = (Element)literalTitleList.item(0);

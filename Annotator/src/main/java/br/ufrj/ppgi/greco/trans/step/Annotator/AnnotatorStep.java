@@ -1,6 +1,9 @@
 package br.ufrj.ppgi.greco.trans.step.Annotator;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.Reader;
+import java.util.Iterator;
 import java.io.File;
 
 import org.w3c.dom.*;
@@ -110,14 +113,45 @@ public class AnnotatorStep extends BaseStep implements StepInterface
 	        String outputPredicate = inputPredicate;
 	        String outputObject = inputObject;
 	        
+	        /*try {
+				FileInputStream arquivo = new FileInputStream(meta.getBrowseFilename());
+				InputStreamReader console = new InputStreamReader(arquivo);
+				IterableFile entrada = new IterableFile(console);
+			
+				for(String linha : entrada) {
+					 String parte[] = linha.split(";");
+					 String de = parte[0];
+					 String para = parte[1];
+					 if(inputSubject.equals(de.toString())){
+						 outputSubject = para;
+					 }
+					 if(inputPredicate.equals(de.toString())){
+						 outputPredicate = para;
+					 }
+					 if(inputObject.equals(de.toString())){
+						 outputObject = para;
+					 }
+				}
+	
+				entrada.close();
+					
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				 inputPredicate = "falha teste32";
+				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				 inputPredicate = "falha teste4";
+			}*/
+	        
+    
 			try {
-				//abre arquivo xml
 				DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
 	            DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
 	            Document doc = docBuilder.parse (new File(meta.getBrowseFilename()));
 	            NodeList listOfMaps = doc.getElementsByTagName("map");
 	            int totalMaps = listOfMaps.getLength();
-	            //procura em cada node map as regras de anotação
 	            for(int i=0; i<totalMaps; i++){
 	            	Node fromMapNode = listOfMaps.item(i);
 	                if(fromMapNode.getNodeType() == Node.ELEMENT_NODE){
@@ -153,6 +187,11 @@ public class AnnotatorStep extends BaseStep implements StepInterface
 				outputSubject = "erro3";
 				e.printStackTrace();
 			}
+            
+            
+	        
+
+	 
 	        
         // Geracao do campo de saida
 	        if(inputObject.contains("\"")){
@@ -175,6 +214,54 @@ public class AnnotatorStep extends BaseStep implements StepInterface
         putRow(data.outputRowMeta, outputRow);
 
         return true;
-        }
+    }
+
+    /**
+     * Le o arquivo linha a linha
+     * 
+     */
+    
+    public class IterableFile extends BufferedReader implements Iterable<String> {
+
+    	public IterableFile(Reader in) {
+    		super(in); // faça o que a classe pai faria
+    	}
+    	
+    	public StringIterator iterator() {
+    		return new StringIterator();
+    	}
+    	
+    	public class StringIterator implements Iterator<String> {
+    		private String linha = null;
+    		
+    		public StringIterator() {
+    			try {
+    				linha = readLine();
+    			} catch (IOException e) {
+    				linha = null;
+    			}
+    		}
+    		
+    		public boolean hasNext() {
+    			return linha != null;
+    		}
+    		
+    		public String next() {
+    			String aux = linha;
+    			try {
+    				linha = readLine();
+    			} catch (IOException e) {
+    				linha = null;
+    			}
+    			return aux;
+    		}
+    		
+    		public void remove() {
+    			
+    		}
+    	}
+
+    }
+
 }
 

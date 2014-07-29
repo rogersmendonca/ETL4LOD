@@ -50,13 +50,19 @@ public class AnnotatorStepDialog extends BaseStepDialog implements
     private static Class<?> PKG = AnnotatorStepMeta.class;
 
     private AnnotatorStepMeta input;
+    //private SwtHelper swthlp;
     private String dialogTitle;
 
     // Adicionar variaveis dos widgets
+    // Campos Step - Input
+    //private Group wInputGroup;
     private ComboVar wcSubject;
     private ComboVar wcPredicate;
     private ComboVar wcObject;
     private TextVar wtNTriple;
+    //private Button wInnerIsLiteral;
+    //private ComboVar wInputDataType;
+    //private ComboVar wInputLangTag;
     private Label wlShape;
     private Label wlSubject;
     private Label wlObject;
@@ -78,6 +84,10 @@ public class AnnotatorStepDialog extends BaseStepDialog implements
     private FormData fdbBrowse;
     private FormData fdBrowse;
 
+    // Campos Step - Output
+    //private Group wOutputGroup;
+    //private Button wInnerKeepInput;
+
     
     public AnnotatorStepDialog(Shell parent, Object stepMeta,
             TransMeta transMeta, String stepname)
@@ -85,6 +95,7 @@ public class AnnotatorStepDialog extends BaseStepDialog implements
         super(parent, (BaseStepMeta) stepMeta, transMeta, stepname);
 
         input = (AnnotatorStepMeta) baseStepMeta;
+        //swthlp = new SwtHelper(transMeta, this.props);
 
         // Additional initialization here
         dialogTitle = BaseMessages.getString(PKG, "AnnotatorStep.Title");
@@ -125,6 +136,91 @@ public class AnnotatorStepDialog extends BaseStepDialog implements
         int middle = props.getMiddlePct();
         int margin = Const.MARGIN;
 
+    /*private ComboVar appendComboVar(Control lastControl,
+            ModifyListener defModListener, Composite parent, String label)
+    {
+        ComboVar combo = swthlp.appendComboVarRow(parent, lastControl, label,
+                defModListener);
+        BaseStepDialog.getFieldsFromPrevious(combo, transMeta, stepMeta);
+        return combo;
+    }
+
+    // Criar widgets especificos da janela
+    private Control buildContents(Control lastControl,
+            ModifyListener defModListener)
+    {
+        wInputGroup = swthlp.appendGroup(shell, lastControl,
+                BaseMessages.getString(PKG, "AnnotatorStep.Group.Input.Label"));
+        wInputSubject = appendComboVar(wInputGroup, defModListener,
+                wInputGroup, BaseMessages.getString(PKG, "AnnotatorStep.SubjectField.Label"));
+        wInputPredicate = appendComboVar(wInputSubject, defModListener,
+                wInputGroup, BaseMessages.getString(PKG, "AnnotatorStep.PredicateField.Label"));
+        wInputObject = appendComboVar(wInputPredicate, defModListener,
+                wInputGroup, BaseMessages.getString(PKG, "AnnotatorStep.ObjectField.Label"));
+        wInnerIsLiteral = swthlp.appendCheckboxRow(wInputGroup, wInputObject,
+                BaseMessages.getString(PKG, "AnnotatorStep.LiteralCheckField.Label"), new SelectionListener()
+                {
+                    @Override
+                    public void widgetDefaultSelected(SelectionEvent arg0)
+                    {
+                        widgetSelected(arg0);
+                    }
+
+                    @Override
+                    public void widgetSelected(SelectionEvent e)
+                    {
+                        enableDataTypeAndLangTag(wInnerIsLiteral.getSelection());
+                        input.setChanged(true);
+                    }
+                });
+        wInputDataType = appendComboVar(wInnerIsLiteral, defModListener,
+                wInputGroup, BaseMessages.getString(PKG, "AnnotatorStep.LiteralTypeField.Label"));
+        wInputLangTag = appendComboVar(wInputDataType, defModListener,
+                wInputGroup, BaseMessages.getString(PKG, "AnnotatorStep.LangtagField.Label"));
+
+        wOutputGroup = swthlp.appendGroup(shell, wInputGroup, BaseMessages.getString(PKG, "AnnotatorStep.Group.Output.Label"));
+        wInnerKeepInput = swthlp.appendCheckboxRow(wOutputGroup, wOutputGroup,
+                BaseMessages.getString(PKG, "AnnotatorStep.PassCheckField.Label"),
+                new SelectionListener()
+                {
+                    @Override
+                    public void widgetDefaultSelected(SelectionEvent arg0)
+                    {
+                        widgetSelected(arg0);
+                    }
+
+                    @Override
+                    public void widgetSelected(SelectionEvent e)
+                    {
+                        input.setChanged(true);
+                    }
+                });
+        wOutputNTriple = swthlp.appendTextVarRow(wOutputGroup, wInnerKeepInput,
+                BaseMessages.getString(PKG, "AnnotatorStep.NTripleField.Label"), defModListener);
+
+        return wOutputGroup;
+    }*/
+    
+    
+
+    /*private void enableDataTypeAndLangTag(boolean enable)
+    {
+        wInputDataType.setEnabled(enable);
+        wInputLangTag.setEnabled(enable);
+        if (!enable)
+        {
+            wInputDataType.setText("");
+            wInputLangTag.setText("");
+        }
+    }
+    
+    
+
+    private void addSelectionListenerToControls(SelectionAdapter lsDef)
+    {
+        wOutputNTriple.addSelectionListener(lsDef);
+    }*/
+
 
         // Adiciona um label e um input text no topo do dialog shell
         wlStepname = new Label(shell, SWT.RIGHT);
@@ -144,8 +240,8 @@ public class AnnotatorStepDialog extends BaseStepDialog implements
         fdStepname.top = new FormAttachment(0, margin);
         fdStepname.right = new FormAttachment(100, 0);
         wStepname.setLayoutData(fdStepname);
+        //Control lastControl = wStepname;
         
-        //Adiciona label e combo do campo sujeito
         wlSubject=new Label(shell, SWT.RIGHT);
 		wlSubject.setText(BaseMessages.getString(PKG, "AnnotatorStep.SubjectField.Label"));
  		props.setLook(wlSubject);
@@ -179,7 +275,6 @@ public class AnnotatorStepDialog extends BaseStepDialog implements
         }
     );
 		
-        //Adiciona label e combo do campo predicado
 		wlPredicate=new Label(shell, SWT.RIGHT);
 		wlPredicate.setText(BaseMessages.getString(PKG, "AnnotatorStep.PredicateField.Label"));
  		props.setLook(wlPredicate);
@@ -213,7 +308,6 @@ public class AnnotatorStepDialog extends BaseStepDialog implements
         }
     );
 		
-        //Adiciona label e combo do campo objeto
 		wlObject=new Label(shell, SWT.RIGHT);
 		wlObject.setText(BaseMessages.getString(PKG, "AnnotatorStep.ObjectField.Label"));
  		props.setLook(wlObject);
@@ -247,7 +341,6 @@ public class AnnotatorStepDialog extends BaseStepDialog implements
         }
     );
 		
-        //Adiciona label e text do campo saida
 		wlNTriple=new Label(shell, SWT.RIGHT);
 		wlNTriple.setText(BaseMessages.getString(PKG, "AnnotatorStep.NTripleField.Label")); //$NON-NLS-1$
  		props.setLook(wlNTriple);
@@ -267,6 +360,8 @@ public class AnnotatorStepDialog extends BaseStepDialog implements
 		fdtNTriple.right= new FormAttachment(100, 0);
 		wtNTriple.setLayoutData(fdtNTriple);
 
+        // Chama metodo que adiciona os widgets especificos da janela
+       // lastControl = buildContents(lastControl, lsMod);
 
         // Bottom buttons
         wOK = new Button(shell, SWT.PUSH);
@@ -284,8 +379,7 @@ public class AnnotatorStepDialog extends BaseStepDialog implements
 		fdlShape.top  = new FormAttachment(wtNTriple, margin);
 		fdlShape.right= new FormAttachment(middle, -margin);
 		wlShape.setLayoutData(fdlShape);
-		
-        //Botões para busca de arquivo
+        
         wbBrowse=new Button(shell, SWT.PUSH| SWT.CENTER);
  		props.setLook(wbBrowse);
 		wbBrowse.setText(BaseMessages.getString(PKG, "AnnotatorStep.Btn.Browse"));
@@ -366,6 +460,7 @@ public class AnnotatorStepDialog extends BaseStepDialog implements
             }
         };
         wStepname.addSelectionListener(lsDef);
+       // addSelectionListenerToControls(lsDef);
 
         // Detect X or ALT-F4 or something that kills this window...
         shell.addShellListener(new ShellAdapter()
@@ -405,7 +500,12 @@ public class AnnotatorStepDialog extends BaseStepDialog implements
         wcSubject.setText(Const.NVL(input.getInputSubject(), ""));
         wcPredicate.setText(Const.NVL(input.getInputPredicate(), ""));
         wcObject.setText(Const.NVL(input.getInputObject(), ""));
+        //wInputDataType.setText(Const.NVL(input.getInputDataType(), ""));
+        //wInputLangTag.setText(Const.NVL(input.getInputLangTag(), ""));
         wtNTriple.setText(Const.NVL(input.getOutputNTriple(), ""));
+        //wInnerIsLiteral.setSelection(input.getInnerIsLiteral());
+        //enableDataTypeAndLangTag(wInnerIsLiteral.getSelection());
+        //wInnerKeepInput.setSelection(input.getInnerKeepInputFields());
         wBrowse.setText(input.getBrowseFilename());
     }
 
@@ -427,6 +527,10 @@ public class AnnotatorStepDialog extends BaseStepDialog implements
         input.setInputSubject(wcSubject.getText());
         input.setInputPredicate(wcPredicate.getText());
         input.setInputObject(wcObject.getText());
+        //input.setInnerIsLiteral(wInnerIsLiteral.getSelection());
+        //input.setInputDataType(wInputDataType.getText());
+        //input.setInputLangTag(wInputLangTag.getText());
+        //input.setInnerKeepInputFields(wInnerKeepInput.getSelection());
         input.setOutputNTriple(wtNTriple.getText());
         input.setBrowseFilename(wBrowse.getText());
 

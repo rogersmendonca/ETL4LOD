@@ -54,10 +54,15 @@ public class SemanticLevelFrameworkStepDialog extends BaseStepDialog implements
     private String dialogTitle;
 
     // Adicionar variaveis dos widgets
+    // Campos Step - Input
+    //private Group wInputGroup;
     private ComboVar wcSubject;
     private ComboVar wcPredicate;
     private ComboVar wcObject;
     private TextVar wtNTriple;
+    //private Button wInnerIsLiteral;
+    //private ComboVar wInputDataType;
+    //private ComboVar wInputLangTag;
     private Label wlBrowse;
     private Label wlRules;
     private Label wlSubject;
@@ -85,6 +90,10 @@ public class SemanticLevelFrameworkStepDialog extends BaseStepDialog implements
     private FormData fdbRules;
     private FormData fdRules;
 
+    // Campos Step - Output
+    //private Group wOutputGroup;
+    //private Button wInnerKeepInput;
+
     
     public SemanticLevelFrameworkStepDialog(Shell parent, Object stepMeta,
             TransMeta transMeta, String stepname)
@@ -92,6 +101,7 @@ public class SemanticLevelFrameworkStepDialog extends BaseStepDialog implements
         super(parent, (BaseStepMeta) stepMeta, transMeta, stepname);
 
         input = (SemanticLevelFrameworkStepMeta) baseStepMeta;
+        //swthlp = new SwtHelper(transMeta, this.props);
 
         // Additional initialization here
         dialogTitle = BaseMessages.getString(PKG, "SemanticLevelFrameworkStep.Title");
@@ -151,8 +161,8 @@ public class SemanticLevelFrameworkStepDialog extends BaseStepDialog implements
         fdStepname.top = new FormAttachment(0, margin);
         fdStepname.right = new FormAttachment(100, 0);
         wStepname.setLayoutData(fdStepname);
+        //Control lastControl = wStepname;
         
-        //Adiciona label e combo do campo sujeito
         wlSubject=new Label(shell, SWT.RIGHT);
 		wlSubject.setText(BaseMessages.getString(PKG, "SemanticLevelFrameworkStep.SubjectField.Label"));
  		props.setLook(wlSubject);
@@ -186,7 +196,6 @@ public class SemanticLevelFrameworkStepDialog extends BaseStepDialog implements
         }
     );
 		
-		//Adiciona label e combo do campo predicado
 		wlPredicate=new Label(shell, SWT.RIGHT);
 		wlPredicate.setText(BaseMessages.getString(PKG, "SemanticLevelFrameworkStep.PredicateField.Label"));
  		props.setLook(wlPredicate);
@@ -220,7 +229,6 @@ public class SemanticLevelFrameworkStepDialog extends BaseStepDialog implements
         }
     );
 		
-		//Adiciona label e combo do campo objeto
 		wlObject=new Label(shell, SWT.RIGHT);
 		wlObject.setText(BaseMessages.getString(PKG, "SemanticLevelFrameworkStep.ObjectField.Label"));
  		props.setLook(wlObject);
@@ -254,7 +262,6 @@ public class SemanticLevelFrameworkStepDialog extends BaseStepDialog implements
         }
     );
 		
-		//Adiciona label e text do campo saida
 		wlNTriple=new Label(shell, SWT.RIGHT);
 		wlNTriple.setText(BaseMessages.getString(PKG, "SemanticLevelFrameworkStep.NTripleField.Label")); //$NON-NLS-1$
  		props.setLook(wlNTriple);
@@ -282,7 +289,6 @@ public class SemanticLevelFrameworkStepDialog extends BaseStepDialog implements
         setButtonPositions(new Button[]
         { wOK, wCancel }, margin, wRules);
         
-        //Botões para busca de arquivo 
         wlBrowse=new Label(shell, SWT.RIGHT);
 		wlBrowse.setText("Name of the discription file ");
  		props.setLook(wlBrowse);
@@ -422,6 +428,7 @@ public class SemanticLevelFrameworkStepDialog extends BaseStepDialog implements
             }
         };
         wStepname.addSelectionListener(lsDef);
+       // addSelectionListenerToControls(lsDef);
 
         // Detect X or ALT-F4 or something that kills this window...
         shell.addShellListener(new ShellAdapter()

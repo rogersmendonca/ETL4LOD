@@ -1,0 +1,28 @@
+public boolean isVocabulary(String prefix) {
+		/*boolean ret = false;
+		NodeList listOfResults = doc.getElementsByTagName("result");
+		int totalResults = listOfResults.getLength();
+		for(int k=0; k<totalResults; k++){
+			Node resultNode = listOfResults.item(k);
+			Element resultElement = (Element)resultNode;
+        	NodeList bindingList = resultElement.getElementsByTagName("binding");
+        	Element bindingPrefixElement = (Element)bindingList.item(0);
+        	NodeList literalList = bindingPrefixElement.getElementsByTagName("literal");
+        	Element literalElement = (Element)literalList.item(0);
+        	NodeList textLiList = literalElement.getChildNodes();
+        	if(prefix.contains(textLiList.item(0).getNodeValue().trim())){
+        		Element bindingDescElement = (Element)bindingList.item(3); 
+        		NodeList literalDescList = bindingDescElement.getElementsByTagName("literal");
+            	Element literalDescElement = (Element)literalDescList.item(0);
+            	NodeList textDescList = literalDescElement.getChildNodes();
+            	if(textDescList.item(0).getNodeValue().trim().toLowerCase().contains("vocabulary")){
+            		ret = true;
+            	}
+            	else{
+            		ret = false;
+            	}
+        	}
+		}
+		return ret;*/
+		return false;
+	}
