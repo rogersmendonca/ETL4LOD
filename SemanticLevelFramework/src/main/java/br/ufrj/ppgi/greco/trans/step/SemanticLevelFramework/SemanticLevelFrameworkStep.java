@@ -176,6 +176,7 @@ public class SemanticLevelFrameworkStep extends BaseStep implements StepInterfac
 				e.printStackTrace();
 			}
 
+	        
         // Set output row
       Object[] outputRow = meta.getInnerKeepInputFields() ? row
                 : new Object[0];

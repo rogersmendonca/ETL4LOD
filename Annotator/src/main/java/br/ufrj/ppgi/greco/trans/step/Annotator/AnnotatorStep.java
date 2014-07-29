@@ -110,6 +110,7 @@ public class AnnotatorStep extends BaseStep implements StepInterface
 	        String outputPredicate = inputPredicate;
 	        String outputObject = inputObject;
 	        
+	        
 			try {
 				//abre arquivo xml
 				DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
