@@ -45,10 +45,7 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
         INPUT_SUBJECT_FIELD_NAME,
         INPUT_PREDICATE_FIELD_NAME,
         INPUT_OBJECT_FIELD_NAME,
-        //INPUT_DATATYPE_FIELD_NAME,
-        //INPUT_LANGTAG_FIELD_NAME,
         OUTPUT_NTRIPLE_FIELD_NAME,
-        //INNER_IS_LITERAL_VALUE,
         INNER_KEEP_INPUT_VALUE,
         INPUT_BROWSE_FILE_NAME,
     }
@@ -57,15 +54,12 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
     private String inputSubject;
     private String inputPredicate;
     private String inputObject;
-    //private String inputDataType;
-    //private String inputLangTag;
     public String browseFilename;
 
     // Campos Step - Output
     private String outputNTriple;
 
     // Campos Step - Inner
-    //private Boolean innerIsLiteral;
     private Boolean innerKeepInputFields;
 
     public AnnotatorStepMeta()
@@ -80,18 +74,9 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
             String[] output, RowMetaInterface info)
     {
 
-        // if (Const.isEmpty(fieldName)) {
-        // CheckResultInterface error = new CheckResult(
-        // CheckResult.TYPE_RESULT_ERROR,
-        // "error",
-        // stepMeta);
-        // remarks.add(error);
-        // }
-        // else {
         CheckResultInterface ok = new CheckResult(CheckResult.TYPE_RESULT_OK,
                 "", stepMeta);
         remarks.add(ok);
-        // }
         if (browseFilename==null || browseFilename.length()==0 )
 		{
         	ok = new CheckResult(CheckResult.TYPE_RESULT_ERROR, "No files can be found to read.", stepMeta);
@@ -136,14 +121,8 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
                 Field.INPUT_PREDICATE_FIELD_NAME.name());
         inputObject = XMLHandler.getTagValue(stepDomNode,
                 Field.INPUT_OBJECT_FIELD_NAME.name());
-        /*inputDataType = XMLHandler.getTagValue(stepDomNode,
-                Field.INPUT_DATATYPE_FIELD_NAME.name());
-        inputLangTag = XMLHandler.getTagValue(stepDomNode,
-                Field.INPUT_LANGTAG_FIELD_NAME.name());*/
         outputNTriple = XMLHandler.getTagValue(stepDomNode,
                 Field.OUTPUT_NTRIPLE_FIELD_NAME.name());
-        /*innerIsLiteral = "Y".equals(XMLHandler.getTagValue(stepDomNode,
-                Field.INNER_IS_LITERAL_VALUE.name()));*/
         innerKeepInputFields = "Y".equals(XMLHandler.getTagValue(stepDomNode,
                 Field.INNER_KEEP_INPUT_VALUE.name()));
         browseFilename = XMLHandler.getTagValue(stepDomNode, Field.INPUT_BROWSE_FILE_NAME.name());
@@ -161,14 +140,8 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
                 Field.INPUT_PREDICATE_FIELD_NAME.name(), inputPredicate));
         xml.append(XMLHandler.addTagValue(Field.INPUT_OBJECT_FIELD_NAME.name(),
                 inputObject));
-        /*xml.append(XMLHandler.addTagValue(
-                Field.INPUT_DATATYPE_FIELD_NAME.name(), inputDataType));
-        xml.append(XMLHandler.addTagValue(
-                Field.INPUT_LANGTAG_FIELD_NAME.name(), inputLangTag));*/
         xml.append(XMLHandler.addTagValue(
                 Field.OUTPUT_NTRIPLE_FIELD_NAME.name(), outputNTriple));
-        /*xml.append(XMLHandler.addTagValue(Field.INNER_IS_LITERAL_VALUE.name(),
-                innerIsLiteral));*/
         xml.append(XMLHandler.addTagValue(Field.INNER_KEEP_INPUT_VALUE.name(),
                 innerKeepInputFields));
         xml.append(XMLHandler.addTagValue(Field.INPUT_BROWSE_FILE_NAME.name(), browseFilename));
@@ -188,14 +161,8 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
                 Field.INPUT_PREDICATE_FIELD_NAME.name());
         inputObject = repository.getStepAttributeString(stepIdInRepository,
                 Field.INPUT_OBJECT_FIELD_NAME.name());
-        /*inputDataType = repository.getStepAttributeString(stepIdInRepository,
-                Field.INPUT_DATATYPE_FIELD_NAME.name());
-        inputLangTag = repository.getStepAttributeString(stepIdInRepository,
-                Field.INPUT_LANGTAG_FIELD_NAME.name());*/
         outputNTriple = repository.getStepAttributeString(stepIdInRepository,
                 Field.OUTPUT_NTRIPLE_FIELD_NAME.name());
-        /*innerIsLiteral = repository.getStepAttributeBoolean(stepIdInRepository,
-                Field.INNER_IS_LITERAL_VALUE.name());*/
         innerKeepInputFields = repository.getStepAttributeBoolean(
                 stepIdInRepository, Field.INNER_KEEP_INPUT_VALUE.name());
         browseFilename = repository.getStepAttributeString(stepIdInRepository, Field.INPUT_BROWSE_FILE_NAME.name());
@@ -212,14 +179,8 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
                 Field.INPUT_PREDICATE_FIELD_NAME.name(), inputPredicate);
         repository.saveStepAttribute(idOfTransformation, idOfStep,
                 Field.INPUT_OBJECT_FIELD_NAME.name(), inputObject);
-        /*repository.saveStepAttribute(idOfTransformation, idOfStep,
-                Field.INPUT_DATATYPE_FIELD_NAME.name(), inputDataType);
-        repository.saveStepAttribute(idOfTransformation, idOfStep,
-                Field.INPUT_LANGTAG_FIELD_NAME.name(), inputLangTag);*/
         repository.saveStepAttribute(idOfTransformation, idOfStep,
                 Field.OUTPUT_NTRIPLE_FIELD_NAME.name(), outputNTriple);
-        /*repository.saveStepAttribute(idOfTransformation, idOfStep,
-                Field.INNER_IS_LITERAL_VALUE.name(), innerIsLiteral);*/
         repository.saveStepAttribute(idOfTransformation, idOfStep,
                 Field.INNER_KEEP_INPUT_VALUE.name(), innerKeepInputFields);
         repository.saveStepAttribute(idOfTransformation, idOfStep,
@@ -233,10 +194,7 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
         inputSubject = "";
         inputPredicate = "";
         inputObject = "";
-        //inputDataType = "";
-        //inputLangTag = "";
         outputNTriple = "ntriple";
-        //innerIsLiteral = false;
         innerKeepInputFields = false;
         browseFilename = "";
     }
@@ -349,16 +307,6 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
         this.inputObject = inputObject;
     }
 
-    /*public String getInputDataType()
-    {
-        return inputDataType;
-    }
-
-    public void setInputDataType(String inpuDataType)
-    {
-        this.inputDataType = inpuDataType;
-    }*/
-
     public String getOutputNTriple()
     {
         return outputNTriple;
@@ -368,26 +316,6 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
     {
         this.outputNTriple = outputNTriple;
     }
-
-    /*public Boolean getInnerIsLiteral()
-    {
-        return innerIsLiteral;
-    }
-
-    public void setInnerIsLiteral(Boolean innerIsLiteral)
-    {
-        this.innerIsLiteral = innerIsLiteral;
-    }
-
-    public String getInputLangTag()
-    {
-        return inputLangTag;
-    }
-
-    public void setInputLangTag(String inpuLangTag)
-    {
-        this.inputLangTag = inpuLangTag;
-    }*/
 
     public Boolean getInnerKeepInputFields()
     {
