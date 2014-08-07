@@ -120,7 +120,7 @@ public class SemanticLevelFrameworkStep extends BaseStep implements StepInterfac
 	        try {
 
 	        	XPath xPath =  XPathFactory.newInstance().newXPath();
-	        	//abre arquivos xml
+	        	//open xml file
 	        	DocumentBuilderFactory docBuilderFactory2 = DocumentBuilderFactory.newInstance();
 	            DocumentBuilder docBuilder2 = docBuilderFactory2.newDocumentBuilder();
 	            Document lovfile = docBuilder2.parse (new File(meta.getLOVFilename()));      	            
@@ -130,7 +130,7 @@ public class SemanticLevelFrameworkStep extends BaseStep implements StepInterfac
 	            Document rulefile = docBuilder.parse (new File(meta.getRulesFilename()));
 	            String ruleExpression = "SemanticLevelFramework/Frame/Rule";
 	            String levelExpression = "SemanticLevelFramework/Frame/Level";
-	            //valida variaveis para o interpreter
+	            //set variables to interpreter
 	            i.set("inputSubject", inputSubject);
 				i.set("inputPredicate", inputPredicate);
 				i.set("inputObject", inputObject);
@@ -140,14 +140,14 @@ public class SemanticLevelFrameworkStep extends BaseStep implements StepInterfac
 					int index = inputPredicate.indexOf(":");
 					prefixo = inputPredicate.substring(0, index);
 				}	
-				//verifica se o prefixo é vocabulario ou ontologia
+				//check if prefix is vocabulary or ontology
 				i.set("isVocabulary", isVocabulary(prefixo, lovfile));
 				i.set("isOntology", isOntology(prefixo, lovfile));
-				//busca as regras
+				//find the rules
 				NodeList ruleList = (NodeList) xPath.compile(ruleExpression).evaluate(rulefile, XPathConstants.NODESET);
 				NodeList levelList = (NodeList) xPath.compile(levelExpression).evaluate(rulefile, XPathConstants.NODESET);
 				for (int k = 0; k < ruleList.getLength(); k++) {
-	                    //valida a regra
+	                    //validate the rules
 	                    if((Boolean)i.eval(ruleList.item(k).getFirstChild().getNodeValue())){
 	                    	outputNTriple = levelList.item(k).getFirstChild().getNodeValue();
 	                    	//TODO avaliar sair do for
@@ -172,6 +172,7 @@ public class SemanticLevelFrameworkStep extends BaseStep implements StepInterfac
 				e.printStackTrace();
 			} catch (XPathExpressionException e) {
 				// TODO Auto-generated catch block
+				outputNTriple = "erro5";
 				e.printStackTrace();
 			}
 
@@ -190,18 +191,21 @@ public class SemanticLevelFrameworkStep extends BaseStep implements StepInterfac
 
 	private boolean isOntology(String prefix, Document doc) throws XPathExpressionException {
 		XPath xPath =  XPathFactory.newInstance().newXPath();
+		//search for the prefixes and descritions
 		String Expression = "sparql/results/result/binding/literal";
-		NodeList nodeList = (NodeList) xPath.compile(Expression).evaluate(doc, XPathConstants.NODESET);
-		for(int k=0; k<nodeList.getLength(); k++){
-			if(prefix.equals(nodeList.item(k).getFirstChild().getNodeValue())){
+		NodeList literalsList = (NodeList) xPath.compile(Expression).evaluate(doc, XPathConstants.NODESET);
+		for(int k=0; k<literalsList.getLength(); k++){
+			if(prefix.equals(literalsList.item(k).getFirstChild().getNodeValue())){
 				k++;
-				if(nodeList.item(k).getFirstChild().getNodeValue().toLowerCase().contains("ontology")){
+				//check if the vocabTitle has 'ontology'
+				if(literalsList.item(k).getFirstChild().getNodeValue().toLowerCase().contains("ontology")){
 					return true;
 				}
 				else{
 					k++;
 				}
-				if(nodeList.item(k).getFirstChild().getNodeValue().toLowerCase().contains("ontology")){
+				//check if the vobcabDescription has 'ontology'
+				if(literalsList.item(k).getFirstChild().getNodeValue().toLowerCase().contains("ontology")){
 					return true;
 				}
 			}
@@ -217,17 +221,17 @@ public class SemanticLevelFrameworkStep extends BaseStep implements StepInterfac
 	public boolean isVocabulary(String prefix, Document doc) throws XPathExpressionException {
 		XPath xPath =  XPathFactory.newInstance().newXPath();
 		String Expression = "sparql/results/result/binding/literal";
-		NodeList nodeList = (NodeList) xPath.compile(Expression).evaluate(doc, XPathConstants.NODESET);
-		for(int k=0; k<nodeList.getLength(); k++){
-			if(prefix.equals(nodeList.item(k).getFirstChild().getNodeValue())){
+		NodeList literalsList = (NodeList) xPath.compile(Expression).evaluate(doc, XPathConstants.NODESET);
+		for(int k=0; k<literalsList.getLength(); k++){
+			if(prefix.equals(literalsList.item(k).getFirstChild().getNodeValue())){
 				k++;
-				if(nodeList.item(k).getFirstChild().getNodeValue().toLowerCase().contains("vocabulary")){
+				if(literalsList.item(k).getFirstChild().getNodeValue().toLowerCase().contains("vocabulary")){
 					return true;
 				}
 				else{
 					k++;
 				}
-				if(nodeList.item(k).getFirstChild().getNodeValue().toLowerCase().contains("vocabulary")){
+				if(literalsList.item(k).getFirstChild().getNodeValue().toLowerCase().contains("vocabulary")){
 					return true;
 				}
 			}
