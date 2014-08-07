@@ -115,7 +115,7 @@ public class AnnotatorStep extends BaseStep implements StepInterface
 				//abre arquivo xml
 				DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
 	            DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
-	            Document doc = docBuilder.parse (new File(meta.getBrowseFilename()));
+	            Document doc = docBuilder.parse (new File(meta.getMapFilename()));
 	            NodeList listOfMaps = doc.getElementsByTagName("map");
 	            int totalMaps = listOfMaps.getLength();
 	            //procura em cada node map as regras de anotação

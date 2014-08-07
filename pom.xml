@@ -153,6 +153,18 @@
 			<version>${pdi.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<dependecy>
+			<groupId>bsh</groupId>
+			<artifactId>bsh</artifactId>
+			<version>1.3.0</version>
+		</dependecy>
+		
+		<dependecy>
+			<groupId>org.beanshell</groupId>
+			<artifactId>bsh</artifactId>
+			<version>1.3.0</version>
+		</dependecy>
 		<!-- Kettle dependencies (end) -->
 		
 		<!-- local dependencies -->

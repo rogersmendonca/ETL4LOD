@@ -47,7 +47,7 @@ public class SemanticLevelFrameworkStepMeta extends BaseStepMeta implements
         INPUT_OBJECT_FIELD_NAME,
         OUTPUT_NTRIPLE_FIELD_NAME,
         INNER_KEEP_INPUT_VALUE,
-        INPUT_BROWSE_FILE_NAME,
+        INPUT_LOV_FILE_NAME,
         INPUT_RULES_FILE_NAME,
     }
 
@@ -55,7 +55,7 @@ public class SemanticLevelFrameworkStepMeta extends BaseStepMeta implements
     private String inputSubject;
     private String inputPredicate;
     private String inputObject;
-    public String browseFilename;
+    public String LOVFilename;
     public String rulesFilename;
 
     // Campos Step - Output
@@ -80,7 +80,7 @@ public class SemanticLevelFrameworkStepMeta extends BaseStepMeta implements
                 "", stepMeta);
         remarks.add(ok);
         // }
-        if (browseFilename==null || browseFilename.length()==0 )
+        if (LOVFilename==null || LOVFilename.length()==0 )
 		{
         	ok = new CheckResult(CheckResult.TYPE_RESULT_ERROR, "No files can be found to read.", stepMeta);
 			remarks.add(ok);
@@ -138,7 +138,7 @@ public class SemanticLevelFrameworkStepMeta extends BaseStepMeta implements
                 Field.OUTPUT_NTRIPLE_FIELD_NAME.name());
         innerKeepInputFields = "Y".equals(XMLHandler.getTagValue(stepDomNode,
                 Field.INNER_KEEP_INPUT_VALUE.name()));
-        browseFilename = XMLHandler.getTagValue(stepDomNode, Field.INPUT_BROWSE_FILE_NAME.name());
+        LOVFilename = XMLHandler.getTagValue(stepDomNode, Field.INPUT_LOV_FILE_NAME.name());
         rulesFilename = XMLHandler.getTagValue(stepDomNode, Field.INPUT_RULES_FILE_NAME.name());
     }
 
@@ -158,7 +158,7 @@ public class SemanticLevelFrameworkStepMeta extends BaseStepMeta implements
                 Field.OUTPUT_NTRIPLE_FIELD_NAME.name(), outputNTriple));
         xml.append(XMLHandler.addTagValue(Field.INNER_KEEP_INPUT_VALUE.name(),
                 innerKeepInputFields));
-        xml.append(XMLHandler.addTagValue(Field.INPUT_BROWSE_FILE_NAME.name(), browseFilename));
+        xml.append(XMLHandler.addTagValue(Field.INPUT_LOV_FILE_NAME.name(), LOVFilename));
         xml.append(XMLHandler.addTagValue(Field.INPUT_RULES_FILE_NAME.name(), rulesFilename));
 
         return xml.toString();
@@ -180,7 +180,7 @@ public class SemanticLevelFrameworkStepMeta extends BaseStepMeta implements
                 Field.OUTPUT_NTRIPLE_FIELD_NAME.name());
         innerKeepInputFields = repository.getStepAttributeBoolean(
                 stepIdInRepository, Field.INNER_KEEP_INPUT_VALUE.name());
-        browseFilename = repository.getStepAttributeString(stepIdInRepository, Field.INPUT_BROWSE_FILE_NAME.name());
+        LOVFilename = repository.getStepAttributeString(stepIdInRepository, Field.INPUT_LOV_FILE_NAME.name());
         rulesFilename = repository.getStepAttributeString(stepIdInRepository, Field.INPUT_RULES_FILE_NAME.name());
     }
 
@@ -200,7 +200,7 @@ public class SemanticLevelFrameworkStepMeta extends BaseStepMeta implements
         repository.saveStepAttribute(idOfTransformation, idOfStep,
                 Field.INNER_KEEP_INPUT_VALUE.name(), innerKeepInputFields);
         repository.saveStepAttribute(idOfTransformation, idOfStep,
-                Field.INPUT_BROWSE_FILE_NAME.name(), browseFilename);
+                Field.INPUT_LOV_FILE_NAME.name(), LOVFilename);
         repository.saveStepAttribute(idOfTransformation, idOfStep,
                 Field.INPUT_RULES_FILE_NAME.name(), rulesFilename);
     }
@@ -214,7 +214,7 @@ public class SemanticLevelFrameworkStepMeta extends BaseStepMeta implements
         inputObject = "";
         outputNTriple = "output";
         innerKeepInputFields = false;
-        browseFilename = "";
+        LOVFilename = "";
         rulesFilename = "";
     }
 
@@ -398,14 +398,14 @@ public class SemanticLevelFrameworkStepMeta extends BaseStepMeta implements
         this.innerKeepInputFields = innerKeepInputFields;
     }
     
-    public String getBrowseFilename()
+    public String getLOVFilename()
     {
-    	return browseFilename;
+    	return LOVFilename;
     }
     
-    public void setBrowseFilename(String browseFilename)
+    public void setLOVFilename(String LOVFilename)
     {
-    	this.browseFilename = browseFilename;
+    	this.LOVFilename = LOVFilename;
     }
     
     public String getRulesFilename()

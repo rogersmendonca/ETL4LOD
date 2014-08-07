@@ -47,14 +47,14 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
         INPUT_OBJECT_FIELD_NAME,
         OUTPUT_NTRIPLE_FIELD_NAME,
         INNER_KEEP_INPUT_VALUE,
-        INPUT_BROWSE_FILE_NAME,
+        INPUT_MAP_FILE_NAME,
     }
 
     // Campos Step - Input
     private String inputSubject;
     private String inputPredicate;
     private String inputObject;
-    public String browseFilename;
+    public String mapFilename;
 
     // Campos Step - Output
     private String outputNTriple;
@@ -77,7 +77,7 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
         CheckResultInterface ok = new CheckResult(CheckResult.TYPE_RESULT_OK,
                 "", stepMeta);
         remarks.add(ok);
-        if (browseFilename==null || browseFilename.length()==0 )
+        if (mapFilename==null || mapFilename.length()==0 )
 		{
         	ok = new CheckResult(CheckResult.TYPE_RESULT_ERROR, "No files can be found to read.", stepMeta);
 			remarks.add(ok);
@@ -125,7 +125,7 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
                 Field.OUTPUT_NTRIPLE_FIELD_NAME.name());
         innerKeepInputFields = "Y".equals(XMLHandler.getTagValue(stepDomNode,
                 Field.INNER_KEEP_INPUT_VALUE.name()));
-        browseFilename = XMLHandler.getTagValue(stepDomNode, Field.INPUT_BROWSE_FILE_NAME.name());
+        mapFilename = XMLHandler.getTagValue(stepDomNode, Field.INPUT_MAP_FILE_NAME.name());
     }
 
     // Gerar XML para salvar um .ktr
@@ -144,7 +144,7 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
                 Field.OUTPUT_NTRIPLE_FIELD_NAME.name(), outputNTriple));
         xml.append(XMLHandler.addTagValue(Field.INNER_KEEP_INPUT_VALUE.name(),
                 innerKeepInputFields));
-        xml.append(XMLHandler.addTagValue(Field.INPUT_BROWSE_FILE_NAME.name(), browseFilename));
+        xml.append(XMLHandler.addTagValue(Field.INPUT_MAP_FILE_NAME.name(), mapFilename));
 
         return xml.toString();
     }
@@ -165,7 +165,7 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
                 Field.OUTPUT_NTRIPLE_FIELD_NAME.name());
         innerKeepInputFields = repository.getStepAttributeBoolean(
                 stepIdInRepository, Field.INNER_KEEP_INPUT_VALUE.name());
-        browseFilename = repository.getStepAttributeString(stepIdInRepository, Field.INPUT_BROWSE_FILE_NAME.name());
+        mapFilename = repository.getStepAttributeString(stepIdInRepository, Field.INPUT_MAP_FILE_NAME.name());
     }
 
     // Persistir campos no repositorio
@@ -184,7 +184,7 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
         repository.saveStepAttribute(idOfTransformation, idOfStep,
                 Field.INNER_KEEP_INPUT_VALUE.name(), innerKeepInputFields);
         repository.saveStepAttribute(idOfTransformation, idOfStep,
-                Field.INPUT_BROWSE_FILE_NAME.name(), browseFilename);
+                Field.INPUT_MAP_FILE_NAME.name(), mapFilename);
     }
 
     // Inicializacoes default
@@ -196,7 +196,7 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
         inputObject = "";
         outputNTriple = "ntriple";
         innerKeepInputFields = false;
-        browseFilename = "";
+        mapFilename = "";
     }
 
     /**
@@ -327,13 +327,13 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
         this.innerKeepInputFields = innerKeepInputFields;
     }
     
-    public String getBrowseFilename()
+    public String getMapFilename()
     {
-    	return browseFilename;
+    	return mapFilename;
     }
     
-    public void setBrowseFilename(String browseFilename)
+    public void setMapFilename(String mapFilename)
     {
-    	this.browseFilename = browseFilename;
+    	this.mapFilename = mapFilename;
     }
 }

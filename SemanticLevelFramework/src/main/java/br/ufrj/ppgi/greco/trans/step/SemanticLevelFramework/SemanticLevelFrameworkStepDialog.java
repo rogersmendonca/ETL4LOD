@@ -58,15 +58,15 @@ public class SemanticLevelFrameworkStepDialog extends BaseStepDialog implements
     private ComboVar wcPredicate;
     private ComboVar wcObject;
     private TextVar wtNTriple;
-    private Label wlBrowse;
+    private Label wlLOV;
     private Label wlRules;
     private Label wlSubject;
     private Label wlObject;
     private Label wlPredicate;
     private Label wlNTriple;
     
-    private Button wbBrowse;
-    private Text wBrowse;
+    private Button wbLOV;
+    private Text wLOV;
     private Button wbRules;
     private Text wRules;
     
@@ -78,9 +78,9 @@ public class SemanticLevelFrameworkStepDialog extends BaseStepDialog implements
     private FormData fdcPredicate;
     private FormData fdlSubject;
     private FormData fdcSubject;
-    private FormData fdlBrowse;
-    private FormData fdbBrowse;
-    private FormData fdBrowse;
+    private FormData fdlLOV;
+    private FormData fdbLOV;
+    private FormData fdLOV;
     private FormData fdlRules;
     private FormData fdbRules;
     private FormData fdRules;
@@ -283,38 +283,38 @@ public class SemanticLevelFrameworkStepDialog extends BaseStepDialog implements
         { wOK, wCancel }, margin, wRules);
         
         //Botões para busca de arquivo 
-        wlBrowse=new Label(shell, SWT.RIGHT);
-		wlBrowse.setText("Name of the discription file ");
- 		props.setLook(wlBrowse);
-		fdlBrowse=new FormData();
-		fdlBrowse.left = new FormAttachment(0, 0);
-		fdlBrowse.top  = new FormAttachment(wtNTriple, margin);
-		fdlBrowse.right= new FormAttachment(middle, -margin);
-		wlBrowse.setLayoutData(fdlBrowse);
+        wlLOV=new Label(shell, SWT.RIGHT);
+		wlLOV.setText("Name of the discription file ");
+ 		props.setLook(wlLOV);
+		fdlLOV=new FormData();
+		fdlLOV.left = new FormAttachment(0, 0);
+		fdlLOV.top  = new FormAttachment(wtNTriple, margin);
+		fdlLOV.right= new FormAttachment(middle, -margin);
+		wlLOV.setLayoutData(fdlLOV);
         
-        wbBrowse=new Button(shell, SWT.PUSH| SWT.CENTER);
- 		props.setLook(wbBrowse);
-		wbBrowse.setText(BaseMessages.getString(PKG, "SemanticLevelFrameworkStep.Btn.Browse"));
-		fdbBrowse=new FormData();
-		fdbBrowse.right= new FormAttachment(100, 0);
-		fdbBrowse.top  = new FormAttachment(wtNTriple, margin);
-		wbBrowse.setLayoutData(fdbBrowse);
+        wbLOV=new Button(shell, SWT.PUSH| SWT.CENTER);
+ 		props.setLook(wbLOV);
+		wbLOV.setText(BaseMessages.getString(PKG, "SemanticLevelFrameworkStep.Btn.Browse"));
+		fdbLOV=new FormData();
+		fdbLOV.right= new FormAttachment(100, 0);
+		fdbLOV.top  = new FormAttachment(wtNTriple, margin);
+		wbLOV.setLayoutData(fdbLOV);
 		
-		wBrowse=new Text(shell, SWT.SINGLE | SWT.LEFT | SWT.BORDER);
- 		props.setLook(wBrowse);
-		wBrowse.addModifyListener(lsMod);
-		fdBrowse=new FormData();
-		fdBrowse.left = new FormAttachment(middle, 0);
-		fdBrowse.right= new FormAttachment(wbBrowse, -margin);
-		fdBrowse.top  = new FormAttachment(wtNTriple, margin);
-		wBrowse.setLayoutData(fdBrowse);
+		wLOV=new Text(shell, SWT.SINGLE | SWT.LEFT | SWT.BORDER);
+ 		props.setLook(wLOV);
+		wLOV.addModifyListener(lsMod);
+		fdLOV=new FormData();
+		fdLOV.left = new FormAttachment(middle, 0);
+		fdLOV.right= new FormAttachment(wbLOV, -margin);
+		fdLOV.top  = new FormAttachment(wtNTriple, margin);
+		wLOV.setLayoutData(fdLOV);
 		
 		wlRules=new Label(shell, SWT.RIGHT);
 		wlRules.setText("Name of the file of rules ");
  		props.setLook(wlRules);
 		fdlRules=new FormData();
 		fdlRules.left = new FormAttachment(0, 0);
-		fdlRules.top  = new FormAttachment(wBrowse, margin);
+		fdlRules.top  = new FormAttachment(wLOV, margin);
 		fdlRules.right= new FormAttachment(middle, -margin);
 		wlRules.setLayoutData(fdlRules);
 		
@@ -323,7 +323,7 @@ public class SemanticLevelFrameworkStepDialog extends BaseStepDialog implements
 		wbRules.setText(BaseMessages.getString(PKG, "SemanticLevelFrameworkStep.Btn.Browse"));
 		fdbRules=new FormData();
 		fdbRules.right= new FormAttachment(100, 0);
-		fdbRules.top  = new FormAttachment(wBrowse, margin);
+		fdbRules.top  = new FormAttachment(wLOV, margin);
 		wbRules.setLayoutData(fdbRules);
 		
 		wRules=new Text(shell, SWT.SINGLE | SWT.LEFT | SWT.BORDER);
@@ -332,7 +332,7 @@ public class SemanticLevelFrameworkStepDialog extends BaseStepDialog implements
 		fdRules=new FormData();
 		fdRules.left = new FormAttachment(middle, 0);
 		fdRules.right= new FormAttachment(wbRules, -margin);
-		fdRules.top  = new FormAttachment(wBrowse, margin);
+		fdRules.top  = new FormAttachment(wLOV, margin);
 		wRules.setLayoutData(fdRules);
 
         // Add listeners
@@ -351,15 +351,15 @@ public class SemanticLevelFrameworkStepDialog extends BaseStepDialog implements
             }
         };
         
-        wBrowse.addModifyListener(new ModifyListener()
+        wLOV.addModifyListener(new ModifyListener()
 		{
 			public void modifyText(ModifyEvent arg0)
 			{
-				wBrowse.setToolTipText(transMeta.environmentSubstitute(wBrowse.getText()));
+				wLOV.setToolTipText(transMeta.environmentSubstitute(wLOV.getText()));
 			}
 		});
         
-        wbBrowse.addSelectionListener
+        wbLOV.addSelectionListener
 		(
 			new SelectionAdapter()
 			{
@@ -367,9 +367,9 @@ public class SemanticLevelFrameworkStepDialog extends BaseStepDialog implements
 				{
 					FileDialog dialog = new FileDialog(shell, SWT.OPEN);
 					dialog.setFilterExtensions(new String[] {"*.xml;*.XML", "*"});
-					if (wBrowse.getText()!=null)
+					if (wLOV.getText()!=null)
 					{
-						dialog.setFileName(wBrowse.getText());
+						dialog.setFileName(wLOV.getText());
 					}
 						
 					dialog.setFilterNames(new String[] {"XML files", "All files"});
@@ -377,7 +377,7 @@ public class SemanticLevelFrameworkStepDialog extends BaseStepDialog implements
 					if (dialog.open()!=null)
 					{
 						String str = dialog.getFilterPath()+System.getProperty("file.separator")+dialog.getFileName();
-						wBrowse.setText(str);
+						wLOV.setText(str);
 					}
 				}
 			}
@@ -462,7 +462,7 @@ public class SemanticLevelFrameworkStepDialog extends BaseStepDialog implements
         wcPredicate.setText(Const.NVL(input.getInputPredicate(), ""));
         wcObject.setText(Const.NVL(input.getInputObject(), ""));
         wtNTriple.setText(Const.NVL(input.getOutputNTriple(), ""));
-        wBrowse.setText(input.getBrowseFilename());
+        wLOV.setText(input.getLOVFilename());
         wRules.setText(input.getRulesFilename());
     }
 
@@ -485,7 +485,7 @@ public class SemanticLevelFrameworkStepDialog extends BaseStepDialog implements
         input.setInputPredicate(wcPredicate.getText());
         input.setInputObject(wcObject.getText());
         input.setOutputNTriple(wtNTriple.getText());
-        input.setBrowseFilename(wBrowse.getText());
+        input.setLOVFilename(wLOV.getText());
         input.setRulesFilename(wRules.getText());
 
         // Fecha janela

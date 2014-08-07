@@ -63,8 +63,8 @@ public class AnnotatorStepDialog extends BaseStepDialog implements
     private Label wlPredicate;
     private Label wlNTriple;
     
-    private Button wbBrowse;
-    private Text wBrowse;
+    private Button wbMap;
+    private Text wMap;
     
     private FormData fdlNTriple;
     private FormData fdtNTriple;
@@ -75,8 +75,8 @@ public class AnnotatorStepDialog extends BaseStepDialog implements
     private FormData fdlSubject;
     private FormData fdcSubject;
     private FormData fdlShape;
-    private FormData fdbBrowse;
-    private FormData fdBrowse;
+    private FormData fdbMap;
+    private FormData fdMap;
 
     
     public AnnotatorStepDialog(Shell parent, Object stepMeta,
@@ -274,7 +274,7 @@ public class AnnotatorStepDialog extends BaseStepDialog implements
         wCancel = new Button(shell, SWT.PUSH);
         wCancel.setText(BaseMessages.getString(PKG, "AnnotatorStep.Btn.Cancel")); //$NON-NLS-1$
         setButtonPositions(new Button[]
-        { wOK, wCancel }, margin, wBrowse);
+        { wOK, wCancel }, margin, wMap);
         
         wlShape=new Label(shell, SWT.RIGHT);
 		wlShape.setText("Name of the mapping file ");
@@ -286,22 +286,22 @@ public class AnnotatorStepDialog extends BaseStepDialog implements
 		wlShape.setLayoutData(fdlShape);
 		
         //Botões para busca de arquivo
-        wbBrowse=new Button(shell, SWT.PUSH| SWT.CENTER);
- 		props.setLook(wbBrowse);
-		wbBrowse.setText(BaseMessages.getString(PKG, "AnnotatorStep.Btn.Browse"));
-		fdbBrowse=new FormData();
-		fdbBrowse.right= new FormAttachment(100, 0);
-		fdbBrowse.top  = new FormAttachment(wtNTriple, margin);
-		wbBrowse.setLayoutData(fdbBrowse);
+        wbMap=new Button(shell, SWT.PUSH| SWT.CENTER);
+ 		props.setLook(wbMap);
+		wbMap.setText(BaseMessages.getString(PKG, "AnnotatorStep.Btn.Browse"));
+		fdbMap=new FormData();
+		fdbMap.right= new FormAttachment(100, 0);
+		fdbMap.top  = new FormAttachment(wtNTriple, margin);
+		wbMap.setLayoutData(fdbMap);
 		
-		wBrowse=new Text(shell, SWT.SINGLE | SWT.LEFT | SWT.BORDER);
- 		props.setLook(wBrowse);
-		wBrowse.addModifyListener(lsMod);
-		fdBrowse=new FormData();
-		fdBrowse.left = new FormAttachment(middle, 0);
-		fdBrowse.right= new FormAttachment(wbBrowse, -margin);
-		fdBrowse.top  = new FormAttachment(wtNTriple, margin);
-		wBrowse.setLayoutData(fdBrowse);
+		wMap=new Text(shell, SWT.SINGLE | SWT.LEFT | SWT.BORDER);
+ 		props.setLook(wMap);
+		wMap.addModifyListener(lsMod);
+		fdMap=new FormData();
+		fdMap.left = new FormAttachment(middle, 0);
+		fdMap.right= new FormAttachment(wbMap, -margin);
+		fdMap.top  = new FormAttachment(wtNTriple, margin);
+		wMap.setLayoutData(fdMap);
 
         // Add listeners
         lsCancel = new Listener()
@@ -319,15 +319,15 @@ public class AnnotatorStepDialog extends BaseStepDialog implements
             }
         };
         
-        wBrowse.addModifyListener(new ModifyListener()
+        wMap.addModifyListener(new ModifyListener()
 		{
 			public void modifyText(ModifyEvent arg0)
 			{
-				wBrowse.setToolTipText(transMeta.environmentSubstitute(wBrowse.getText()));
+				wMap.setToolTipText(transMeta.environmentSubstitute(wMap.getText()));
 			}
 		});
         
-        wbBrowse.addSelectionListener
+        wbMap.addSelectionListener
 		(
 			new SelectionAdapter()
 			{
@@ -335,9 +335,9 @@ public class AnnotatorStepDialog extends BaseStepDialog implements
 				{
 					FileDialog dialog = new FileDialog(shell, SWT.OPEN);
 					dialog.setFilterExtensions(new String[] {"*.xml;*.XML", "*"});
-					if (wBrowse.getText()!=null)
+					if (wMap.getText()!=null)
 					{
-						dialog.setFileName(wBrowse.getText());
+						dialog.setFileName(wMap.getText());
 					}
 						
 					dialog.setFilterNames(new String[] {"Text files", "All files"});
@@ -345,7 +345,7 @@ public class AnnotatorStepDialog extends BaseStepDialog implements
 					if (dialog.open()!=null)
 					{
 						String str = dialog.getFilterPath()+System.getProperty("file.separator")+dialog.getFileName();
-						wBrowse.setText(str);
+						wMap.setText(str);
 					}
 				}
 			}
@@ -406,7 +406,7 @@ public class AnnotatorStepDialog extends BaseStepDialog implements
         wcPredicate.setText(Const.NVL(input.getInputPredicate(), ""));
         wcObject.setText(Const.NVL(input.getInputObject(), ""));
         wtNTriple.setText(Const.NVL(input.getOutputNTriple(), ""));
-        wBrowse.setText(input.getBrowseFilename());
+        wMap.setText(input.getMapFilename());
     }
 
     protected void cancel()
@@ -428,7 +428,7 @@ public class AnnotatorStepDialog extends BaseStepDialog implements
         input.setInputPredicate(wcPredicate.getText());
         input.setInputObject(wcObject.getText());
         input.setOutputNTriple(wtNTriple.getText());
-        input.setBrowseFilename(wBrowse.getText());
+        input.setMapFilename(wMap.getText());
 
         // Fecha janela
         dispose();
