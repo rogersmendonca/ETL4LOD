@@ -1,5 +1,8 @@
 package br.ufrj.ppgi.greco.lodbr.plugin.sparqlrunquery;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -20,6 +23,9 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.pentaho.di.core.Const;
+import org.pentaho.di.core.exception.KettleStepException;
+import org.pentaho.di.core.row.RowMetaInterface;
+import org.pentaho.di.core.row.ValueMetaInterface;
 import org.pentaho.di.trans.TransMeta;
 import org.pentaho.di.trans.step.BaseStepMeta;
 import org.pentaho.di.trans.step.StepDialogInterface;
@@ -118,6 +124,9 @@ public class SparqlRunQueryStepDialog extends BaseStepDialog implements
         {
         	wQueryTextFieldName = swthlp.appendComboVarRow(wGroup1, null,
                     "Query Text Field Name", lsMod);
+        	wQueryTextFieldName.setItems(this
+                    .getFields(ValueMetaInterface.TYPE_STRING));
+
         }
 
         Group wGroup2 = swthlp.appendGroup(shell, wGroup1,
@@ -267,4 +276,32 @@ public class SparqlRunQueryStepDialog extends BaseStepDialog implements
         dispose();
 
     }
+    
+    private String[] getFields(int type)
+    {
+
+        List<String> result = new ArrayList<String>();
+
+        try
+        {
+            RowMetaInterface inRowMeta = this.transMeta
+                    .getPrevStepFields(stepname);
+
+            List<ValueMetaInterface> fields = inRowMeta.getValueMetaList();
+
+            for (ValueMetaInterface field : fields)
+            {
+                if (field.getType() == type || type == -1)
+                    result.add(field.getName());
+            }
+
+        }
+        catch (KettleStepException e)
+        {
+            e.printStackTrace();
+        }
+
+        return result.toArray(new String[result.size()]);
+    }
+
 }

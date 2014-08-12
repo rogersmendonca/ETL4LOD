@@ -143,7 +143,7 @@ public class SparqlRunQueryStepMeta extends BaseStepMeta implements StepMetaInte
 		
 		queryTextContentFieldName = "QueryText";
 
-		endpointUrl = "http://localhost:8890/sparql";
+		endpointUrl = "http://greco.ppgi.ufrj.br:8890/sparql";
 		username = "sparql";
 		password = "sparql";
 		
@@ -177,6 +177,11 @@ public class SparqlRunQueryStepMeta extends BaseStepMeta implements StepMetaInte
 		field = new ValueMeta(resultMessageFieldName, getFieldType(Field.OUT_MESSAGE));
 		field.setOrigin(name);
 		inputRowMeta.addValueMeta(field);
+		
+        ValueMetaInterface inUriField = inputRowMeta
+                .searchValueMeta(this.queryTextContentFieldName);
+        
+        inputRowMeta.addValueMeta(inUriField);
 	}
 	
 	

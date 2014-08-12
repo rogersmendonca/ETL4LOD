@@ -74,13 +74,15 @@
 	</properties>	
 
     <modules>
-        <module>DataPropertyMapping</module>
+		<!-- Modulo descartado. Migrado para Graph -->
+		<!-- <module>SemanticLevelMarker</module>  -->
         <module>ObjectPropertyMapping</module>
         <module>ntriplegenerator</module>
         <module>SparqlEndpoint</module>
-		<module>SemanticLevelMarker</module>
-		<module>SparqlUpdateOutput</module>
 		<module>SparqlRunQuery</module>
+        <module>DataPropertyMapping</module>
+		<module>Annotator</module>
+		<module>SparqlUpdateOutput</module>
     </modules>
 
     <build>

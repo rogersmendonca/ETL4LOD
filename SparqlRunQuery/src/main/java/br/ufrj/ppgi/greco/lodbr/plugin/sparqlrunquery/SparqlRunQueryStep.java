@@ -53,12 +53,14 @@ public class SparqlRunQueryStep extends BaseStep implements StepInterface
 	    	SparqlRunQueryStepMeta meta = (SparqlRunQueryStepMeta) smi;
 	    	SparqlRunQueryStepData data = (SparqlRunQueryStepData) sdi;
 
+	    	
 	        Object[] row = getRow();
+       
 	        if (row == null)
 	        {
 	            try
 	            {
-	                // Insere queries restantes no buffer
+	            	// Insere queries restantes no buffer
 	            	//TODO Alterar Triple para Query nos métodos e variáveis
 	                insertTripleList(meta, data, 0, data.tripleList.size());
 	            }

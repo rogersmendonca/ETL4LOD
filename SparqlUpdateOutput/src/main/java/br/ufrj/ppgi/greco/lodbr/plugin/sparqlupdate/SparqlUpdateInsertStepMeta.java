@@ -159,13 +159,13 @@ public class SparqlUpdateInsertStepMeta extends BaseStepMeta implements StepMeta
 	@Override
 	public void setDefault() {
 		
-		graphUriValue = "";
-		rdfContentFieldName = "";
-		clearGraph = true;
+		graphUriValue = "http://laiid.greco.ppgi.ufrj.br/";
+		rdfContentFieldName = "ntriple";
+		clearGraph = false;
 
-		endpointUrl = "http://example.com:80/sparql-auth";
-		username = "username";
-		password = "";
+		endpointUrl = "http://greco.ppgi.ufrj.br:8890/sparql";
+		username = "sparql";
+		password = "sparql";
 		
 		resultCodeFieldName = "status_code";
 		resultMessageFieldName = "status_message";
