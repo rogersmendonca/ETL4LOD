@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+   id="Silk"
+   iconfile="icon.png"
+   description="Silk"
+   tooltip="Generate NTriple format's RDF statements."
+   category="LinkedDataBR"
+   classname="br.ufrj.ppgi.greco.trans.step.Silk.SilkStepMeta">
+   <libraries>
+		<library name="Silk.jar"/>
+		<library name="KettlePluginTools.jar"/>
+		<library name="silk-2.5.3.jar"/>
+	</libraries>
+</plugin>

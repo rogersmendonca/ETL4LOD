@@ -68,17 +68,21 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>		
 			
 		<pdi.version>4.3.0-stable</pdi.version>
-		<pdi.home>D:/programas/pdi-ce-4.3.0-stable</pdi.home>
+		<pdi.home>C:/Users/Camila/Documents/Camila/Faculdade/IC/data-integration4.1</pdi.home>
 		<pdi.plugin.dir>plugins/steps/${project.name}</pdi.plugin.dir>
 		<pdi.plugin.lib_name>${project.artifactId}</pdi.plugin.lib_name>
 	</properties>	
 
     <modules>
-        <module>DataPropertyMapping</module>
+        <!--<module>DataPropertyMapping</module>
         <module>ntriplegenerator</module>
         <module>ObjectPropertyMapping</module>
         <module>SparqlEndpoint</module>
 		<module>SparqlUpdateOutput</module>
+		<module>Annotator</module>
+		<module>SemanticLevelFramework</module>
+		<module>Silk</module> -->
+		<module>Silk</module> 
     </modules>
 
     <build>
@@ -109,6 +113,13 @@
 	</build>
 	  
 	<dependencies>
+	
+	<dependency>
+	<groupId>de.fuberlin.wiwiss.silk</groupId>
+	<artifactId>silk</artifactId>
+	<version>2.5.3</version>
+</dependency>
+
 		<!-- Kettle dependencies (start) -->
 		<dependency>
 			<groupId>pentaho-kettle</groupId>
@@ -151,10 +162,20 @@
 			<version>${pdi.version}</version>
 			<scope>provided</scope>
 		</dependency>
+
 		<!-- Kettle dependencies (end) -->
 		
 		<!-- local dependencies -->
 		<!-- Obs: To install local dependencies, run maven_install_local_libs.bat -->
+		<dependency>
+			<groupId>bsh</groupId>
+			<artifactId>bsh</artifactId>
+			<version>1.3.0</version>
+		</dependency>
+		
+
+
+
 		<dependency>
 			<groupId>br.ufrj.ppgi.greco.kettle</groupId>
 			<artifactId>KettlePluginTools</artifactId>
