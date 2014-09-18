@@ -28,3 +28,4 @@ SemanticLevelMarker/target/antrun/build-copy-files-to-kettle.xml
 /SemanticLevelMarker/target
 /SparqlRunQuery/.project
 /SparqlRunQuery/.classpath
+*.class
