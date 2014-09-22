@@ -166,21 +166,20 @@ public class DataPropertyMappingStepDialog extends BaseStepDialog implements
         wListLabel.setAlignment(SWT.RIGHT);
 
         //
-        ColumnInfo[] columns = new ColumnInfo[]
-        {
+        ColumnInfo[] columns = new ColumnInfo[] {
                 new ColumnInfo(
                         "Predicado (DataProperty)                             \u00A0",
                         ColumnInfo.COLUMN_TYPE_TEXT),
                 new ColumnInfo("Campo com valor do objeto",
                         ColumnInfo.COLUMN_TYPE_CCOMBO, this.getFields(), true),
                 new ColumnInfo("Tipo do literal           \u00A0",
-                        ColumnInfo.COLUMN_TYPE_CCOMBO, new String[]
-                        { "Tentar descobrir", "xsd:integer", "xsd:float",
+                        ColumnInfo.COLUMN_TYPE_CCOMBO, new String[] {
+                                "Tentar descobrir", "xsd:integer", "xsd:float",
                                 "xsd:double", "xsd:decimal", "xsd:date",
                                 "xsd:dateTime", "xsd:string" }),
                 new ColumnInfo("Tag de linguagem",
-                        ColumnInfo.COLUMN_TYPE_CCOMBO, new String[]
-                        { "en", "pt", "fr", "" }),
+                        ColumnInfo.COLUMN_TYPE_CCOMBO, new String[] { "en",
+                                "pt", "fr", "" }),
                 new ColumnInfo("Campo contendo tag de linguagem",
                         ColumnInfo.COLUMN_TYPE_CCOMBO, this.getFields(), true),
 
@@ -350,8 +349,7 @@ public class DataPropertyMappingStepDialog extends BaseStepDialog implements
         wOK.setText("OK"); //$NON-NLS-1$
         wCancel = new Button(shell, SWT.PUSH);
         wCancel.setText("Cancelar"); //$NON-NLS-1$
-        setButtonPositions(new Button[]
-        { wOK, wCancel }, margin, lastControl);
+        setButtonPositions(new Button[] { wOK, wCancel }, margin, lastControl);
 
         // Add listeners
         lsCancel = new Listener()
@@ -485,9 +483,9 @@ public class DataPropertyMappingStepDialog extends BaseStepDialog implements
         for (int i = 0; i < wMapTable.getItemCount(); i++)
         {
             /*
-            String[] rowData = fillTableRow(wMapTable.getItem(i), table
-                    .getHeader().size());
-            */
+             * String[] rowData = fillTableRow(wMapTable.getItem(i), table
+             * .getHeader().size());
+             */
             table.add(rf.newRow(wMapTable.getItem(i)).getFullRow());
         }
         input.setMapTable(table);
@@ -548,20 +546,10 @@ public class DataPropertyMappingStepDialog extends BaseStepDialog implements
 
     // Rogers (Jul./2012): Ajuste para nao dar erro na mudanca de versao
     /*
-    private String[] fillTableRow(String[] tableRow, int size)
-    {
-        if (tableRow.length < size)
-        {
-            String[] newTableRow = new String[size];
-            Arrays.fill(newTableRow, "");
-            for (int i = 0; i < tableRow.length; i++)
-                newTableRow[i] = tableRow[i];
-            for (int i = tableRow.length; i < size; i++)
-                newTableRow[i] = "";
-            return newTableRow;
-        }
-        else
-            return tableRow;
-    }
-    */
+     * private String[] fillTableRow(String[] tableRow, int size) { if
+     * (tableRow.length < size) { String[] newTableRow = new String[size];
+     * Arrays.fill(newTableRow, ""); for (int i = 0; i < tableRow.length; i++)
+     * newTableRow[i] = tableRow[i]; for (int i = tableRow.length; i < size;
+     * i++) newTableRow[i] = ""; return newTableRow; } else return tableRow; }
+     */
 }

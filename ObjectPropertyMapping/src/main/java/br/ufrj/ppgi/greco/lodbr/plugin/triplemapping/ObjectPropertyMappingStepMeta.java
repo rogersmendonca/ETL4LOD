@@ -158,26 +158,29 @@ public class ObjectPropertyMappingStepMeta extends BaseStepMeta implements
 
             switch (version)
             {
-            case 1:
-                mapTable = (DataTable<String>) data.get(Field.MAP_TABLE.name());
+                case 1:
+                    mapTable = (DataTable<String>) data.get(Field.MAP_TABLE
+                            .name());
 
-                subjectOutputFieldName = (String) data
-                        .get(Field.SUBJECT_OUT_FIELD_NAME.name());
-                predicateOutputFieldName = (String) data
-                        .get(Field.PREDICATE_OUT_FIELD_NAME.name());
-                objectOutputFieldName = (String) data
-                        .get(Field.OBJECT_OUT_FIELD_NAME.name());
-                keepInputFields = (Boolean) data.get(Field.KEEP_INPUT_FIELDS
-                        .name());
+                    subjectOutputFieldName = (String) data
+                            .get(Field.SUBJECT_OUT_FIELD_NAME.name());
+                    predicateOutputFieldName = (String) data
+                            .get(Field.PREDICATE_OUT_FIELD_NAME.name());
+                    objectOutputFieldName = (String) data
+                            .get(Field.OBJECT_OUT_FIELD_NAME.name());
+                    keepInputFields = (Boolean) data
+                            .get(Field.KEEP_INPUT_FIELDS.name());
 
-                // endpointUri = (String) data.get(Field.ENDPOINT_URI.name());
-                // defaultGraph = (String) data.get(Field.DEFAULT_GRAPH.name());
-                // prefixes = (DataTable <String>)
-                // data.get(Field.PREFIX_TABLE.name());
+                    // endpointUri = (String)
+                    // data.get(Field.ENDPOINT_URI.name());
+                    // defaultGraph = (String)
+                    // data.get(Field.DEFAULT_GRAPH.name());
+                    // prefixes = (DataTable <String>)
+                    // data.get(Field.PREFIX_TABLE.name());
 
-                break;
-            default:
-                setDefault();
+                    break;
+                default:
+                    setDefault();
             }
         }
         catch (Throwable e)
@@ -224,42 +227,44 @@ public class ObjectPropertyMappingStepMeta extends BaseStepMeta implements
 
             switch (version)
             {
-            case 1:
-                int nrLines = (int) repository.getStepAttributeInteger(
-                        stepIdInRepository, "nr_lines");
-                mapTable = new DataTable<String>(Field.MAP_TABLE.name(),
-                        Field.MAP_TABLE_SUBJECT_FIELD_NAME.name(),
-                        Field.MAP_TABLE_PREDICATE_FIELD_NAME.name(),
-                        Field.MAP_TABLE_PREDICATE_URI.name(),
-                        Field.MAP_TABLE_OBJECT_FIELD_NAME.name());
-                String[] fields = mapTable.getHeader().toArray(new String[0]);
-                for (int i = 0; i < nrLines; i++)
-                {
-                    int nrfields = fields.length;
-                    String[] line = new String[nrfields];
-
-                    for (int f = 0; f < nrfields; f++)
+                case 1:
+                    int nrLines = (int) repository.getStepAttributeInteger(
+                            stepIdInRepository, "nr_lines");
+                    mapTable = new DataTable<String>(Field.MAP_TABLE.name(),
+                            Field.MAP_TABLE_SUBJECT_FIELD_NAME.name(),
+                            Field.MAP_TABLE_PREDICATE_FIELD_NAME.name(),
+                            Field.MAP_TABLE_PREDICATE_URI.name(),
+                            Field.MAP_TABLE_OBJECT_FIELD_NAME.name());
+                    String[] fields = mapTable.getHeader().toArray(
+                            new String[0]);
+                    for (int i = 0; i < nrLines; i++)
                     {
-                        line[f] = repository.getStepAttributeString(
-                                stepIdInRepository, i, fields[f]);
+                        int nrfields = fields.length;
+                        String[] line = new String[nrfields];
+
+                        for (int f = 0; f < nrfields; f++)
+                        {
+                            line[f] = repository.getStepAttributeString(
+                                    stepIdInRepository, i, fields[f]);
+                        }
+                        mapTable.add(line);
                     }
-                    mapTable.add(line);
-                }
 
-                subjectOutputFieldName = repository
-                        .getStepAttributeString(stepIdInRepository,
-                                Field.SUBJECT_OUT_FIELD_NAME.name());
-                predicateOutputFieldName = repository.getStepAttributeString(
-                        stepIdInRepository,
-                        Field.PREDICATE_OUT_FIELD_NAME.name());
-                objectOutputFieldName = repository.getStepAttributeString(
-                        stepIdInRepository, Field.OBJECT_OUT_FIELD_NAME.name());
-                keepInputFields = repository.getStepAttributeBoolean(
-                        stepIdInRepository, Field.KEEP_INPUT_FIELDS.name());
+                    subjectOutputFieldName = repository.getStepAttributeString(
+                            stepIdInRepository,
+                            Field.SUBJECT_OUT_FIELD_NAME.name());
+                    predicateOutputFieldName = repository
+                            .getStepAttributeString(stepIdInRepository,
+                                    Field.PREDICATE_OUT_FIELD_NAME.name());
+                    objectOutputFieldName = repository.getStepAttributeString(
+                            stepIdInRepository,
+                            Field.OBJECT_OUT_FIELD_NAME.name());
+                    keepInputFields = repository.getStepAttributeBoolean(
+                            stepIdInRepository, Field.KEEP_INPUT_FIELDS.name());
 
-                break;
-            default:
-                setDefault();
+                    break;
+                default:
+                    setDefault();
             }
         }
         catch (Exception e)

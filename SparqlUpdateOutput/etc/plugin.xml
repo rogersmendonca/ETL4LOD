@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <plugin
    id="SparqlUpdateOutput"
-   iconfile="icon.png"
-   description="Sparql Update Output"
+   iconfile="iconSparqlInsert.png"
+   description="Sparql Insert"
    tooltip="Insert triples in a Triple Store (e.g. Virtuoso) through a SPARQL 1.1 Endpoint."
-   category="UFRJ_PPGI_GRECO"
+   category="LinkedDataBR"
    classname="br.ufrj.ppgi.greco.lodbr.plugin.sparqlupdate.SparqlUpdateInsertStepMeta">
    <libraries>
 		<library name="SparqlUpdateOutput.jar"/>

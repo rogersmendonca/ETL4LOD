@@ -5,7 +5,8 @@ import org.pentaho.di.trans.step.BaseStepData;
 import org.pentaho.di.trans.step.StepDataInterface;
 
 public class ObjectPropertyMappingStepData extends BaseStepData implements
-		StepDataInterface {
+        StepDataInterface
+{
 
-	public RowMetaInterface outputRowMeta;
+    public RowMetaInterface outputRowMeta;
 }

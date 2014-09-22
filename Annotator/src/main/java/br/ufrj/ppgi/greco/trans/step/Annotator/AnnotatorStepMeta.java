@@ -26,10 +26,6 @@ import org.pentaho.di.trans.step.StepMeta;
 import org.pentaho.di.trans.step.StepMetaInterface;
 import org.w3c.dom.Node;
 
-import br.ufrj.ppgi.greco.trans.step.Annotator.AnnotatorStep;
-import br.ufrj.ppgi.greco.trans.step.Annotator.AnnotatorStepData;
-import br.ufrj.ppgi.greco.trans.step.Annotator.AnnotatorStepDialog;
-
 /**
  * Classe de metadados do step Annotator.
  * 
@@ -39,7 +35,7 @@ import br.ufrj.ppgi.greco.trans.step.Annotator.AnnotatorStepDialog;
 public class AnnotatorStepMeta extends BaseStepMeta implements
         StepMetaInterface
 {
-	
+
     public enum Field
     {
         INPUT_SUBJECT_FIELD_NAME,
@@ -47,14 +43,14 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
         INPUT_OBJECT_FIELD_NAME,
         OUTPUT_NTRIPLE_FIELD_NAME,
         INNER_KEEP_INPUT_VALUE,
-        INPUT_MAP_FILE_NAME,
+        INPUT_BROWSE_FILE_NAME,
     }
 
     // Campos Step - Input
     private String inputSubject;
     private String inputPredicate;
     private String inputObject;
-    public String mapFilename;
+    public String browseFilename;
 
     // Campos Step - Output
     private String outputNTriple;
@@ -67,7 +63,7 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
         setDefault();
     }
 
-    // TODO Validar todos os campos para dar feedback ao usuário! Argh!
+    // TODO Validar todos os campos para dar feedback ao usuï¿½rio! Argh!
     @Override
     public void check(List<CheckResultInterface> remarks, TransMeta transMeta,
             StepMeta stepMeta, RowMetaInterface prev, String[] input,
@@ -77,16 +73,18 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
         CheckResultInterface ok = new CheckResult(CheckResult.TYPE_RESULT_OK,
                 "", stepMeta);
         remarks.add(ok);
-        if (mapFilename==null || mapFilename.length()==0 )
-		{
-        	ok = new CheckResult(CheckResult.TYPE_RESULT_ERROR, "No files can be found to read.", stepMeta);
-			remarks.add(ok);
-		}
-		else
-		{
-			ok = new CheckResult(CheckResult.TYPE_RESULT_OK, "Both shape file and the DBF file are defined.", stepMeta);
-			remarks.add(ok);
-		}
+        if (browseFilename == null || browseFilename.length() == 0)
+        {
+            ok = new CheckResult(CheckResult.TYPE_RESULT_ERROR,
+                    "No files can be found to read.", stepMeta);
+            remarks.add(ok);
+        }
+        else
+        {
+            ok = new CheckResult(CheckResult.TYPE_RESULT_OK,
+                    "Both shape file and the DBF file are defined.", stepMeta);
+            remarks.add(ok);
+        }
     }
 
     @Override
@@ -125,7 +123,8 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
                 Field.OUTPUT_NTRIPLE_FIELD_NAME.name());
         innerKeepInputFields = "Y".equals(XMLHandler.getTagValue(stepDomNode,
                 Field.INNER_KEEP_INPUT_VALUE.name()));
-        mapFilename = XMLHandler.getTagValue(stepDomNode, Field.INPUT_MAP_FILE_NAME.name());
+        browseFilename = XMLHandler.getTagValue(stepDomNode,
+                Field.INPUT_BROWSE_FILE_NAME.name());
     }
 
     // Gerar XML para salvar um .ktr
@@ -144,7 +143,8 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
                 Field.OUTPUT_NTRIPLE_FIELD_NAME.name(), outputNTriple));
         xml.append(XMLHandler.addTagValue(Field.INNER_KEEP_INPUT_VALUE.name(),
                 innerKeepInputFields));
-        xml.append(XMLHandler.addTagValue(Field.INPUT_MAP_FILE_NAME.name(), mapFilename));
+        xml.append(XMLHandler.addTagValue(Field.INPUT_BROWSE_FILE_NAME.name(),
+                browseFilename));
 
         return xml.toString();
     }
@@ -165,7 +165,8 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
                 Field.OUTPUT_NTRIPLE_FIELD_NAME.name());
         innerKeepInputFields = repository.getStepAttributeBoolean(
                 stepIdInRepository, Field.INNER_KEEP_INPUT_VALUE.name());
-        mapFilename = repository.getStepAttributeString(stepIdInRepository, Field.INPUT_MAP_FILE_NAME.name());
+        browseFilename = repository.getStepAttributeString(stepIdInRepository,
+                Field.INPUT_BROWSE_FILE_NAME.name());
     }
 
     // Persistir campos no repositorio
@@ -184,7 +185,7 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
         repository.saveStepAttribute(idOfTransformation, idOfStep,
                 Field.INNER_KEEP_INPUT_VALUE.name(), innerKeepInputFields);
         repository.saveStepAttribute(idOfTransformation, idOfStep,
-                Field.INPUT_MAP_FILE_NAME.name(), mapFilename);
+                Field.INPUT_BROWSE_FILE_NAME.name(), browseFilename);
     }
 
     // Inicializacoes default
@@ -196,7 +197,7 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
         inputObject = "";
         outputNTriple = "ntriple";
         innerKeepInputFields = false;
-        mapFilename = "";
+        browseFilename = "";
     }
 
     /**
@@ -207,58 +208,68 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
             RowMetaInterface[] info, StepMeta nextStep, VariableSpace space)
             throws KettleStepException
     {
-    	// The filename...
-    			ValueMetaInterface filename = new ValueMeta("filename", ValueMetaInterface.TYPE_STRING);
-    			filename.setOrigin(name);
-    			filename.setLength(255);
-    			inputRowMeta.addValueMeta(filename);
-    			
-    			// The file type
-    			ValueMetaInterface ft = new ValueMeta("filetype", ValueMetaInterface.TYPE_STRING);
-    			ft.setLength(50);
-    			ft.setOrigin(name);
-    			inputRowMeta.addValueMeta( ft ); 
-    			
-    			// The shape nr
-    			ValueMetaInterface shnr = new ValueMeta("shapenr", ValueMetaInterface.TYPE_INTEGER);
-    			shnr.setOrigin(name);
-    			inputRowMeta.addValueMeta( shnr ); 
+        // The filename...
+        ValueMetaInterface filename = new ValueMeta("filename",
+                ValueMetaInterface.TYPE_STRING);
+        filename.setOrigin(name);
+        filename.setLength(255);
+        inputRowMeta.addValueMeta(filename);
 
-    			// The part nr
-    			ValueMetaInterface pnr = new ValueMeta("partnr", ValueMetaInterface.TYPE_INTEGER);
-    			pnr.setOrigin(name);
-    			inputRowMeta.addValueMeta( pnr ); 
+        // The file type
+        ValueMetaInterface ft = new ValueMeta("filetype",
+                ValueMetaInterface.TYPE_STRING);
+        ft.setLength(50);
+        ft.setOrigin(name);
+        inputRowMeta.addValueMeta(ft);
 
-    			// The part nr
-    			ValueMetaInterface nrp = new ValueMeta("nrparts", ValueMetaInterface.TYPE_INTEGER);
-    			nrp.setOrigin(name);
-    			inputRowMeta.addValueMeta( nrp ); 
+        // The shape nr
+        ValueMetaInterface shnr = new ValueMeta("shapenr",
+                ValueMetaInterface.TYPE_INTEGER);
+        shnr.setOrigin(name);
+        inputRowMeta.addValueMeta(shnr);
 
-    			// The point nr
-    			ValueMetaInterface ptnr = new ValueMeta("pointnr", ValueMetaInterface.TYPE_INTEGER);
-    			ptnr.setOrigin(name);
-    			inputRowMeta.addValueMeta( ptnr ); 
+        // The part nr
+        ValueMetaInterface pnr = new ValueMeta("partnr",
+                ValueMetaInterface.TYPE_INTEGER);
+        pnr.setOrigin(name);
+        inputRowMeta.addValueMeta(pnr);
 
-    			// The nr of points
-    			ValueMetaInterface nrpt = new ValueMeta("nrpointS", ValueMetaInterface.TYPE_INTEGER);
-    			nrpt.setOrigin(name);
-    			inputRowMeta.addValueMeta( nrpt ); 
+        // The part nr
+        ValueMetaInterface nrp = new ValueMeta("nrparts",
+                ValueMetaInterface.TYPE_INTEGER);
+        nrp.setOrigin(name);
+        inputRowMeta.addValueMeta(nrp);
 
-    			// The X coordinate
-    			ValueMetaInterface x = new ValueMeta("x", ValueMetaInterface.TYPE_NUMBER);
-    			x.setOrigin(name);
-    			inputRowMeta.addValueMeta( x );
+        // The point nr
+        ValueMetaInterface ptnr = new ValueMeta("pointnr",
+                ValueMetaInterface.TYPE_INTEGER);
+        ptnr.setOrigin(name);
+        inputRowMeta.addValueMeta(ptnr);
 
-    			// The Y coordinate
-    			ValueMetaInterface y = new ValueMeta("y", ValueMetaInterface.TYPE_NUMBER);
-    			y.setOrigin(name);
-    			inputRowMeta.addValueMeta( y );
+        // The nr of points
+        ValueMetaInterface nrpt = new ValueMeta("nrpointS",
+                ValueMetaInterface.TYPE_INTEGER);
+        nrpt.setOrigin(name);
+        inputRowMeta.addValueMeta(nrpt);
 
-    			// The measure
-    			ValueMetaInterface m = new ValueMeta("measure", ValueMetaInterface.TYPE_NUMBER);
-    			m.setOrigin(name);
-    			inputRowMeta.addValueMeta( m );
-    			
+        // The X coordinate
+        ValueMetaInterface x = new ValueMeta("x",
+                ValueMetaInterface.TYPE_NUMBER);
+        x.setOrigin(name);
+        inputRowMeta.addValueMeta(x);
+
+        // The Y coordinate
+        ValueMetaInterface y = new ValueMeta("y",
+                ValueMetaInterface.TYPE_NUMBER);
+        y.setOrigin(name);
+        inputRowMeta.addValueMeta(y);
+
+        // The measure
+        ValueMetaInterface m = new ValueMeta("measure",
+                ValueMetaInterface.TYPE_NUMBER);
+        m.setOrigin(name);
+        inputRowMeta.addValueMeta(m);
+
         if (!innerKeepInputFields)
         {
             inputRowMeta.clear();
@@ -326,14 +337,14 @@ public class AnnotatorStepMeta extends BaseStepMeta implements
     {
         this.innerKeepInputFields = innerKeepInputFields;
     }
-    
-    public String getMapFilename()
+
+    public String getBrowseFilename()
     {
-    	return mapFilename;
+        return browseFilename;
     }
-    
-    public void setMapFilename(String mapFilename)
+
+    public void setBrowseFilename(String browseFilename)
     {
-    	this.mapFilename = mapFilename;
+        this.browseFilename = browseFilename;
     }
 }

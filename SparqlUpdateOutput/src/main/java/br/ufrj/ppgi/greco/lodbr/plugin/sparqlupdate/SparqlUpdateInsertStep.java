@@ -46,6 +46,7 @@ public class SparqlUpdateInsertStep extends BaseStep implements StepInterface
         SparqlUpdateInsertStepData data = (SparqlUpdateInsertStepData) sdi;
 
         Object[] row = getRow();
+
         if (row == null)
         {
             try
@@ -87,9 +88,12 @@ public class SparqlUpdateInsertStep extends BaseStep implements StepInterface
             // Cria objeto Sparql Update
             try
             {
-                data.sparqlUpdate = new SparqlUpdate(new URI(
-                        meta.getEndpointUrl()), meta.getUsername(),
-                        meta.getPassword());
+                URI uri = new URI(meta.getEndpointUrl());
+                String username = meta.getUsername();
+                String password = meta.getPassword();
+
+                data.sparqlUpdate = new SparqlUpdate(uri, username, password);
+
             }
             catch (URISyntaxException e)
             {

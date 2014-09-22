@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <plugin
    id="SparqlEndpoint"
-   iconfile="icon.png"
-   description="Sparql Endpoint"
+   iconfile="iconSparqlQuery.png"
+   description="Sparql Query"
    tooltip="Executes query against a SPARQL Endpoint and gets the information."
-   category="UFRJ_PPGI_GRECO"
+   category="LinkedDataBR"
    classname="br.ufrj.ppgi.greco.lodbr.plugin.sparql.SparqlStepMeta">
    <libraries>
 		<library name="SparqlEndpoint.jar"/>
