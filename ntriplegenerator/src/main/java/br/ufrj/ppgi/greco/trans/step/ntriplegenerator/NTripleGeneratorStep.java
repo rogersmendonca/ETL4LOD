@@ -64,7 +64,7 @@ public class NTripleGeneratorStep extends BaseStep implements StepInterface
 
         // Obtem linha do fluxo de entrada e termina caso nao haja mais entrada
         Object[] row = getRow();
-        
+
         if (row == null)
         { // Nao ha mais linhas de dados
             setOutputDone();

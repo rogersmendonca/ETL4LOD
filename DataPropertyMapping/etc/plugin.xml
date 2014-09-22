@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <plugin
    id="DataPropertyMappingPlugin"
-   iconfile="icon.png"
+   iconfile="iconDataProperty.png"
    description="Data Property Mapping"
    tooltip="Transform input data into RDF triples, using a defined Data Property mapping."
-   category="UFRJ_PPGI_GRECO"
+   category="LinkedDataBR"
    classname="br.ufrj.ppgi.greco.lodbr.plugin.triplemapping.DataPropertyMappingStepMeta">
    <libraries>
 		<library name="DataPropertyMapping.jar"/>

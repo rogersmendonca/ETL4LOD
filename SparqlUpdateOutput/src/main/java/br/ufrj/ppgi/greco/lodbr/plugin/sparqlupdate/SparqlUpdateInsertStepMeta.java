@@ -26,244 +26,303 @@ import org.pentaho.di.trans.step.StepMeta;
 import org.pentaho.di.trans.step.StepMetaInterface;
 import org.w3c.dom.Node;
 
-public class SparqlUpdateInsertStepMeta extends BaseStepMeta implements StepMetaInterface {
+public class SparqlUpdateInsertStepMeta extends BaseStepMeta implements
+        StepMetaInterface
+{
 
-	// Fields for serialization
-	public enum Field {
-		RDF_CONTENT, GRAPH_URI, CLEAR_GRAPH,
-		PROTOCOL, HOSTNAME, PORT, PATH, USERNAME, PASSWORD, ENDPOINT_URL,
-		OUT_CODE, OUT_MESSAGE
-	}
+    // Fields for serialization
+    public enum Field
+    {
+        RDF_CONTENT,
+        GRAPH_URI,
+        CLEAR_GRAPH,
+        PROTOCOL,
+        HOSTNAME,
+        PORT,
+        PATH,
+        USERNAME,
+        PASSWORD,
+        ENDPOINT_URL,
+        OUT_CODE,
+        OUT_MESSAGE
+    }
 
-	
-	// Values - tipo refere-se ao tipo destas variaveis
-	private String rdfContentFieldName;
-	private String graphUriValue;
-	private Boolean clearGraph;
-	private String endpointUrl;
-	private String username;
-	private String password;
-	// Output - ATENCAO: tipo refere-se ao tipo dos campos cujos nomes sao
-	// especificados por estas variaveis
-	private String resultCodeFieldName;
-	private String resultMessageFieldName;
+    // Values - tipo refere-se ao tipo destas variaveis
+    private String rdfContentFieldName;
+    private String graphUriValue;
+    private Boolean clearGraph;
+    private String endpointUrl;
+    private String username;
+    private String password;
+    // Output - ATENCAO: tipo refere-se ao tipo dos campos cujos nomes sao
+    // especificados por estas variaveis
+    private String resultCodeFieldName;
+    private String resultMessageFieldName;
 
+    public SparqlUpdateInsertStepMeta()
+    {
+        setDefault();
+    }
 
+    // TODO Validar todos os campos para dar feedback ao usuario!
+    @Override
+    public void check(List<CheckResultInterface> remarks, TransMeta transMeta,
+            StepMeta stepMeta, RowMetaInterface prev, String[] input,
+            String[] output, RowMetaInterface info)
+    {
 
-	public SparqlUpdateInsertStepMeta() {
-		setDefault();
-	}
+        // if (Const.isEmpty(fieldName)) {
+        // CheckResultInterface error = new CheckResult(
+        // CheckResult.TYPE_RESULT_ERROR,
+        // "error rorororroroo",
+        // stepMeta);
+        // remarks.add(error);
+        // }
+        // else {
+        CheckResultInterface ok = new CheckResult(CheckResult.TYPE_RESULT_OK,
+                "", stepMeta);
+        remarks.add(ok);
+        // }
 
+    }
 
-	// TODO Validar todos os campos para dar feedback ao usuario!
-	@Override
-	public void check(List<CheckResultInterface> remarks, TransMeta transMeta,
-			StepMeta stepMeta, RowMetaInterface prev, String[] input, String[] output,
-			RowMetaInterface info) {
+    @Override
+    public StepInterface getStep(StepMeta stepMeta,
+            StepDataInterface stepDataInterface, int copyNr,
+            TransMeta transMeta, Trans trans)
+    {
+        return new SparqlUpdateInsertStep(stepMeta, stepDataInterface, copyNr,
+                transMeta, trans);
+    }
 
+    @Override
+    public StepDataInterface getStepData()
+    {
+        return new SparqlUpdateInsertStepData();
+    }
 
-//		if (Const.isEmpty(fieldName)) {
-//			CheckResultInterface error = new CheckResult(
-//					CheckResult.TYPE_RESULT_ERROR,
-//					"error rorororroroo",
-//					stepMeta);
-//			remarks.add(error);
-//		}
-//		else {
-			CheckResultInterface ok = new CheckResult(
-					CheckResult.TYPE_RESULT_OK,
-					"",
-					stepMeta);
-			remarks.add(ok);
-//		}
-		
-	}
+    @Override
+    public String getDialogClassName()
+    {
+        return SparqlUpdateInsertStepDialog.class.getName();
+    }
 
-	@Override
-	public StepInterface getStep(StepMeta stepMeta,
-			StepDataInterface stepDataInterface, int copyNr,
-			TransMeta transMeta, Trans trans) {
-		return new SparqlUpdateInsertStep(stepMeta, stepDataInterface, copyNr, transMeta, trans);
-	}
+    @Override
+    public void loadXML(Node stepDomNode, List<DatabaseMeta> databases,
+            Map<String, Counter> sequenceCounters) throws KettleXMLException
+    {
 
-	@Override
-	public StepDataInterface getStepData() {
-		return new SparqlUpdateInsertStepData();
-	}
-	
-	@Override
-	public String getDialogClassName() {
-		return SparqlUpdateInsertStepDialog.class.getName();
-	}
+        rdfContentFieldName = XMLHandler.getTagValue(stepDomNode,
+                Field.RDF_CONTENT.name());
+        graphUriValue = XMLHandler.getTagValue(stepDomNode,
+                Field.GRAPH_URI.name());
+        clearGraph = "Y".equals(XMLHandler.getTagValue(stepDomNode,
+                Field.CLEAR_GRAPH.name()));
+        endpointUrl = XMLHandler.getTagValue(stepDomNode,
+                Field.ENDPOINT_URL.name());
+        username = XMLHandler.getTagValue(stepDomNode, Field.USERNAME.name());
+        password = XMLHandler.getTagValue(stepDomNode, Field.PASSWORD.name());
+        resultCodeFieldName = XMLHandler.getTagValue(stepDomNode,
+                Field.OUT_CODE.name());
+        resultMessageFieldName = XMLHandler.getTagValue(stepDomNode,
+                Field.OUT_MESSAGE.name());
+    }
 
+    @Override
+    public String getXML() throws KettleException
+    {
+        StringBuilder xml = new StringBuilder();
+        xml.append(XMLHandler.addTagValue(Field.RDF_CONTENT.name(),
+                rdfContentFieldName));
+        xml.append(XMLHandler.addTagValue(Field.GRAPH_URI.name(), graphUriValue));
+        xml.append(XMLHandler.addTagValue(Field.CLEAR_GRAPH.name(), clearGraph));
+        xml.append(XMLHandler.addTagValue(Field.ENDPOINT_URL.name(),
+                endpointUrl));
+        xml.append(XMLHandler.addTagValue(Field.USERNAME.name(), username));
+        xml.append(XMLHandler.addTagValue(Field.PASSWORD.name(), password));
+        xml.append(XMLHandler.addTagValue(Field.OUT_CODE.name(),
+                resultCodeFieldName));
+        xml.append(XMLHandler.addTagValue(Field.OUT_MESSAGE.name(),
+                resultMessageFieldName));
+        return xml.toString();
+    }
 
-	
-	
-	@Override
-	public void loadXML(Node stepDomNode, List<DatabaseMeta> databases,
-			Map<String, Counter> sequenceCounters) throws KettleXMLException {
+    @Override
+    public void readRep(Repository repository, ObjectId stepIdInRepository,
+            List<DatabaseMeta> databases, Map<String, Counter> sequenceCounters)
+            throws KettleException
+    {
 
-		rdfContentFieldName = XMLHandler.getTagValue(stepDomNode, Field.RDF_CONTENT.name());
-		graphUriValue = XMLHandler.getTagValue(stepDomNode, Field.GRAPH_URI.name());
-		clearGraph = "Y".equals(XMLHandler.getTagValue(stepDomNode, Field.CLEAR_GRAPH.name()));
-		endpointUrl = XMLHandler.getTagValue(stepDomNode, Field.ENDPOINT_URL.name());
-		username = XMLHandler.getTagValue(stepDomNode, Field.USERNAME.name());
-		password = XMLHandler.getTagValue(stepDomNode, Field.PASSWORD.name());
-		resultCodeFieldName = XMLHandler.getTagValue(stepDomNode, Field.OUT_CODE.name());
-		resultMessageFieldName = XMLHandler.getTagValue(stepDomNode, Field.OUT_MESSAGE.name());
-	}
-	
-	@Override
-	public String getXML() throws KettleException {
-		StringBuilder xml = new StringBuilder();
-		xml.append(XMLHandler.addTagValue(Field.RDF_CONTENT.name(), rdfContentFieldName));
-		xml.append(XMLHandler.addTagValue(Field.GRAPH_URI.name(), graphUriValue));
-		xml.append(XMLHandler.addTagValue(Field.CLEAR_GRAPH.name(), clearGraph));
-		xml.append(XMLHandler.addTagValue(Field.ENDPOINT_URL.name(), endpointUrl));
-		xml.append(XMLHandler.addTagValue(Field.USERNAME.name(), username));
-		xml.append(XMLHandler.addTagValue(Field.PASSWORD.name(), password));
-		xml.append(XMLHandler.addTagValue(Field.OUT_CODE.name(), resultCodeFieldName));
-		xml.append(XMLHandler.addTagValue(Field.OUT_MESSAGE.name(), resultMessageFieldName));
-		return xml.toString();
-	}
+        rdfContentFieldName = repository.getStepAttributeString(
+                stepIdInRepository, Field.RDF_CONTENT.name());
+        graphUriValue = repository.getStepAttributeString(stepIdInRepository,
+                Field.GRAPH_URI.name());
+        clearGraph = repository.getStepAttributeBoolean(stepIdInRepository,
+                Field.CLEAR_GRAPH.name());
+        endpointUrl = repository.getStepAttributeString(stepIdInRepository,
+                Field.ENDPOINT_URL.name());
+        username = repository.getStepAttributeString(stepIdInRepository,
+                Field.USERNAME.name());
+        password = repository.getStepAttributeString(stepIdInRepository,
+                Field.PASSWORD.name());
+        resultCodeFieldName = repository.getStepAttributeString(
+                stepIdInRepository, Field.OUT_CODE.name());
+        resultMessageFieldName = repository.getStepAttributeString(
+                stepIdInRepository, Field.OUT_MESSAGE.name());
+    }
 
-	@Override
-	public void readRep(Repository repository, ObjectId stepIdInRepository,
-			List<DatabaseMeta> databases, Map<String, Counter> sequenceCounters)
-			throws KettleException {
+    @Override
+    public void saveRep(Repository repository, ObjectId idOfTransformation,
+            ObjectId idOfStep) throws KettleException
+    {
 
-		rdfContentFieldName = repository.getStepAttributeString(stepIdInRepository, Field.RDF_CONTENT.name());
-		graphUriValue = repository.getStepAttributeString(stepIdInRepository, Field.GRAPH_URI.name());
-		clearGraph = repository.getStepAttributeBoolean(stepIdInRepository, Field.CLEAR_GRAPH.name());
-		endpointUrl = repository.getStepAttributeString(stepIdInRepository, Field.ENDPOINT_URL.name());
-		username = repository.getStepAttributeString(stepIdInRepository, Field.USERNAME.name());
-		password = repository.getStepAttributeString(stepIdInRepository, Field.PASSWORD.name());
-		resultCodeFieldName = repository.getStepAttributeString(stepIdInRepository, Field.OUT_CODE.name());
-		resultMessageFieldName = repository.getStepAttributeString(stepIdInRepository, Field.OUT_MESSAGE.name());
-	}
+        repository.saveStepAttribute(idOfTransformation, idOfStep,
+                Field.RDF_CONTENT.name(), rdfContentFieldName);
+        repository.saveStepAttribute(idOfTransformation, idOfStep,
+                Field.GRAPH_URI.name(), graphUriValue);
+        repository.saveStepAttribute(idOfTransformation, idOfStep,
+                Field.CLEAR_GRAPH.name(), clearGraph);
+        repository.saveStepAttribute(idOfTransformation, idOfStep,
+                Field.ENDPOINT_URL.name(), endpointUrl);
+        repository.saveStepAttribute(idOfTransformation, idOfStep,
+                Field.USERNAME.name(), username);
+        repository.saveStepAttribute(idOfTransformation, idOfStep,
+                Field.PASSWORD.name(), password);
+        repository.saveStepAttribute(idOfTransformation, idOfStep,
+                Field.OUT_CODE.name(), resultCodeFieldName);
+        repository.saveStepAttribute(idOfTransformation, idOfStep,
+                Field.OUT_MESSAGE.name(), resultMessageFieldName);
+    }
 
-	@Override
-	public void saveRep(Repository repository, ObjectId idOfTransformation, ObjectId idOfStep)
-			throws KettleException {
-		
-		repository.saveStepAttribute(idOfTransformation, idOfStep, Field.RDF_CONTENT.name(), rdfContentFieldName);
-		repository.saveStepAttribute(idOfTransformation, idOfStep, Field.GRAPH_URI.name(), graphUriValue);
-		repository.saveStepAttribute(idOfTransformation, idOfStep, Field.CLEAR_GRAPH.name(), clearGraph);
-		repository.saveStepAttribute(idOfTransformation, idOfStep, Field.ENDPOINT_URL.name(), endpointUrl);
-		repository.saveStepAttribute(idOfTransformation, idOfStep, Field.USERNAME.name(), username);
-		repository.saveStepAttribute(idOfTransformation, idOfStep, Field.PASSWORD.name(), password);
-		repository.saveStepAttribute(idOfTransformation, idOfStep, Field.OUT_CODE.name(), resultCodeFieldName);
-		repository.saveStepAttribute(idOfTransformation, idOfStep, Field.OUT_MESSAGE.name(), resultMessageFieldName);
-	}
+    @Override
+    public void setDefault()
+    {
+        graphUriValue = "";
+        rdfContentFieldName = "";
+        clearGraph = true;
 
-	@Override
-	public void setDefault() {
-		
-		graphUriValue = "";
-		rdfContentFieldName = "";
-		clearGraph = true;
+        endpointUrl = "http://example.com:80/sparql-auth";
+        username = "username";
+        password = "";
 
-		endpointUrl = "http://example.com:80/sparql-auth";
-		username = "username";
-		password = "";
-		
-		resultCodeFieldName = "status_code";
-		resultMessageFieldName = "status_message";
-	}
+        resultCodeFieldName = "status_code";
+        resultMessageFieldName = "status_message";
+    }
 
+    // Para os campos Field.OUT_*, refere-se ao tipo dos campos cujos nomes sao
+    // especificados pelas estas variaveis desta classe Meta
+    public int getFieldType(Field field)
+    {
+        if (field == Field.PORT)
+            return ValueMetaInterface.TYPE_INTEGER;
+        if (field == Field.OUT_CODE)
+            return ValueMetaInterface.TYPE_INTEGER;
+        else if (field == Field.CLEAR_GRAPH)
+            return ValueMetaInterface.TYPE_BOOLEAN;
+        else
+            return ValueMetaInterface.TYPE_STRING;
+    }
 
-	// Para os campos Field.OUT_*, refere-se ao tipo dos campos cujos nomes sao
-	// especificados pelas estas variaveis desta classe Meta
-	public int getFieldType(Field field) {
-		if (field == Field.PORT) return ValueMetaInterface.TYPE_INTEGER;
-		if (field == Field.OUT_CODE) return ValueMetaInterface.TYPE_INTEGER;
-		else if (field == Field.CLEAR_GRAPH) return ValueMetaInterface.TYPE_BOOLEAN;
-		else return ValueMetaInterface.TYPE_STRING;
-	}
-	
-	/**
-	 * it describes what each output row is going to look like
-	 */
-	@Override
-	public void getFields(RowMetaInterface inputRowMeta, String name,
-			RowMetaInterface[] info, StepMeta nextStep, VariableSpace space)
-			throws KettleStepException {
+    /**
+     * it describes what each output row is going to look like
+     */
+    @Override
+    public void getFields(RowMetaInterface inputRowMeta, String name,
+            RowMetaInterface[] info, StepMeta nextStep, VariableSpace space)
+            throws KettleStepException
+    {
 
-		ValueMetaInterface field = null;
+        ValueMetaInterface field = null;
 
-		field = new ValueMeta(resultCodeFieldName, getFieldType(Field.OUT_CODE));
-		field.setOrigin(name);
-		inputRowMeta.addValueMeta(field);
+        field = new ValueMeta(resultCodeFieldName, getFieldType(Field.OUT_CODE));
+        field.setOrigin(name);
+        inputRowMeta.addValueMeta(field);
 
-		field = new ValueMeta(resultMessageFieldName, getFieldType(Field.OUT_MESSAGE));
-		field.setOrigin(name);
-		inputRowMeta.addValueMeta(field);
-	}
-	
-	
-	// Getters & Setters
+        field = new ValueMeta(resultMessageFieldName,
+                getFieldType(Field.OUT_MESSAGE));
+        field.setOrigin(name);
+        inputRowMeta.addValueMeta(field);
+    }
 
-	public String getRdfContentFieldName() {
-		return rdfContentFieldName;
-	}
+    // Getters & Setters
 
-	public void setRdfContentFieldName(String value) {
-		rdfContentFieldName = value;
-	}
-		
-	public String getGraphUriValue() {
-		return graphUriValue;
-	}
+    public String getRdfContentFieldName()
+    {
+        return rdfContentFieldName;
+    }
 
-	public void setGraphUriValue(String graphUriValue) {
-		this.graphUriValue = graphUriValue;
-	}
+    public void setRdfContentFieldName(String value)
+    {
+        rdfContentFieldName = value;
+    }
 
-	public Boolean getClearGraph() {
-		return clearGraph;
-	}
+    public String getGraphUriValue()
+    {
+        return graphUriValue;
+    }
 
-	public void setClearGraph(Boolean clearGraph) {
-		this.clearGraph = clearGraph;
-	}
-	
-	public String getEndpointUrl() {
-		return endpointUrl;
-	}
-	
-	public void setEndpointUrl(String endpointUrl) {
-		this.endpointUrl = endpointUrl;
-	}
-	
-	public String getUsername() {
-		return username;
-	}
+    public void setGraphUriValue(String graphUriValue)
+    {
+        this.graphUriValue = graphUriValue;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public Boolean getClearGraph()
+    {
+        return clearGraph;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setClearGraph(Boolean clearGraph)
+    {
+        this.clearGraph = clearGraph;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getEndpointUrl()
+    {
+        return endpointUrl;
+    }
 
-	public String getResultCodeFieldName() {
-		return resultCodeFieldName;
-	}
+    public void setEndpointUrl(String endpointUrl)
+    {
+        this.endpointUrl = endpointUrl;
+    }
 
-	public void setResultCodeFieldName(String resultCodeFieldName) {
-		this.resultCodeFieldName = resultCodeFieldName;
-	}
+    public String getUsername()
+    {
+        return username;
+    }
 
-	public String getResultMessageFieldName() {
-		return resultMessageFieldName;
-	}
+    public void setUsername(String username)
+    {
+        this.username = username;
+    }
 
-	public void setResultMessageFieldName(String resultMessageFieldName) {
-		this.resultMessageFieldName = resultMessageFieldName;
-	}
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
+    }
+
+    public String getResultCodeFieldName()
+    {
+        return resultCodeFieldName;
+    }
+
+    public void setResultCodeFieldName(String resultCodeFieldName)
+    {
+        this.resultCodeFieldName = resultCodeFieldName;
+    }
+
+    public String getResultMessageFieldName()
+    {
+        return resultMessageFieldName;
+    }
+
+    public void setResultMessageFieldName(String resultMessageFieldName)
+    {
+        this.resultMessageFieldName = resultMessageFieldName;
+    }
 }

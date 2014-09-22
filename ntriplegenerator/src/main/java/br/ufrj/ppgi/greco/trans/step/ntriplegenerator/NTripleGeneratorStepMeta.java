@@ -26,10 +26,6 @@ import org.pentaho.di.trans.step.StepMeta;
 import org.pentaho.di.trans.step.StepMetaInterface;
 import org.w3c.dom.Node;
 
-import br.ufrj.ppgi.greco.trans.step.ntriplegenerator.NTripleGeneratorStep;
-import br.ufrj.ppgi.greco.trans.step.ntriplegenerator.NTripleGeneratorStepData;
-import br.ufrj.ppgi.greco.trans.step.ntriplegenerator.NTripleGeneratorStepDialog;
-
 /**
  * Classe de metadados do step NTripleGenerator.
  * 
@@ -70,7 +66,7 @@ public class NTripleGeneratorStepMeta extends BaseStepMeta implements
         setDefault();
     }
 
-    // TODO Validar todos os campos para dar feedback ao usuário! Argh!
+    // TODO Validar todos os campos para dar feedback ao usuï¿½rio! Argh!
     @Override
     public void check(List<CheckResultInterface> remarks, TransMeta transMeta,
             StepMeta stepMeta, RowMetaInterface prev, String[] input,

@@ -89,16 +89,21 @@ public class NTripleGeneratorStepDialog extends BaseStepDialog implements
     private Control buildContents(Control lastControl,
             ModifyListener defModListener)
     {
-        wInputGroup = swthlp.appendGroup(shell, lastControl,
-                BaseMessages.getString(PKG, "NTripleGeneratorStep.Group.Input.Label"));
+        wInputGroup = swthlp.appendGroup(shell, lastControl, BaseMessages
+                .getString(PKG, "NTripleGeneratorStep.Group.Input.Label"));
         wInputSubject = appendComboVar(wInputGroup, defModListener,
-                wInputGroup, BaseMessages.getString(PKG, "NTripleGeneratorStep.SubjectField.Label"));
+                wInputGroup, BaseMessages.getString(PKG,
+                        "NTripleGeneratorStep.SubjectField.Label"));
         wInputPredicate = appendComboVar(wInputSubject, defModListener,
-                wInputGroup, BaseMessages.getString(PKG, "NTripleGeneratorStep.PredicateField.Label"));
+                wInputGroup, BaseMessages.getString(PKG,
+                        "NTripleGeneratorStep.PredicateField.Label"));
         wInputObject = appendComboVar(wInputPredicate, defModListener,
-                wInputGroup, BaseMessages.getString(PKG, "NTripleGeneratorStep.ObjectField.Label"));
+                wInputGroup, BaseMessages.getString(PKG,
+                        "NTripleGeneratorStep.ObjectField.Label"));
         wInnerIsLiteral = swthlp.appendCheckboxRow(wInputGroup, wInputObject,
-                BaseMessages.getString(PKG, "NTripleGeneratorStep.LiteralCheckField.Label"), new SelectionListener()
+                BaseMessages.getString(PKG,
+                        "NTripleGeneratorStep.LiteralCheckField.Label"),
+                new SelectionListener()
                 {
                     @Override
                     public void widgetDefaultSelected(SelectionEvent arg0)
@@ -114,13 +119,17 @@ public class NTripleGeneratorStepDialog extends BaseStepDialog implements
                     }
                 });
         wInputDataType = appendComboVar(wInnerIsLiteral, defModListener,
-                wInputGroup, BaseMessages.getString(PKG, "NTripleGeneratorStep.LiteralTypeField.Label"));
+                wInputGroup, BaseMessages.getString(PKG,
+                        "NTripleGeneratorStep.LiteralTypeField.Label"));
         wInputLangTag = appendComboVar(wInputDataType, defModListener,
-                wInputGroup, BaseMessages.getString(PKG, "NTripleGeneratorStep.LangtagField.Label"));
+                wInputGroup, BaseMessages.getString(PKG,
+                        "NTripleGeneratorStep.LangtagField.Label"));
 
-        wOutputGroup = swthlp.appendGroup(shell, wInputGroup, BaseMessages.getString(PKG, "NTripleGeneratorStep.Group.Output.Label"));
+        wOutputGroup = swthlp.appendGroup(shell, wInputGroup, BaseMessages
+                .getString(PKG, "NTripleGeneratorStep.Group.Output.Label"));
         wInnerKeepInput = swthlp.appendCheckboxRow(wOutputGroup, wOutputGroup,
-                BaseMessages.getString(PKG, "NTripleGeneratorStep.PassCheckField.Label"),
+                BaseMessages.getString(PKG,
+                        "NTripleGeneratorStep.PassCheckField.Label"),
                 new SelectionListener()
                 {
                     @Override
@@ -136,7 +145,9 @@ public class NTripleGeneratorStepDialog extends BaseStepDialog implements
                     }
                 });
         wOutputNTriple = swthlp.appendTextVarRow(wOutputGroup, wInnerKeepInput,
-                BaseMessages.getString(PKG, "NTripleGeneratorStep.NTripleField.Label"), defModListener);
+                BaseMessages.getString(PKG,
+                        "NTripleGeneratorStep.NTripleField.Label"),
+                defModListener);
 
         return wOutputGroup;
     }
@@ -193,7 +204,8 @@ public class NTripleGeneratorStepDialog extends BaseStepDialog implements
 
         // Adiciona um label e um input text no topo do dialog shell
         wlStepname = new Label(shell, SWT.RIGHT);
-        wlStepname.setText(BaseMessages.getString(PKG, "NTripleGeneratorStep.StepNameField.Label"));
+        wlStepname.setText(BaseMessages.getString(PKG,
+                "NTripleGeneratorStep.StepNameField.Label"));
         props.setLook(wlStepname);
 
         fdlStepname = new FormData();
@@ -221,9 +233,9 @@ public class NTripleGeneratorStepDialog extends BaseStepDialog implements
         wOK = new Button(shell, SWT.PUSH);
         wOK.setText(BaseMessages.getString(PKG, "NTripleGeneratorStep.Btn.OK")); //$NON-NLS-1$
         wCancel = new Button(shell, SWT.PUSH);
-        wCancel.setText(BaseMessages.getString(PKG, "NTripleGeneratorStep.Btn.Cancel")); //$NON-NLS-1$
-        setButtonPositions(new Button[]
-        { wOK, wCancel }, margin, lastControl);
+        wCancel.setText(BaseMessages.getString(PKG,
+                "NTripleGeneratorStep.Btn.Cancel")); //$NON-NLS-1$
+        setButtonPositions(new Button[] { wOK, wCancel }, margin, lastControl);
 
         // Add listeners
         lsCancel = new Listener()
@@ -270,11 +282,11 @@ public class NTripleGeneratorStepDialog extends BaseStepDialog implements
 
         // Set the shell size, based upon previous time...
         setSize();
-        
+
         // Alarga um pouco mais a janela
         Rectangle shellBounds = shell.getBounds();
         shellBounds.width += 5;
-        shell.setBounds(shellBounds);        
+        shell.setBounds(shellBounds);
 
         input.setChanged(changed);
 

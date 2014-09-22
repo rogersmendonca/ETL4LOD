@@ -88,9 +88,9 @@ public class DataPropertyMappingStepMeta extends BaseStepMeta implements
     private String langTagOutputFieldName;
     private boolean keepInputFields;
 
-    //private String endpointUri;
-    //private String defaultGraph;
-    //private DataTable<String> prefixes;
+    // private String endpointUri;
+    // private String defaultGraph;
+    // private DataTable<String> prefixes;
 
     public DataPropertyMappingStepMeta()
     {
@@ -157,63 +157,66 @@ public class DataPropertyMappingStepMeta extends BaseStepMeta implements
 
             switch (version)
             {
-            case 1:
-                rdfTypeUris = (List<String>) data.get(Field.RDF_TYPE_URIS
-                        .name());
-                subjectUriFieldName = (String) data
-                        .get(Field.SUBJECT_URI_FIELD_NAME.name());
-                mapTable = (DataTable<String>) data.get(Field.MAP_TABLE.name());
+                case 1:
+                    rdfTypeUris = (List<String>) data.get(Field.RDF_TYPE_URIS
+                            .name());
+                    subjectUriFieldName = (String) data
+                            .get(Field.SUBJECT_URI_FIELD_NAME.name());
+                    mapTable = (DataTable<String>) data.get(Field.MAP_TABLE
+                            .name());
 
-                subjectOutputFieldName = (String) data
-                        .get(Field.SUBJECT_OUT_FIELD_NAME.name());
-                predicateOutputFieldName = (String) data
-                        .get(Field.PREDICATE_OUT_FIELD_NAME.name());
-                objectOutputFieldName = (String) data
-                        .get(Field.OBJECT_OUT_FIELD_NAME.name());
-                keepInputFields = (Boolean) data.get(Field.KEEP_INPUT_FIELDS
-                        .name());
+                    subjectOutputFieldName = (String) data
+                            .get(Field.SUBJECT_OUT_FIELD_NAME.name());
+                    predicateOutputFieldName = (String) data
+                            .get(Field.PREDICATE_OUT_FIELD_NAME.name());
+                    objectOutputFieldName = (String) data
+                            .get(Field.OBJECT_OUT_FIELD_NAME.name());
+                    keepInputFields = (Boolean) data
+                            .get(Field.KEEP_INPUT_FIELDS.name());
 
-                break;
-            case 2:
-                rdfTypeUris = (List<String>) data.get(Field.RDF_TYPE_URIS
-                        .name());
-                subjectUriFieldName = (String) data
-                        .get(Field.SUBJECT_URI_FIELD_NAME.name());
-                mapTable = (DataTable<String>) data.get(Field.MAP_TABLE.name());
+                    break;
+                case 2:
+                    rdfTypeUris = (List<String>) data.get(Field.RDF_TYPE_URIS
+                            .name());
+                    subjectUriFieldName = (String) data
+                            .get(Field.SUBJECT_URI_FIELD_NAME.name());
+                    mapTable = (DataTable<String>) data.get(Field.MAP_TABLE
+                            .name());
 
-                subjectOutputFieldName = (String) data
-                        .get(Field.SUBJECT_OUT_FIELD_NAME.name());
-                predicateOutputFieldName = (String) data
-                        .get(Field.PREDICATE_OUT_FIELD_NAME.name());
-                objectOutputFieldName = (String) data
-                        .get(Field.OBJECT_OUT_FIELD_NAME.name());
-                datatypeOutputFieldName = (String) data
-                        .get(Field.DATATYPE_OUT_FIELD_NAME.name());
-                keepInputFields = (Boolean) data.get(Field.KEEP_INPUT_FIELDS
-                        .name());
-                break;
-            case 3:
-                rdfTypeUris = (List<String>) data.get(Field.RDF_TYPE_URIS
-                        .name());
-                subjectUriFieldName = (String) data
-                        .get(Field.SUBJECT_URI_FIELD_NAME.name());
-                mapTable = (DataTable<String>) data.get(Field.MAP_TABLE.name());
+                    subjectOutputFieldName = (String) data
+                            .get(Field.SUBJECT_OUT_FIELD_NAME.name());
+                    predicateOutputFieldName = (String) data
+                            .get(Field.PREDICATE_OUT_FIELD_NAME.name());
+                    objectOutputFieldName = (String) data
+                            .get(Field.OBJECT_OUT_FIELD_NAME.name());
+                    datatypeOutputFieldName = (String) data
+                            .get(Field.DATATYPE_OUT_FIELD_NAME.name());
+                    keepInputFields = (Boolean) data
+                            .get(Field.KEEP_INPUT_FIELDS.name());
+                    break;
+                case 3:
+                    rdfTypeUris = (List<String>) data.get(Field.RDF_TYPE_URIS
+                            .name());
+                    subjectUriFieldName = (String) data
+                            .get(Field.SUBJECT_URI_FIELD_NAME.name());
+                    mapTable = (DataTable<String>) data.get(Field.MAP_TABLE
+                            .name());
 
-                subjectOutputFieldName = (String) data
-                        .get(Field.SUBJECT_OUT_FIELD_NAME.name());
-                predicateOutputFieldName = (String) data
-                        .get(Field.PREDICATE_OUT_FIELD_NAME.name());
-                objectOutputFieldName = (String) data
-                        .get(Field.OBJECT_OUT_FIELD_NAME.name());
-                datatypeOutputFieldName = (String) data
-                        .get(Field.DATATYPE_OUT_FIELD_NAME.name());
-                langTagOutputFieldName = (String) data
-                        .get(Field.LANGTAG_OUT_FIELD_NAME.name());
-                keepInputFields = (Boolean) data.get(Field.KEEP_INPUT_FIELDS
-                        .name());
-                break;
-            default:
-                setDefault();
+                    subjectOutputFieldName = (String) data
+                            .get(Field.SUBJECT_OUT_FIELD_NAME.name());
+                    predicateOutputFieldName = (String) data
+                            .get(Field.PREDICATE_OUT_FIELD_NAME.name());
+                    objectOutputFieldName = (String) data
+                            .get(Field.OBJECT_OUT_FIELD_NAME.name());
+                    datatypeOutputFieldName = (String) data
+                            .get(Field.DATATYPE_OUT_FIELD_NAME.name());
+                    langTagOutputFieldName = (String) data
+                            .get(Field.LANGTAG_OUT_FIELD_NAME.name());
+                    keepInputFields = (Boolean) data
+                            .get(Field.KEEP_INPUT_FIELDS.name());
+                    break;
+                default:
+                    setDefault();
             }
         }
         catch (Throwable e)
@@ -263,65 +266,70 @@ public class DataPropertyMappingStepMeta extends BaseStepMeta implements
 
         switch (version)
         {
-        case 3:
-            langTagOutputFieldName = repository.getStepAttributeString(
-                    stepIdInRepository, Field.LANGTAG_OUT_FIELD_NAME.name());
-        case 2:
-            datatypeOutputFieldName = repository.getStepAttributeString(
-                    stepIdInRepository, Field.DATATYPE_OUT_FIELD_NAME.name());
-        case 1:
-            int nrRdfTypeUris = (int) repository.countNrStepAttributes(
-                    stepIdInRepository, Field.RDF_TYPE_URIS.name());
-            rdfTypeUris = new ArrayList<String>();
-            for (int i = 0; i < nrRdfTypeUris; i++)
-            {
-                String item = repository.getStepAttributeString(
-                        stepIdInRepository, i, Field.RDF_TYPE_URIS.name());
-                rdfTypeUris.add(item);
-            }
-            subjectUriFieldName = repository.getStepAttributeString(
-                    stepIdInRepository, Field.SUBJECT_URI_FIELD_NAME.name());
-            int nrLines = (int) repository.getStepAttributeInteger(
-                    stepIdInRepository, "nr_lines");
-            mapTable = new DataTable<String>(Field.MAP_TABLE.name(),
-                    Field.MAP_TABLE_PREDICATE_FIELD_NAME.name(),
-                    Field.MAP_TABLE_PREDICATE_URI.name(),
-                    Field.MAP_TABLE_OBJECT_FIELD_NAME.name(),
-                    Field.MAP_TABLE_TYPED_LITERAL.name(),
-                    Field.MAP_TABLE_LANGUAGE_TAG.name(),
-                    Field.MAP_TABLE_LANGTAG_FIELD_NAME.name());
-            String[] fields = mapTable.getHeader().toArray(new String[0]);
-            /*
-            { Field.MAP_TABLE_PREDICATE_FIELD_NAME.name(),
-                    Field.MAP_TABLE_PREDICATE_URI.name(),
-                    Field.MAP_TABLE_OBJECT_FIELD_NAME.name(),
-                    Field.MAP_TABLE_TYPED_LITERAL.name(),
-                    Field.MAP_TABLE_LANGUAGE_TAG.name(),
-                    Field.MAP_TABLE_LANGTAG_FIELD_NAME.name() };
-                    */
-            for (int i = 0; i < nrLines; i++)
-            {
-                int nrfields = fields.length;
-                String[] line = new String[nrfields];
-
-                for (int f = 0; f < nrfields; f++)
+            case 3:
+                langTagOutputFieldName = repository
+                        .getStepAttributeString(stepIdInRepository,
+                                Field.LANGTAG_OUT_FIELD_NAME.name());
+            case 2:
+                datatypeOutputFieldName = repository.getStepAttributeString(
+                        stepIdInRepository,
+                        Field.DATATYPE_OUT_FIELD_NAME.name());
+            case 1:
+                int nrRdfTypeUris = (int) repository.countNrStepAttributes(
+                        stepIdInRepository, Field.RDF_TYPE_URIS.name());
+                rdfTypeUris = new ArrayList<String>();
+                for (int i = 0; i < nrRdfTypeUris; i++)
                 {
-                    line[f] = repository.getStepAttributeString(
-                            stepIdInRepository, i, fields[f]);
+                    String item = repository.getStepAttributeString(
+                            stepIdInRepository, i, Field.RDF_TYPE_URIS.name());
+                    rdfTypeUris.add(item);
                 }
-                mapTable.add(line);
-            }
-            subjectOutputFieldName = repository.getStepAttributeString(
-                    stepIdInRepository, Field.SUBJECT_OUT_FIELD_NAME.name());
-            predicateOutputFieldName = repository.getStepAttributeString(
-                    stepIdInRepository, Field.PREDICATE_OUT_FIELD_NAME.name());
-            objectOutputFieldName = repository.getStepAttributeString(
-                    stepIdInRepository, Field.OBJECT_OUT_FIELD_NAME.name());
-            keepInputFields = repository.getStepAttributeBoolean(
-                    stepIdInRepository, Field.KEEP_INPUT_FIELDS.name());
-            break;
-        default:
-            setDefault();
+                subjectUriFieldName = repository
+                        .getStepAttributeString(stepIdInRepository,
+                                Field.SUBJECT_URI_FIELD_NAME.name());
+                int nrLines = (int) repository.getStepAttributeInteger(
+                        stepIdInRepository, "nr_lines");
+                mapTable = new DataTable<String>(Field.MAP_TABLE.name(),
+                        Field.MAP_TABLE_PREDICATE_FIELD_NAME.name(),
+                        Field.MAP_TABLE_PREDICATE_URI.name(),
+                        Field.MAP_TABLE_OBJECT_FIELD_NAME.name(),
+                        Field.MAP_TABLE_TYPED_LITERAL.name(),
+                        Field.MAP_TABLE_LANGUAGE_TAG.name(),
+                        Field.MAP_TABLE_LANGTAG_FIELD_NAME.name());
+                String[] fields = mapTable.getHeader().toArray(new String[0]);
+                /*
+                 * { Field.MAP_TABLE_PREDICATE_FIELD_NAME.name(),
+                 * Field.MAP_TABLE_PREDICATE_URI.name(),
+                 * Field.MAP_TABLE_OBJECT_FIELD_NAME.name(),
+                 * Field.MAP_TABLE_TYPED_LITERAL.name(),
+                 * Field.MAP_TABLE_LANGUAGE_TAG.name(),
+                 * Field.MAP_TABLE_LANGTAG_FIELD_NAME.name() };
+                 */
+                for (int i = 0; i < nrLines; i++)
+                {
+                    int nrfields = fields.length;
+                    String[] line = new String[nrfields];
+
+                    for (int f = 0; f < nrfields; f++)
+                    {
+                        line[f] = repository.getStepAttributeString(
+                                stepIdInRepository, i, fields[f]);
+                    }
+                    mapTable.add(line);
+                }
+                subjectOutputFieldName = repository
+                        .getStepAttributeString(stepIdInRepository,
+                                Field.SUBJECT_OUT_FIELD_NAME.name());
+                predicateOutputFieldName = repository.getStepAttributeString(
+                        stepIdInRepository,
+                        Field.PREDICATE_OUT_FIELD_NAME.name());
+                objectOutputFieldName = repository.getStepAttributeString(
+                        stepIdInRepository, Field.OBJECT_OUT_FIELD_NAME.name());
+                keepInputFields = repository.getStepAttributeBoolean(
+                        stepIdInRepository, Field.KEEP_INPUT_FIELDS.name());
+                break;
+            default:
+                setDefault();
         }
     }
 
@@ -366,7 +374,8 @@ public class DataPropertyMappingStepMeta extends BaseStepMeta implements
             // Map Table
             int linhas = (int) mapTable.size();
             int colunas = mapTable.getHeader().size();
-            repository.saveStepAttribute(idOfTransformation, idOfStep, "nr_lines", linhas);
+            repository.saveStepAttribute(idOfTransformation, idOfStep,
+                    "nr_lines", linhas);
             for (int i = 0; i < linhas; i++)
             {
                 for (int f = 0; f < colunas; f++)
