@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+   id="SparqlUpdateOutput"
+   iconfile="iconSparqlInsert.png"
+   description="Sparql Update Output"
+   tooltip="Insert triples in a Triple Store (e.g. Virtuoso) through a SPARQL 1.1 Endpoint."
+   category="LinkedDataBR"
+   classname="br.ufrj.ppgi.greco.kettle.SparqlUpdateInsertStepMeta">
+   <libraries>
+		<library name="SparqlUpdateOutput.jar"/>
+		<library name="lib/KettlePluginTools-1.0.jar"/>
+		<library name="lib/apache-any23-core-2.2.jar"/>
+		<library name="lib/apache-any23-api-2.2.jar"/>
+		<library name="lib/apache-any23-csvutils-2.2.jar"/>
+		<library name="lib/apache-any23-encoding-2.2.jar"/>
+		<library name="lib/apache-any23-mime-2.2.jar"/>
+		<library name="lib/apache-any23-nquads-1.1.jar"/>
+		<library name="lib/httpclient-4.5.6.jar"/>
+		<library name="lib/httpclient-cache-4.5.6.jar"/>
+		<library name="lib/httpcore-4.4.10.jar"/>
+		<library name="lib/jena-core-3.8.0.jar"/>
+		<library name="lib/jena-base-3.8.0.jar"/>
+		<library name="lib/jena-shaded-guava-3.8.0.jar"/>
+    </libraries>
+</plugin>

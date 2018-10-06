@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+   id="SparqlRunQuery"
+   iconfile="iconSparqlRunQuery.png"
+   description="Sparql Run Query"
+   tooltip="Run a Sparql Query through a SPARQL 1.1 Endpoint."
+   category="LinkedDataBR"
+   classname="br.ufrj.ppgi.greco.kettle.SparqlRunQueryStepMeta">
+   <libraries>
+		<library name="SparqlRunQuery.jar"/>		
+		<library name="lib/KettlePluginTools-1.0.jar"/>
+		<library name="lib/jena-core-3.8.0.jar"/>
+		<library name="lib/jena-base-3.8.0.jar"/>
+		<library name="lib/jena-shaded-guava-3.8.0.jar"/>
+    </libraries>
+</plugin>

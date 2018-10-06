@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>br.ufrj.ppgi.greco.kettle</groupId>
+	<artifactId>plugins</artifactId>
+	<packaging>pom</packaging>
+	<version>2.0</version>
+
+	<name>ETL4LOD</name>
+	<description>Plugins do Kettle para uso de RDF</description>
+	<url>https://github.com/johncurcio/etl4lod.git</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+
+
+		<pdi.home>C:/Users/jfc29/Downloads/data-integration</pdi.home>
+		<pdi.plugin.dir>plugins/steps/${project.name}</pdi.plugin.dir>
+		<pdi.plugin.lib_name>${project.artifactId}</pdi.plugin.lib_name>
+
+		<!-- To update any dependency, update their version here -->
+		<xstream.version>1.4.10</xstream.version>
+		<xstream.xmlpull.version>1.1.3.1</xstream.xmlpull.version>
+
+		<apache.http.version>4.1.1</apache.http.version>
+		<apache.httpclient.version>4.5.6</apache.httpclient.version>
+		<apache.httpcore.version>4.4.10</apache.httpcore.version>
+		<apache.jena.version>3.8.0</apache.jena.version>
+
+		<pdi.version>9.0.0.0-SNAPSHOT</pdi.version>
+		
+		<any23.version>2.2</any23.version>
+		
+		<json.version>20180813</json.version>
+		<jackson.version>2.9.7</jackson.version>
+		<json-ld.version>0.12.1</json-ld.version>
+
+		<h2.database.version>1.4.178</h2.database.version>
+		<antidot.db2triples.version>1.0.2</antidot.db2triples.version>
+		<openrdf.sesame.version>2.7.13</openrdf.sesame.version>
+		<xml.apis.version>1.0.b2</xml.apis.version>
+		<org.eclipse.swt.version>3.7</org.eclipse.swt.version>
+		<commons.lang.version>2.6</commons.lang.version>
+		<mysql.version>5.1.35</mysql.version>
+		<psql.version>9.1-901.jdbc4</psql.version>
+		<slf4j.version>1.7.6</slf4j.version>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>pentaho-public</id>
+			<name>Pentaho Public</name>
+			<url>http://nexus.pentaho.org/content/groups/omni</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>project.local</id>
+			<name>project</name>
+			<url>file:${project.basedir}/repo</url>
+		</repository>
+
+		<repository>
+			<id>mvn-repo</id>
+			<name>Maven Repository</name>
+			<url>https://mvnrepository.com/artifact/</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>pentaho-public</id>
+			<name>Pentaho Public</name>
+			<url>http://nexus.pentaho.org/content/groups/omni</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>pentaho-kettle</groupId>
+			<artifactId>kettle-core</artifactId>
+			<version>${pdi.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>pentaho-kettle</groupId>
+			<artifactId>kettle-engine</artifactId>
+			<version>${pdi.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>pentaho-kettle</groupId>
+			<artifactId>kettle-ui-swt</artifactId>
+			<version>${pdi.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.codehaus.janino</groupId>
+			<artifactId>janino</artifactId>
+			<version>2.5.16</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>${psql.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>${h2.database.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-vfs</groupId>
+			<artifactId>commons-vfs</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>br.ufrj.ppgi.greco.kettle</groupId>
+			<artifactId>KettlePluginTools</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+	</dependencies>
+
+	<modules>
+		<module>Annotator</module>
+		<module>DataPropertyMapping</module>
+		<module>ntriplegenerator</module>
+		<module>ObjectPropertyMapping</module>
+		<module>SparqlEndpoint</module>
+		<module>SparqlRunQuery</module>
+		<module>SparqlUpdateOutput</module>
+		<module>TurtleGenerator</module>
+  </modules>
+</project>
