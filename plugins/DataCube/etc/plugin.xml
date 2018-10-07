@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+   id="DataCubePlugin"
+   iconfile="icon.png"
+   description="DataCubeTransformation"
+   tooltip="Gera codigo no formato Data Cube"
+   category="LinkedDataBR"
+   classname="br.ufrj.ppgi.greco.kettle.DataCubeStepMeta">
+   <libraries>
+		<library name="DataCube.jar"/>
+		<library name="lib/KettlePluginTools-1.0.jar"/>
+		<library name="lib/xstream-1.4.10.jar"/>	
+		<library name="lib/xmlpull-1.1.3.1.jar"/>
+	</libraries>
+</plugin>
