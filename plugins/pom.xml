@@ -180,5 +180,6 @@
 		<module>SparqlRunQuery</module>
 		<module>SparqlUpdateOutput</module>
 		<module>TurtleGenerator</module>
+		<module>DataCube</module>
   </modules>
 </project>
