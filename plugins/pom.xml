@@ -181,5 +181,6 @@
 		<module>SparqlUpdateOutput</module>
 		<module>TurtleGenerator</module>
 		<module>DataCube</module>
+		<module>OwlInput</module>
   </modules>
 </project>

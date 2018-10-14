@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+   id="OwlInput"
+   iconfile="icon.png"
+   description="OWL Input"
+   tooltip="Reads .owl files and URI"
+   category="LinkedDataBR"
+   classname="br.ufrj.ppgi.greco.kettle.OwlInputStepMeta">
+		<libraries>
+    		<library name="OwlInput.jar"/>
+			<library name="lib/KettlePluginTools-1.0.jar"/>
+			<library name="lib/httpcore-4.4.10.jar"/>
+			<library name="lib/httpclient-4.5.6.jar"/>
+			<library name="lib/httpclient-cache-4.5.6.jar"/>
+			
+			<library name="lib/jena-core-2.12.0.jar"/>
+			<library name="lib/jena-arq-2.12.0.jar"/>
+			<library name="lib/jena-iri-1.1.0.jar"/>
+			
+			<library name="lib/json-20180813.jar"/>
+			<library name="lib/jsonld-java-0.12.1.jar"/>
+			<library name="lib/jackson-core-2.9.7.jar"/>
+			<library name="lib/jackson-databind-2.9.7.jar"/>
+			<library name="lib/jackson-annotations-2.9.7.jar"/>
+			
+			<library name="lib/xstream-1.4.10.jar"/>
+			<library name="lib/xmlpull-1.1.3.1.jar"/>
+		</libraries>
+</plugin>
