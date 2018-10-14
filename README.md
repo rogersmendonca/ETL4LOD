@@ -1,4 +1,4 @@
-![](.gitbook/assets/logo_big.png)
+![](img/logo_big.png)
 
 ETL4LOD+ é uma extensão do Kettle baseada no ETL4LOD para trabalhar com Linked Open Data. 
 
