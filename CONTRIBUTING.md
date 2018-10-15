@@ -1,4 +1,4 @@
-# Contributing
+# Contribuindo
 
 Para contribuir com este repositório, por favor primeiro crie uma issue e discuta se essa mudança é necessária antes de fazer a mudança. 
 
