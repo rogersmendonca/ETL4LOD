@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>br.ufrj.ppgi.greco.kettle</groupId>
@@ -30,11 +31,13 @@
 		<apache.httpclient.version>4.5.6</apache.httpclient.version>
 		<apache.httpcore.version>4.4.10</apache.httpcore.version>
 		<apache.jena.version>3.8.0</apache.jena.version>
+		<apache.commons-compress.version>1.13</apache.commons-compress.version>
+		<apache.libthrift.version>0.11.0</apache.libthrift.version>
 
 		<pdi.version>9.0.0.0-SNAPSHOT</pdi.version>
-		
+
 		<any23.version>2.2</any23.version>
-		
+
 		<json.version>20180813</json.version>
 		<jackson.version>2.9.7</jackson.version>
 		<json-ld.version>0.12.1</json-ld.version>
@@ -179,8 +182,8 @@
 		<module>SparqlEndpoint</module>
 		<module>SparqlRunQuery</module>
 		<module>SparqlUpdateOutput</module>
+		<module>OwlInput</module>
 		<module>TurtleGenerator</module>
 		<module>DataCube</module>
-		<module>OwlInput</module>
-  </modules>
+	</modules>
 </project>

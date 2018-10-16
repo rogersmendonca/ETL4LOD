@@ -7,10 +7,11 @@ import org.pentaho.di.core.row.ValueMetaInterface;
 import org.pentaho.di.core.row.value.ValueMetaBoolean;
 import org.pentaho.di.core.row.value.ValueMetaString;
 
-import com.hp.hpl.jena.query.Query;
-import com.hp.hpl.jena.query.QueryExecution;
-import com.hp.hpl.jena.query.QueryExecutionFactory;
-import com.hp.hpl.jena.query.QueryFactory;
+import org.apache.jena.query.Query;
+import org.apache.jena.query.QueryExecution;
+import org.apache.jena.query.QueryExecutionFactory;
+import org.apache.jena.query.QueryFactory;
+import org.apache.jena.query.QueryParseException;
 
 /**
  * Contem metodos comuns utilizados pelas classes do plugin Sparql Endpoint
@@ -68,9 +69,9 @@ public class SparqlStepUtils {
 	public static String validateSparql(String queryString) {
 		try {
 			Query query = QueryFactory.create(queryString);
-			query.validate();
+			QueryExecutionFactory.create(query);
 			return "Query is valid.";
-		} catch (Throwable e) {
+		} catch (QueryParseException e) {
 			return e.getMessage();
 		}
 	}
@@ -158,5 +159,12 @@ public class SparqlStepUtils {
 		sb.append(rt.totalMemory() - rt.freeMemory());
 
 		return sb.toString();
+	}
+
+	public static void main(String[] args){
+		String validation = validateSparql("select * from <http://lodbr.ufrj.br/lista_suja> where { ?s ?p ?o . }");
+		System.out.println(validation);
+		List<ValueMetaInterface> outVars = SparqlStepUtils.generateOutputVars("",
+				"select * from <http://lodbr.ufrj.br/lista_suja> where { ?s ?p ?o . }");
 	}
 }

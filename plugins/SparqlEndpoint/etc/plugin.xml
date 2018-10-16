@@ -9,15 +9,14 @@
    <libraries>
 		<library name="SparqlEndpoint.jar"/>
 		<library name="lib/KettlePluginTools-1.0.jar"/>
-		<library name="lib/arq-2.8.8.jar"/>
-		<library name="lib/icu4j-3.4.4.jar"/>
-		<library name="lib/iri-0.8.jar"/>
-		<library name="lib/jena-2.6.4.jar"/>
-		<library name="lib/lucene-core-2.3.1.jar"/>
-		<library name="lib/slf4j-api-1.5.8.jar"/>
-		<library name="lib/slf4j-log4j12-1.5.8.jar"/>
-		<library name="lib/stax-api-1.0.1.jar"/>
-		<library name="lib/wstx-asl-3.2.9.jar"/>
+		<library name="lib/jena-core-3.8.0.jar"/>
+		<library name="lib/jena-base-3.8.0.jar"/>
+		<library name="lib/jena-shaded-guava-3.8.0.jar"/>
+		<library name="lib/jena-arq-3.8.0.jar"/>
+		<library name="lib/jena-iri-3.8.0.jar"/>
+		<library name="lib/libthrift-0.11.0.jar"/>
+		<library name="lib/commons-compress-1.13.jar"/>
+		
 		<library name="lib/xstream-1.4.10.jar"/>
 		<library name="lib/xmlpull-1.1.3.1.jar"/>	
     </libraries>
