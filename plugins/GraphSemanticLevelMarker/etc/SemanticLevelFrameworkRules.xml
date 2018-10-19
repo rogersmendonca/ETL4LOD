@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SemanticLevelFramework>
+    <Frame id="1">
+      <Rule>s.getLiteral() != null</Rule>
+      <LevelValue>1</LevelValue>
+      <LevelDescription>sstamp:low</LevelDescription>
+   </Frame>
+   <Frame id="2">
+      <Rule>isVocabulary</Rule>
+      <LevelValue>2</LevelValue>
+      <LevelDescription>sstamp:medium</LevelDescription>
+   </Frame>
+      <Frame id="3">
+      <Rule>isOntology</Rule>
+      <LevelValue>3</LevelValue>
+      <LevelDescription>sstamp:high</LevelDescription>
+   </Frame>
+
+</SemanticLevelFramework>
+

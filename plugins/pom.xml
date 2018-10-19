@@ -185,5 +185,8 @@
 		<module>OwlInput</module>
 		<module>TurtleGenerator</module>
 		<module>DataCube</module>
+		<module>GraphSparqlEndpoint</module>
+		<module>GraphSemanticLevelMarker</module>
+		<module>GraphTriplify</module>
 	</modules>
 </project>

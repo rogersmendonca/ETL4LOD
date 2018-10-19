@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+   id="GraphSemanticLevelMarkerPlugin"
+   iconfile="iconGraphSemanticLevelMarker.png"
+   description="Graph Semantic Level Marker"
+   tooltip="Reads a RDF Graph, evaluate its semantic expressivity level and creates a new triple stamping its level."
+   category="LinkedDataBR"
+   classname="br.ufrj.ppgi.greco.kettle.GraphSemanticLevelMarkerStepMeta">
+   <libraries>
+		<library name="GraphSemanticLevelMarker.jar"/>
+		<library name="lib/KettlePluginTools-1.0.jar"/>
+		<library name="lib/jena-core-3.8.0.jar"/>
+		<library name="lib/jena-base-3.8.0.jar"/>
+		<library name="lib/jena-shaded-guava-3.8.0.jar"/>
+	</libraries>
+</plugin>

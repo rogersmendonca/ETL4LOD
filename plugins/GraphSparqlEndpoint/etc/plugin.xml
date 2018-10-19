@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+   id="GraphSparqlEndpointPlugin"
+   iconfile="iconGraphSparqlendpoint.png"
+   description="Graph Sparql Query"
+   tooltip="Execute a DESCRIBE or a CONSTRUCT command on SPARQL 1.1 Endpoint and returns SubjectItem RDF Graphs."
+   category="LinkedDataBR"
+   classname="br.ufrj.ppgi.greco.kettle.GraphSparqlStepMeta">
+   <libraries>
+		<library name="GraphSparqlEndpoint.jar"/>
+		<library name="lib/KettlePluginTools-1.0.jar"/>
+		<library name="lib/jena-core-3.8.0.jar"/>
+		<library name="lib/jena-base-3.8.0.jar"/>
+		<library name="lib/jena-shaded-guava-3.8.0.jar"/>
+		<library name="lib/jena-arq-3.8.0.jar"/>
+		<library name="lib/jena-iri-3.8.0.jar"/>
+		<library name="lib/libthrift-0.11.0.jar"/>
+		<library name="lib/commons-compress-1.13.jar"/>
+		<library name="lib/xstream-1.4.10.jar"/>	
+		<library name="lib/xmlpull-1.1.3.1.jar"/>
+    </libraries>
+</plugin>

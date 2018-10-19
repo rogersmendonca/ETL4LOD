@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+   id="GraphTriplifyPlugin"
+   iconfile="iconGraphTriplify.png"
+   description="Graph Triplify"
+   tooltip="Read a RDF Graph and generates the corresponding triples."
+   category="LinkedDataBR"
+   classname="br.ufrj.ppgi.greco.kettle.GraphTriplifyStepMeta">
+   <libraries>
+		<library name="GraphTriplify.jar"/>
+		<library name="lib/KettlePluginTools-1.0.jar"/>
+	</libraries>
+</plugin>
