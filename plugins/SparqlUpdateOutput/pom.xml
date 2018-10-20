@@ -190,15 +190,6 @@
 								</artifactItem>
 
 								<artifactItem>
-									<groupId>org.apache.any23</groupId>
-									<artifactId>apache-any23-nquads</artifactId>
-									<version>1.1</version>
-									<type>jar</type>
-									<overWrite>true</overWrite>
-									<outputDirectory>${project.build.directory}/lib</outputDirectory>
-								</artifactItem>
-
-								<artifactItem>
 									<groupId>org.apache.httpcomponents</groupId>
 									<artifactId>httpclient</artifactId>
 									<version>${apache.http.version}</version>
@@ -279,12 +270,6 @@
 			<groupId>org.apache.any23</groupId>
 			<artifactId>apache-any23-mime</artifactId>
 			<version>${any23.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.any23</groupId>
-			<artifactId>apache-any23-nquads</artifactId>
-			<version>1.1</version>
 		</dependency>
 
 		<dependency>

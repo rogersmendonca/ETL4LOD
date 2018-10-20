@@ -14,7 +14,6 @@
 		<library name="lib/apache-any23-csvutils-{any23.version}.jar"/>
 		<library name="lib/apache-any23-encoding-{any23.version}.jar"/>
 		<library name="lib/apache-any23-mime-{any23.version}.jar"/>
-		<library name="lib/apache-any23-nquads-1.1.jar"/>
 		<library name="lib/httpcore-{apache.httpcore.version}.jar"/>
 		<library name="lib/httpclient-{apache.httpclient.version}.jar"/>
 		<library name="lib/httpclient-cache-{apache.httpclient.version}.jar"/>
