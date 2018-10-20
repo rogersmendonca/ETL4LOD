@@ -36,7 +36,7 @@ Tendo certeza de apontar a variável ``pdi.home`` para a sua instalação do Ket
 
 Por favor, leia [CONTRIBUTING.md](CONTRIBUTING.md) para detalhes de como contribuir com o projeto.
 
-## Versioning
+## Versionamento
 
 Usamos [SemVer](http://semver.org/) para versionamento do ETL4LOD+. Para ver as versões liberadas, entre nas [tags neste repositorio](https://github.com/johncurcio/ETL4LOD-2.0/tags).
 
