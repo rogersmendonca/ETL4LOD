@@ -1,5 +1,7 @@
 ![](img/logo_big.png)
 
+[![GitHub tag](https://img.shields.io/github/tag/expressjs/express.svg)](https://github.com/johncurcio/ETL4LOD-2.0/tags)
+
 ETL4LOD+ é uma extensão do Kettle baseada no [ETL4LOD](https://github.com/rogersmendonca/ETL4LOD) para trabalhar com Linked Open Data. 
 
 ## Usando o Projeto
