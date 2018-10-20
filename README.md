@@ -8,7 +8,7 @@ As versões do projeto estão todas disponíveis em [releases](https://github.co
 
 Para mais detalhes em relação a como os plugins neste repositório funcionam, por favor veja a nossa documentação no gitbook. 
 
-### Prerequisitos
+### Pré-requisitos
 
 Este projeto tem as seguintes dependências:
 
