@@ -9,8 +9,8 @@
    <libraries>
 		<library name="GraphSemanticLevelMarker.jar"/>
 		<library name="lib/KettlePluginTools-1.0.jar"/>
-		<library name="lib/jena-core-3.8.0.jar"/>
-		<library name="lib/jena-base-3.8.0.jar"/>
-		<library name="lib/jena-shaded-guava-3.8.0.jar"/>
+		<library name="lib/jena-core-{apache.jena.version}.jar"/>
+		<library name="lib/jena-base-{apache.jena.version}.jar"/>
+		<library name="lib/jena-shaded-guava-{apache.jena.version}.jar"/>
 	</libraries>
 </plugin>

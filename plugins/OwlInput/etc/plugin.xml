@@ -9,25 +9,25 @@
 		<libraries>
     		<library name="OwlInput.jar"/>
 			<library name="lib/KettlePluginTools-1.0.jar"/>
-			<library name="lib/httpcore-4.4.10.jar"/>
-			<library name="lib/httpclient-4.5.6.jar"/>
-			<library name="lib/httpclient-cache-4.5.6.jar"/>
+			<library name="lib/httpcore-{apache.httpcore.version}.jar"/>
+			<library name="lib/httpclient-{apache.httpclient.version}.jar"/>
+			<library name="lib/httpclient-cache-{apache.httpclient.version}.jar"/>
+						
+			<library name="lib/jena-core-{apache.jena.version}.jar"/>
+			<library name="lib/jena-base-{apache.jena.version}.jar"/>
+			<library name="lib/jena-shaded-guava-{apache.jena.version}.jar"/>
+			<library name="lib/jena-arq-{apache.jena.version}.jar"/>
+			<library name="lib/jena-iri-{apache.jena.version}.jar"/>
+			<library name="lib/libthrift-{apache.libthrift.version}.jar"/>
+			<library name="lib/commons-compress-{apache.commons-compress.version}.jar"/>
 			
-			<library name="lib/jena-core-3.8.0.jar"/>
-			<library name="lib/jena-base-3.8.0.jar"/>
-			<library name="lib/jena-shaded-guava-3.8.0.jar"/>
-			<library name="lib/jena-arq-3.8.0.jar"/>
-			<library name="lib/jena-iri-3.8.0.jar"/>
-			<library name="lib/libthrift-0.11.0.jar"/>
-			<library name="lib/commons-compress-1.13.jar"/>
+			<library name="lib/json-{json.version}.jar"/>
+			<library name="lib/jsonld-java-{json-ld.version}.jar"/>
+			<library name="lib/jackson-core-{jackson.version}.jar"/>
+			<library name="lib/jackson-databind-{jackson.version}.jar"/>
+			<library name="lib/jackson-annotations-{jackson.version}.jar"/>
 			
-			<library name="lib/json-20180813.jar"/>
-			<library name="lib/jsonld-java-0.12.1.jar"/>
-			<library name="lib/jackson-core-2.9.7.jar"/>
-			<library name="lib/jackson-databind-2.9.7.jar"/>
-			<library name="lib/jackson-annotations-2.9.7.jar"/>
-			
-			<library name="lib/xstream-1.4.10.jar"/>
-			<library name="lib/xmlpull-1.1.3.1.jar"/>
+			<library name="lib/xstream-{xstream.version}.jar"/>	
+			<library name="lib/xmlpull-{xmlpull.version}.jar"/>	
 		</libraries>
 </plugin>

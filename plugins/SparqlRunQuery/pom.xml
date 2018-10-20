@@ -63,6 +63,10 @@
 									file="${project.build.directory}/${project.build.finalName}.${project.packaging}"
 									tofile="${pdi.home}/${pdi.plugin.dir}/${pdi.plugin.lib_name}.${project.packaging}"
 									overwrite="true" />
+								<replace token='{apache.jena.version}' value='${apache.jena.version}'
+									dir="${pdi.home}/${pdi.plugin.dir}">
+									<include name="plugin.xml" />
+								</replace>
 							</target>
 						</configuration>
 						<goals>

@@ -160,11 +160,4 @@ public class SparqlStepUtils {
 
 		return sb.toString();
 	}
-
-	public static void main(String[] args){
-		String validation = validateSparql("select * from <http://lodbr.ufrj.br/lista_suja> where { ?s ?p ?o . }");
-		System.out.println(validation);
-		List<ValueMetaInterface> outVars = SparqlStepUtils.generateOutputVars("",
-				"select * from <http://lodbr.ufrj.br/lista_suja> where { ?s ?p ?o . }");
-	}
 }

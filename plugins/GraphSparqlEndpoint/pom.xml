@@ -45,6 +45,26 @@
 									file="${project.build.directory}/${project.build.finalName}.${project.packaging}"
 									tofile="${pdi.home}/${pdi.plugin.dir}/${pdi.plugin.lib_name}.${project.packaging}"
 									overwrite="true" />
+								<replace token='{xstream.version}' value='${xstream.version}'
+									dir="${pdi.home}/${pdi.plugin.dir}">
+									<include name="plugin.xml" />
+								</replace>
+								<replace token='{xmlpull.version}' value='${xstream.xmlpull.version}'
+									dir="${pdi.home}/${pdi.plugin.dir}">
+									<include name="plugin.xml" />
+								</replace>
+								<replace token='{apache.jena.version}' value='${apache.jena.version}'
+									dir="${pdi.home}/${pdi.plugin.dir}">
+									<include name="plugin.xml" />
+								</replace>
+								<replace token='{apache.libthrift.version}' value='${apache.libthrift.version}'
+									dir="${pdi.home}/${pdi.plugin.dir}">
+									<include name="plugin.xml" />
+								</replace>
+								<replace token='{apache.commons-compress.version}'
+									value='${apache.commons-compress.version}' dir="${pdi.home}/${pdi.plugin.dir}">
+									<include name="plugin.xml" />
+								</replace>
 							</target>
 						</configuration>
 						<goals>
@@ -101,7 +121,7 @@
 									<overWrite>true</overWrite>
 									<outputDirectory>${project.build.directory}/lib</outputDirectory>
 								</artifactItem>
-								
+
 								<artifactItem>
 									<groupId>org.apache.jena</groupId>
 									<artifactId>jena-core</artifactId>
@@ -192,7 +212,7 @@
 			<version>${xstream.xmlpull.version}</version>
 		</dependency>
 
-				<dependency>
+		<dependency>
 			<groupId>org.apache.jena</groupId>
 			<artifactId>apache-jena-libs</artifactId>
 			<version>${apache.jena.version}</version>

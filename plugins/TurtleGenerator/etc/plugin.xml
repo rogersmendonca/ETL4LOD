@@ -9,7 +9,7 @@
    <libraries>
 		<library name="TurtleGenerator.jar"/>
 		<library name="lib/KettlePluginTools-1.0.jar"/>
-		<library name="lib/xstream-1.4.10.jar"/>
-		<library name="lib/xmlpull-1.1.3.1.jar"/>	
+		<library name="lib/xstream-{xstream.version}.jar"/>	
+		<library name="lib/xmlpull-{xmlpull.version}.jar"/>
     </libraries>
 </plugin>
