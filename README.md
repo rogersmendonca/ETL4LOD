@@ -1,12 +1,12 @@
 ![](img/logo_big.png)
 
-[![GitHub tag](https://img.shields.io/github/tag/expressjs/express.svg)](https://github.com/johncurcio/ETL4LOD-2.0/tags)
+[![latest release](https://img.shields.io/github/release/johncurcio/ETL4LODPlus.svg?style=for-the-badge)](https://github.com/johncurcio/ETL4LODPlus/releases) [![scrutinizer code quality](https://img.shields.io/scrutinizer/g/johncurcio/ETL4LODPlus.svg?style=for-the-badge)](https://scrutinizer-ci.com/g/johncurcio/ETL4LODPlus/) [![Build Status](https://img.shields.io/scrutinizer/build/g/johncurcio/ETL4LODPlus.svg?style=for-the-badge)](https://scrutinizer-ci.com/g/johncurcio/ETL4LODPlus/build-status/master) [![PRs Welcome](https://img.shields.io/badge/prs-welcome-f23c50.svg?longCache=true&style=for-the-badge)](http://makeapullrequest.com) [![issues open](https://img.shields.io/github/issues/johncurcio/ETL4LODPlus.svg?style=for-the-badge)](https://github.com/johncurcio/ETL4LODPlus/issues) [![MIT License](https://img.shields.io/badge/license-MIT-FF8B0D.svg?longCache=true&style=for-the-badge)](LICENSE) 
 
 ETL4LOD+ é uma extensão do Kettle baseada no [ETL4LOD](https://github.com/rogersmendonca/ETL4LOD) para trabalhar com Linked Open Data. 
 
 ## Usando o Projeto
 
-As versões do projeto estão todas disponíveis em [releases](https://github.com/johncurcio/ETL4LOD-2.0/releases) neste repositório. Para usar uma das releases, basta baixar o ``.tar.gz`` e extrair na pasta ``plugins/`` da sua instalação do Kettle 8.1.
+As versões do projeto estão todas disponíveis em [releases](https://github.com/johncurcio/ETL4LODPlus/releases) neste repositório. Para usar uma das releases, basta baixar o ``.tar.gz`` e extrair na pasta ``plugins/`` da sua instalação do Kettle 8.1.
 
 Para mais detalhes em relação a como os plugins neste repositório funcionam, por favor veja a nossa documentação no gitbook. 
 
@@ -40,7 +40,7 @@ Por favor, leia [CONTRIBUTING.md](CONTRIBUTING.md) para detalhes de como contrib
 
 ## Versionamento
 
-Usamos [SemVer](http://semver.org/) para versionamento do ETL4LOD+. Para ver as versões liberadas, entre nas [tags neste repositorio](https://github.com/johncurcio/ETL4LOD-2.0/tags).
+Usamos [SemVer](http://semver.org/) para versionamento do ETL4LOD+. Para ver as versões liberadas, entre nas [tags neste repositorio](https://github.com/johncurcio/ETL4LODPlus/tags).
 
 ## Licença
 

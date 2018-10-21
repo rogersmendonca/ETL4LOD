@@ -10,7 +10,7 @@
 
 	<name>ETL4LOD</name>
 	<description>Plugins do Kettle para uso de RDF</description>
-	<url>https://github.com/johncurcio/ETL4LOD-2.0.git</url>
+	<url>https://github.com/johncurcio/ETL4LODPlus.git</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
