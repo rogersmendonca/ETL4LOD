@@ -8,6 +8,8 @@ ETL4LOD+ é uma extensão do Kettle baseada no [ETL4LOD](https://github.com/roge
 
 Usar o projeto é tão simples quanto [baixar a versão mais recente dos plugins](https://github.com/johncurcio/ETL4LODPlus/releases) e extrair o ``.tar.gz`` na pasta ``plugins/`` da sua instalação do Kettle 8.1.
 
+## Desenvolvimento
+
 ### Pré-requisitos
 
 Este projeto tem as seguintes dependências:
@@ -34,11 +36,11 @@ Tendo certeza de apontar a variável ``pdi.home`` para a sua instalação do Ket
 
 ## Contribuição
 
-Por favor, leia [CONTRIBUTING.md](CONTRIBUTING.md) para detalhes de como contribuir com o projeto.
+Para mais informações sobre o desenvolvimento, por favor, leia [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Versionamento
 
-Usamos [SemVer](http://semver.org/) para versionamento do ETL4LOD+. Para ver as versões liberadas, entre nas [tags neste repositorio](https://github.com/johncurcio/ETL4LODPlus/tags).
+Usamos [SemVer](http://semver.org/) para versionamento do ETL4LOD+. Para ver as versões liberadas, entre nas [tags deste repositorio](https://github.com/johncurcio/ETL4LODPlus/tags).
 
 ## Licença
 
