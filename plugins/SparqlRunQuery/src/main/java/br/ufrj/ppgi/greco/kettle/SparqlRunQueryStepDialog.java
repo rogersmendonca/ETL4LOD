@@ -27,6 +27,7 @@ import org.pentaho.di.core.exception.KettleStepException;
 import org.pentaho.di.core.row.RowMetaInterface;
 import org.pentaho.di.core.row.ValueMetaInterface;
 import org.pentaho.di.core.util.StringUtil;
+import org.pentaho.di.i18n.BaseMessages;
 import org.pentaho.di.trans.TransMeta;
 import org.pentaho.di.trans.step.BaseStepMeta;
 import org.pentaho.di.trans.step.StepDialogInterface;
@@ -37,9 +38,12 @@ import org.pentaho.di.ui.trans.step.BaseStepDialog;
 import br.ufrj.ppgi.greco.kettle.plugin.tools.swthelper.SwtHelper;
 
 public class SparqlRunQueryStepDialog extends BaseStepDialog implements StepDialogInterface {
+	
+	private static Class<?> PKG = SparqlRunQueryStepMeta.class;
 
 	private SparqlRunQueryStepMeta input;
 	private SwtHelper swthlp;
+	private String dialogTitle;
 
 	private ComboVar wQueryTextFieldName;
 	private TextVar wEndpointUrl;
@@ -53,6 +57,8 @@ public class SparqlRunQueryStepDialog extends BaseStepDialog implements StepDial
 
 		input = (SparqlRunQueryStepMeta) baseStepMeta;
 		swthlp = new SwtHelper(transMeta, this.props);
+		
+		dialogTitle = BaseMessages.getString(PKG, "SparqlRunQueryStep.Title");
 	}
 
 	public String open() {
@@ -78,14 +84,14 @@ public class SparqlRunQueryStepDialog extends BaseStepDialog implements StepDial
 
 		shell.setLayout(formLayout);
 
-		shell.setText("Sparql Insert");
+		shell.setText(this.dialogTitle);
 
 		int middle = props.getMiddlePct();
 		int margin = Const.MARGIN;
 
 		// Adiciona um label e um input text no topo do dialog shell
 		wlStepname = new Label(shell, SWT.RIGHT);
-		wlStepname.setText("Nome do step");
+		wlStepname.setText(BaseMessages.getString(PKG, "SparqlRunQueryStep.StepNameField.Label"));
 		props.setLook(wlStepname);
 
 		fdlStepname = new FormData();
@@ -107,35 +113,35 @@ public class SparqlRunQueryStepDialog extends BaseStepDialog implements StepDial
 		Control lastControl = wStepname;
 
 		// Adiciona
-		Group wGroup1 = swthlp.appendGroup(shell, lastControl, "Query");
+		Group wGroup1 = swthlp.appendGroup(shell, lastControl, BaseMessages.getString(PKG, "SparqlRunQueryStep.Query"));
 		{
-			wQueryTextFieldName = swthlp.appendComboVarRow(wGroup1, null, "Campo com a query", lsMod);
+			wQueryTextFieldName = swthlp.appendComboVarRow(wGroup1, null, BaseMessages.getString(PKG, "SparqlRunQueryStep.Query.Field"), lsMod);
 			wQueryTextFieldName.setItems(this.getFields(ValueMetaInterface.TYPE_STRING));
 
 		}
 
-		Group wGroup2 = swthlp.appendGroup(shell, wGroup1, "Conexão");
+		Group wGroup2 = swthlp.appendGroup(shell, wGroup1, BaseMessages.getString(PKG, "SparqlRunQueryStep.Connection"));
 		{
-			wEndpointUrl = swthlp.appendTextVarRow(wGroup2, null, "URL do Sparql Update Endpoint", lsMod);
+			wEndpointUrl = swthlp.appendTextVarRow(wGroup2, null, BaseMessages.getString(PKG, "SparqlRunQueryStep.Connection.Endpoint"), lsMod);
 
-			wUserName = swthlp.appendTextVarRow(wGroup2, wEndpointUrl, "Usuário", lsMod);
+			wUserName = swthlp.appendTextVarRow(wGroup2, wEndpointUrl, BaseMessages.getString(PKG, "SparqlRunQueryStep.Connection.User"), lsMod);
 
-			wPassword = swthlp.appendTextVarRow(wGroup2, wUserName, "Senha", lsMod, true);
+			wPassword = swthlp.appendTextVarRow(wGroup2, wUserName, BaseMessages.getString(PKG, "SparqlRunQueryStep.Connection.Password"), lsMod, true);
 		}
 
-		Group wGroup3 = swthlp.appendGroup(shell, wGroup2, "Campos de Saída");
+		Group wGroup3 = swthlp.appendGroup(shell, wGroup2, BaseMessages.getString(PKG, "SparqlRunQueryStep.Output"));
 		{
-			wStatusCode = swthlp.appendTextVarRow(wGroup3, null, "Código de status", lsMod);
-			wStatusMsg = swthlp.appendTextVarRow(wGroup3, wStatusCode, "Mensagem de status", lsMod);
+			wStatusCode = swthlp.appendTextVarRow(wGroup3, null, BaseMessages.getString(PKG, "SparqlRunQueryStep.Output.StatusCode"), lsMod);
+			wStatusMsg = swthlp.appendTextVarRow(wGroup3, wStatusCode, BaseMessages.getString(PKG, "SparqlRunQueryStep.Output.StatusMessage"), lsMod);
 		}
 
 		lastControl = wGroup3;
 
 		// Some buttons
 		wOK = new Button(shell, SWT.PUSH);
-		wOK.setText("OK");
+		wOK.setText(BaseMessages.getString(PKG, "SparqlRunQueryStep.Btn.OK"));
 		wCancel = new Button(shell, SWT.PUSH);
-		wCancel.setText("Cancelar");
+		wCancel.setText(BaseMessages.getString(PKG, "SparqlRunQueryStep.Btn.Cancel"));
 
 		setButtonPositions(new Button[] { wOK, wCancel }, margin, lastControl);
 

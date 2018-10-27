@@ -28,6 +28,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.pentaho.di.core.Const;
 import org.pentaho.di.core.util.StringUtil;
+import org.pentaho.di.i18n.BaseMessages;
 import org.pentaho.di.trans.TransMeta;
 import org.pentaho.di.ui.core.widget.ColumnInfo;
 import org.pentaho.di.ui.core.widget.TableView;
@@ -58,11 +59,14 @@ import java.util.regex.Pattern;
 import java.util.logging.*;
 
 public class OwlInputStepDialog extends BaseStepDialog implements StepDialogInterface {
+	
+	private static Class<?> PKG = OwlInputStepMeta.class;
 
 	private OwlInputStepMeta meta;
 	
 	private static final Logger log = Logger.getLogger(OwlInputStep.class.getName());
-
+	
+	private String dialogTitle;
 	private TextVar wHelloFieldName;
 	private TableView wTable;
 	private TableView wVocabTable;
@@ -77,16 +81,18 @@ public class OwlInputStepDialog extends BaseStepDialog implements StepDialogInte
 		super(parent, (BaseStepMeta) in, transMeta, sname);
 		meta = (OwlInputStepMeta) in;
 		swthlp = new SwtHelper(transMeta, this.props);
+		
+		dialogTitle = BaseMessages.getString(PKG, "OwlInputStep.Title");
 	}
 
 	private Control buildContents(Control lastControl, ModifyListener defModListener) {
 		CTabFolder wTabFolder = swthlp.appendTabFolder(shell, lastControl, 90);
 		CTabItem item = new CTabItem(wTabFolder, SWT.NONE);
-		item.setText("Ontologias");
+		item.setText(BaseMessages.getString(PKG, "OwlInputStep.Tab.Owl"));
 		Composite cpt = swthlp.appendComposite(wTabFolder, lastControl);
-		wHelloFieldName = swthlp.appendTextVarRow(cpt, null, "Nome/URI Ontologia", defModListener);
+		wHelloFieldName = swthlp.appendTextVarRow(cpt, null, BaseMessages.getString(PKG, "OwlInputStep.Tab.Owl.Input"), defModListener);
 		Composite btnRow = swthlp.appendButtonsRow(cpt, wHelloFieldName,
-				new String[] { "Adicionar", "Abrir arquivo..." }, new SelectionListener[] { new SelectionListener() {
+				new String[] { BaseMessages.getString(PKG, "OwlInputStep.Tab.Owl.Add"), BaseMessages.getString(PKG, "OwlInputStep.Tab.Owl.Openfile") }, new SelectionListener[] { new SelectionListener() {
 					public void widgetSelected(SelectionEvent arg0) {
 						widgetDefaultSelected(arg0);
 					}
@@ -106,17 +112,17 @@ public class OwlInputStepDialog extends BaseStepDialog implements StepDialogInte
 					}
 				} });
 		ColumnInfo[] columns = new ColumnInfo[] {
-				new ColumnInfo("Prefixo               \u00A0", ColumnInfo.COLUMN_TYPE_TEXT),
-				new ColumnInfo("URI/Arquivo             \u00A0", ColumnInfo.COLUMN_TYPE_TEXT),
-				new ColumnInfo("Descrição                   \u00A0", ColumnInfo.COLUMN_TYPE_TEXT) };
+				new ColumnInfo(BaseMessages.getString(PKG, "OwlInputStep.Tab.Owl.ColumnA"), ColumnInfo.COLUMN_TYPE_TEXT),
+				new ColumnInfo(BaseMessages.getString(PKG, "OwlInputStep.Tab.Owl.ColumnB"), ColumnInfo.COLUMN_TYPE_TEXT),
+				new ColumnInfo(BaseMessages.getString(PKG, "OwlInputStep.Tab.Owl.ColumnC"), ColumnInfo.COLUMN_TYPE_TEXT) };
 		wTable = swthlp.appendTableView(cpt, btnRow, columns, defModListener, 98);
 		item.setControl(cpt);
 		
 		item = new CTabItem(wTabFolder, SWT.NONE);
-		item.setText("Seleção de Ontologias");
+		item.setText(BaseMessages.getString(PKG, "OwlInputStep.Tab.Select"));
 		cpt = swthlp.appendComposite(wTabFolder, lastControl);
 		Composite vocabBtn = swthlp.appendButtonsRow(cpt, wHelloFieldName,
-				new String[] { "Carregar", "Limpar" }, new SelectionListener[] { new SelectionListener() {
+				new String[] { BaseMessages.getString(PKG, "OwlInputStep.Tab.Select.Load"), BaseMessages.getString(PKG, "OwlInputStep.Tab.Select.Clear") }, new SelectionListener[] { new SelectionListener() {
 					public void widgetSelected(SelectionEvent arg0) {
 						widgetDefaultSelected(arg0);
 					}
@@ -136,17 +142,17 @@ public class OwlInputStepDialog extends BaseStepDialog implements StepDialogInte
 					}
 				} });
 		columns = new ColumnInfo[] {
-				new ColumnInfo("Prefixo               \u00A0", ColumnInfo.COLUMN_TYPE_TEXT),
-				new ColumnInfo("URI/Arquivo             \u00A0", ColumnInfo.COLUMN_TYPE_TEXT),
-				new ColumnInfo("Property                   \u00A0", ColumnInfo.COLUMN_TYPE_TEXT), 
-				new ColumnInfo("Type                   \u00A0", ColumnInfo.COLUMN_TYPE_TEXT) };
+				new ColumnInfo(BaseMessages.getString(PKG, "OwlInputStep.Tab.Select.ColumnA"), ColumnInfo.COLUMN_TYPE_TEXT),
+				new ColumnInfo(BaseMessages.getString(PKG, "OwlInputStep.Tab.Select.ColumnB"), ColumnInfo.COLUMN_TYPE_TEXT),
+				new ColumnInfo(BaseMessages.getString(PKG, "OwlInputStep.Tab.Select.ColumnC"), ColumnInfo.COLUMN_TYPE_TEXT), 
+				new ColumnInfo(BaseMessages.getString(PKG, "OwlInputStep.Tab.Select.ColumnD"), ColumnInfo.COLUMN_TYPE_TEXT) };
 		wVocabTable = swthlp.appendTableView(cpt, vocabBtn, columns, defModListener, 98);
 		item.setControl(cpt);
 
 		item = new CTabItem(wTabFolder, SWT.NONE);
-		item.setText("Campos de saída");
+		item.setText(BaseMessages.getString(PKG, "OwlInputStep.Tab.Output"));
 		cpt = swthlp.appendComposite(wTabFolder, lastControl);
-		wKeepInputFields = swthlp.appendCheckboxRow(cpt, null, "Repassar campos de entrada para saída",
+		wKeepInputFields = swthlp.appendCheckboxRow(cpt, null, BaseMessages.getString(PKG, "OwlInputStep.Tab.Output.KeepInputFields"),
 				new SelectionListener() {
 					public void widgetDefaultSelected(SelectionEvent arg0) {
 						widgetSelected(arg0);
@@ -156,8 +162,8 @@ public class OwlInputStepDialog extends BaseStepDialog implements StepDialogInte
 						meta.setChanged(true);
 					}
 				});
-		wOntologyOutputFieldName = swthlp.appendTextVarRow(cpt, wKeepInputFields, "Prefixos", defModListener);
-		wURIOutputFieldName = swthlp.appendTextVarRow(cpt, wOntologyOutputFieldName, "URIs da ontologia", defModListener);
+		wOntologyOutputFieldName = swthlp.appendTextVarRow(cpt, wKeepInputFields, BaseMessages.getString(PKG, "OwlInputStep.Tab.Output.PrefixField"), defModListener);
+		wURIOutputFieldName = swthlp.appendTextVarRow(cpt, wOntologyOutputFieldName, BaseMessages.getString(PKG, "OwlInputStep.Tab.Output.VocabularyField"), defModListener);
 		item.setControl(cpt);
 
 		wTabFolder.setSelection(0);
@@ -256,13 +262,13 @@ public class OwlInputStepDialog extends BaseStepDialog implements StepDialogInte
 
 		shell.setLayout(formLayout);
 
-		shell.setText("Owl Input");
+		shell.setText(this.dialogTitle);
 
 		int middle = props.getMiddlePct();
 		int margin = Const.MARGIN;
 
 		wlStepname = new Label(shell, SWT.RIGHT);
-		wlStepname.setText("Nome do step");
+		wlStepname.setText(BaseMessages.getString(PKG, "OwlInputStep.StepNameField.Label"));
 		props.setLook(wlStepname);
 
 		fdlStepname = new FormData();
@@ -272,7 +278,7 @@ public class OwlInputStepDialog extends BaseStepDialog implements StepDialogInte
 		wlStepname.setLayoutData(fdlStepname);
 
 		wStepname = new Text(shell, SWT.SINGLE | SWT.LEFT | SWT.BORDER);
-		wStepname.setText("Owl Input");
+		wStepname.setText(this.dialogTitle);
 		props.setLook(wStepname);
 
 		wStepname.addModifyListener(lsMod);
@@ -286,9 +292,9 @@ public class OwlInputStepDialog extends BaseStepDialog implements StepDialogInte
 		lastControl = buildContents(lastControl, lsMod);
 
 		wOK = new Button(shell, SWT.PUSH);
-		wOK.setText("OK");
+		wOK.setText(BaseMessages.getString(PKG, "OwlInputStep.Btn.OK"));
 		wCancel = new Button(shell, SWT.PUSH);
-		wCancel.setText("Cancelar");
+		wCancel.setText(BaseMessages.getString(PKG, "OwlInputStep.Btn.Cancel"));
 		setButtonPositions(new Button[] { wOK, wCancel }, margin, lastControl);
 
 		lsCancel = new Listener() {
@@ -428,10 +434,10 @@ public class OwlInputStepDialog extends BaseStepDialog implements StepDialogInte
 	private void loadFile() {
 		try {
 			FileDialog dialog = new FileDialog(shell, SWT.OPEN);
-			dialog.setText("Escolha um arquivo .owl em seu computador");
+			dialog.setText(BaseMessages.getString(PKG, "OwlInputStep.AddOwl"));
 			dialog.open();
 			String[] row = { dialog.getFileName(), dialog.getFilterPath() + "/" + dialog.getFileName(),
-					"Sem descrição" };
+					BaseMessages.getString(PKG, "OwlInputStep.OwlDescription") };
 			this.insertRow(wTable, row);
 		} catch (Exception e) {
 			log.log(Level.SEVERE, e.toString(), e);
@@ -444,8 +450,8 @@ public class OwlInputStepDialog extends BaseStepDialog implements StepDialogInte
 		wHelloFieldName.setText(data);
 		if (data.equals("")) {
 			MessageBox dialog = new MessageBox(shell, SWT.ICON_QUESTION | SWT.OK);
-			dialog.setText("Adicionar ontologia");
-			dialog.setMessage("Nenhum resultado encontrado.");
+			dialog.setText(BaseMessages.getString(PKG, "OwlInputStep.OwlDialog"));
+			dialog.setMessage(BaseMessages.getString(PKG, "OwlInputStep.OwlError"));
 
 			dialog.open();
 		} else {
@@ -465,8 +471,8 @@ public class OwlInputStepDialog extends BaseStepDialog implements StepDialogInte
 				this.insertRow(wTable, row);
 			} else {
 				MessageBox dialog = new MessageBox(shell, SWT.ICON_QUESTION | SWT.OK);
-				dialog.setText("Adicionar ontologia");
-				dialog.setMessage("Nenhum resultado encontrado.");
+				dialog.setText(BaseMessages.getString(PKG, "OwlInputStep.OwlDialog"));
+				dialog.setMessage(BaseMessages.getString(PKG, "OwlInputStep.OwlError"));
 
 				dialog.open();
 			}

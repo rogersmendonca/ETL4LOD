@@ -30,6 +30,7 @@ import org.pentaho.di.core.exception.KettleStepException;
 import org.pentaho.di.core.row.RowMetaInterface;
 import org.pentaho.di.core.row.ValueMetaInterface;
 import org.pentaho.di.core.util.StringUtil;
+import org.pentaho.di.i18n.BaseMessages;
 import org.pentaho.di.trans.TransMeta;
 import org.pentaho.di.trans.step.BaseStepMeta;
 import org.pentaho.di.trans.step.StepDialogInterface;
@@ -42,6 +43,8 @@ import br.ufrj.ppgi.greco.kettle.plugin.tools.datatable.DataTable;
 import br.ufrj.ppgi.greco.kettle.plugin.tools.swthelper.SwtHelper;
 
 public class ObjectPropertyMappingStepDialog extends BaseStepDialog implements StepDialogInterface {
+	
+	private static Class<?> PKG = ObjectPropertyMappingStepMeta.class;
 
 	private ObjectPropertyMappingStepMeta input;
 	private SwtHelper swthlp;
@@ -61,7 +64,7 @@ public class ObjectPropertyMappingStepDialog extends BaseStepDialog implements S
 		swthlp = new SwtHelper(transMeta, this.props);
 
 		// Additional initialization here
-		dialogTitle = "Mapeamento de triplas ObjectProperty";
+		dialogTitle = BaseMessages.getString(PKG, "ObjectPropertyMappingStep.Title");
 		// ...
 	}
 
@@ -71,21 +74,21 @@ public class ObjectPropertyMappingStepDialog extends BaseStepDialog implements S
 		CTabFolder wTabFolder = swthlp.appendTabFolder(shell, lastControl, 90);
 
 		CTabItem item = new CTabItem(wTabFolder, SWT.NONE);
-		item.setText("Mapeamento");
+		item.setText(BaseMessages.getString(PKG, "ObjectPropertyMappingStep.Tab.Mapping"));
 		Composite cpt = swthlp.appendComposite(wTabFolder, lastControl);
 
 		//
 		ColumnInfo[] columns = new ColumnInfo[] {
-				new ColumnInfo("Campo com sujeito (URI)", ColumnInfo.COLUMN_TYPE_CCOMBO, this.getFields(), true),
-				new ColumnInfo("Predicado (ObjectProperty)                     \u00A0", ColumnInfo.COLUMN_TYPE_TEXT),
-				new ColumnInfo("Campo com objeto (URI)", ColumnInfo.COLUMN_TYPE_CCOMBO, this.getFields(), true) };
+				new ColumnInfo(BaseMessages.getString(PKG, "ObjectPropertyMappingStep.Tab.Mapping.Subject"), ColumnInfo.COLUMN_TYPE_CCOMBO, this.getFields(), true),
+				new ColumnInfo(BaseMessages.getString(PKG, "ObjectPropertyMappingStep.Tab.Mapping.Predicate"), ColumnInfo.COLUMN_TYPE_TEXT),
+				new ColumnInfo(BaseMessages.getString(PKG, "ObjectPropertyMappingStep.Tab.Mapping.Object"), ColumnInfo.COLUMN_TYPE_CCOMBO, this.getFields(), true) };
 		wMapTable = swthlp.appendTableView(cpt, null, columns, defModListener, 98);
 		item.setControl(cpt);
 
 		item = new CTabItem(wTabFolder, SWT.NONE);
-		item.setText("Campos de saída");
+		item.setText(BaseMessages.getString(PKG, "ObjectPropertyMappingStep.Tab.Output"));
 		cpt = swthlp.appendComposite(wTabFolder, lastControl);
-		wKeepInputFields = swthlp.appendCheckboxRow(cpt, null, "Repassar campos de entrada para saída",
+		wKeepInputFields = swthlp.appendCheckboxRow(cpt, null, BaseMessages.getString(PKG, "ObjectPropertyMappingStep.Tab.Output.KeepInputFields"),
 				new SelectionListener() {
 
 					public void widgetDefaultSelected(SelectionEvent arg0) {
@@ -96,19 +99,19 @@ public class ObjectPropertyMappingStepDialog extends BaseStepDialog implements S
 						input.setChanged(true);
 					}
 				});
-		wSubjectOutputFieldName = swthlp.appendTextVarRow(cpt, wKeepInputFields, "Nome do campo do sujeito",
+		wSubjectOutputFieldName = swthlp.appendTextVarRow(cpt, wKeepInputFields, BaseMessages.getString(PKG, "ObjectPropertyMappingStep.Tab.Output.SubjectField"),
 				defModListener);
-		wPredicateOutputFieldName = swthlp.appendTextVarRow(cpt, wSubjectOutputFieldName, "Nome do campo do predicado",
+		wPredicateOutputFieldName = swthlp.appendTextVarRow(cpt, wSubjectOutputFieldName, BaseMessages.getString(PKG, "ObjectPropertyMappingStep.Tab.Output.PredicateField"),
 				defModListener);
-		wObjectOutputFieldName = swthlp.appendTextVarRow(cpt, wPredicateOutputFieldName, "Nome do campo do objeto",
+		wObjectOutputFieldName = swthlp.appendTextVarRow(cpt, wPredicateOutputFieldName, BaseMessages.getString(PKG, "ObjectPropertyMappingStep.Tab.Output.ObjectField"),
 				defModListener);
 		Label wLabel = swthlp.appendLabel(cpt, wObjectOutputFieldName,
-				"Atenção: todos os três campos acima precisam ser preenchidos.");
+				BaseMessages.getString(PKG, "ObjectPropertyMappingStep.Tab.Output.Label"));
 		wLabel.setAlignment(SWT.RIGHT);
 		item.setControl(cpt);
 
 		//
-		wSubjectOutputFieldName.setToolTipText("Diferentemente do Mapeamento DataProperty, este campo é obrigatório.");
+		wSubjectOutputFieldName.setToolTipText(BaseMessages.getString(PKG, "ObjectPropertyMappingStep.Tab.Output.Tootltip"));
 
 		//
 		wTabFolder.setSelection(0);
@@ -182,7 +185,7 @@ public class ObjectPropertyMappingStepDialog extends BaseStepDialog implements S
 
 		// Adiciona um label e um input text no topo do dialog shell
 		wlStepname = new Label(shell, SWT.RIGHT);
-		wlStepname.setText("Nome do step");
+		wlStepname.setText(BaseMessages.getString(PKG, "ObjectPropertyMappingStep.StepNameField.Label"));
 		props.setLook(wlStepname);
 
 		fdlStepname = new FormData();
@@ -208,9 +211,9 @@ public class ObjectPropertyMappingStepDialog extends BaseStepDialog implements S
 
 		// Bottom buttons
 		wOK = new Button(shell, SWT.PUSH);
-		wOK.setText("OK"); //$NON-NLS-1$
+		wOK.setText(BaseMessages.getString(PKG, "ObjectPropertyMappingStep.Btn.OK")); //$NON-NLS-1$
 		wCancel = new Button(shell, SWT.PUSH);
-		wCancel.setText("Cancelar"); //$NON-NLS-1$
+		wCancel.setText(BaseMessages.getString(PKG, "ObjectPropertyMappingStep.Btn.Cancel")); //$NON-NLS-1$
 		setButtonPositions(new Button[] { wOK, wCancel }, margin, lastControl);
 
 		// Add listeners

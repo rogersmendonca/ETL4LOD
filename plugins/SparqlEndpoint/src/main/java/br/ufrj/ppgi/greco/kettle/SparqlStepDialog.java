@@ -29,6 +29,7 @@ import org.eclipse.swt.widgets.Text;
 import org.pentaho.di.core.Const;
 import org.pentaho.di.core.row.ValueMetaInterface;
 import org.pentaho.di.core.util.StringUtil;
+import org.pentaho.di.i18n.BaseMessages;
 import org.pentaho.di.trans.TransMeta;
 import org.pentaho.di.trans.step.BaseStepMeta;
 import org.pentaho.di.trans.step.StepDialogInterface;
@@ -40,6 +41,8 @@ import org.pentaho.di.ui.trans.step.BaseStepDialog;
 import br.ufrj.ppgi.greco.kettle.plugin.tools.swthelper.SwtHelper;
 
 public class SparqlStepDialog extends BaseStepDialog implements StepDialogInterface {
+	
+	private static Class<?> PKG = SparqlStepMeta.class;
 
 	private SparqlStepMeta input;
 	private SwtHelper swthlp;
@@ -69,7 +72,7 @@ public class SparqlStepDialog extends BaseStepDialog implements StepDialogInterf
 		swthlp = new SwtHelper(transMeta, this.props);
 
 		// TODO: Additional initialization here
-		dialogTitle = "Sparql Endpoint";
+		dialogTitle = BaseMessages.getString(PKG, "SparqlStep.Title");
 		// ...
 	}
 
@@ -80,21 +83,21 @@ public class SparqlStepDialog extends BaseStepDialog implements StepDialogInterf
 
 		// Create Tab
 		CTabItem item = new CTabItem(wTabFolder, SWT.NONE);
-		item.setText("SPARQL Endpoint");
+		item.setText(BaseMessages.getString(PKG, "SparqlStep.Tab.SPARQL"));
 		Composite cpt = swthlp.appendComposite(wTabFolder, null);
-		wEndpointUri = swthlp.appendTextVarRow(cpt, null, "Endereço (URL):", defModListener);
-		wDefaultGraph = swthlp.appendTextVarRow(cpt, wEndpointUri, "Grafo padrão:", defModListener);
+		wEndpointUri = swthlp.appendTextVarRow(cpt, null, BaseMessages.getString(PKG, "SparqlStep.Tab.SPARQL.Endpoint"), defModListener);
+		wDefaultGraph = swthlp.appendTextVarRow(cpt, wEndpointUri, BaseMessages.getString(PKG, "SparqlStep.Tab.SPARQL.Graph"), defModListener);
 		item.setControl(cpt);
 
 		// Create Tab
 		item = new CTabItem(wTabFolder, SWT.NONE);
-		item.setText("Prefixos");
-		ColumnInfo[] columns = new ColumnInfo[] { new ColumnInfo("Prefixo", ColumnInfo.COLUMN_TYPE_TEXT),
-				new ColumnInfo("Namespace", ColumnInfo.COLUMN_TYPE_TEXT) };
+		item.setText(BaseMessages.getString(PKG, "SparqlStep.Tab.Prefix"));
+		ColumnInfo[] columns = new ColumnInfo[] { new ColumnInfo(BaseMessages.getString(PKG, "SparqlStep.Tab.Prefix.ColumnA"), ColumnInfo.COLUMN_TYPE_TEXT),
+				new ColumnInfo(BaseMessages.getString(PKG, "SparqlStep.Tab.Prefix.ColumnB"), ColumnInfo.COLUMN_TYPE_TEXT) };
 		cpt = swthlp.appendComposite(wTabFolder, null);
 		wPrefixes = swthlp.appendTableView(cpt, null, columns, defModListener, 90);
 
-		swthlp.appendButtonsRow(cpt, wPrefixes, new String[] { "Clear", "Defaults" },
+		swthlp.appendButtonsRow(cpt, wPrefixes, new String[] { BaseMessages.getString(PKG, "SparqlStep.Tab.Prefix.Clear"),  BaseMessages.getString(PKG, "SparqlStep.Tab.Prefix.Default") },
 				new SelectionListener[] { new SelectionListener() {
 
 					public void widgetSelected(SelectionEvent arg0) {
@@ -120,11 +123,10 @@ public class SparqlStepDialog extends BaseStepDialog implements StepDialogInterf
 
 		// Create Tab
 		item = new CTabItem(wTabFolder, SWT.NONE);
-		item.setText("Consulta");
+		item.setText(BaseMessages.getString(PKG, "SparqlStep.Tab.Query"));
 		cpt = swthlp.appendComposite(wTabFolder, null);
-		Label wLabel = swthlp.appendLabel(cpt, null, "Consulta:");
+		Label wLabel = swthlp.appendLabel(cpt, null, BaseMessages.getString(PKG, "SparqlStep.Tab.Query.Label"));
 		wQueryString = swthlp.appendMultiTextVarRow(cpt, wLabel, new ModifyListener() {
-
 			public void modifyText(ModifyEvent arg0) {
 				input.setChanged();
 				wParserMessage.setText("");
@@ -141,7 +143,7 @@ public class SparqlStepDialog extends BaseStepDialog implements StepDialogInterf
 				validateButton();
 			}
 		} };
-		Composite ctl = swthlp.appendButtonsRow(cpt, wQueryString, new String[] { "Validar" }, listeners);
+		Composite ctl = swthlp.appendButtonsRow(cpt, wQueryString, new String[] { BaseMessages.getString(PKG, "SparqlStep.Tab.Query.Validate") }, listeners);
 
 		wParserMessage = swthlp.appendMultiTextVarRow(cpt, ctl, defModListener, 100);
 		wParserMessage.setEditable(false);
@@ -149,15 +151,15 @@ public class SparqlStepDialog extends BaseStepDialog implements StepDialogInterf
 
 		// Create Tab
 		item = new CTabItem(wTabFolder, SWT.NONE);
-		item.setText("Campos de Saída");
+		item.setText(BaseMessages.getString(PKG, "SparqlStep.Tab.Output"));
 		cpt = swthlp.appendComposite(wTabFolder, null);
-		wPrefixVar = swthlp.appendTextVarRow(cpt, null, "Prefixos:", new ModifyListener() {
+		wPrefixVar = swthlp.appendTextVarRow(cpt, null, BaseMessages.getString(PKG, "SparqlStep.Tab.Output.Field"), new ModifyListener() {
 
 			public void modifyText(ModifyEvent arg0) {
 				validateButton();
 			}
 		});
-		wList = swthlp.appendListRow(cpt, wPrefixVar, "Nomes dos campos:", new SelectionListener() {
+		wList = swthlp.appendListRow(cpt, wPrefixVar, BaseMessages.getString(PKG, "SparqlStep.Tab.Output.FieldName"), new SelectionListener() {
 
 			public void widgetSelected(SelectionEvent arg0) {
 			}
@@ -250,7 +252,7 @@ public class SparqlStepDialog extends BaseStepDialog implements StepDialogInterf
 
 		// Adiciona um label e um input text no topo do dialog shell
 		wlStepname = new Label(shell, SWT.RIGHT);
-		wlStepname.setText("Nome do step");
+		wlStepname.setText(BaseMessages.getString(PKG, "SparqlStep.StepNameField.Label"));
 		props.setLook(wlStepname);
 
 		fdlStepname = new FormData();
@@ -276,9 +278,9 @@ public class SparqlStepDialog extends BaseStepDialog implements StepDialogInterf
 
 		// Bottom buttons
 		wOK = new Button(shell, SWT.PUSH);
-		wOK.setText("OK"); //$NON-NLS-1$
+		wOK.setText(BaseMessages.getString(PKG, "SparqlStep.Btn.OK")); //$NON-NLS-1$
 		wCancel = new Button(shell, SWT.PUSH);
-		wCancel.setText("Cancelar"); //$NON-NLS-1$
+		wCancel.setText(BaseMessages.getString(PKG, "SparqlStep.Btn.Cancel")); //$NON-NLS-1$
 		setButtonPositions(new Button[] { wOK, wCancel }, margin, lastControl);
 
 		// Add listeners

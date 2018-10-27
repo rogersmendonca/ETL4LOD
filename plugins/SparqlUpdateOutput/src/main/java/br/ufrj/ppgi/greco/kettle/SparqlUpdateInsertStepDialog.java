@@ -28,6 +28,7 @@ import org.pentaho.di.core.exception.KettleStepException;
 import org.pentaho.di.core.row.RowMetaInterface;
 import org.pentaho.di.core.row.ValueMetaInterface;
 import org.pentaho.di.core.util.StringUtil;
+import org.pentaho.di.i18n.BaseMessages;
 import org.pentaho.di.trans.TransMeta;
 import org.pentaho.di.trans.step.BaseStepMeta;
 import org.pentaho.di.trans.step.StepDialogInterface;
@@ -38,9 +39,12 @@ import org.pentaho.di.ui.trans.step.BaseStepDialog;
 import br.ufrj.ppgi.greco.kettle.plugin.tools.swthelper.SwtHelper;
 
 public class SparqlUpdateInsertStepDialog extends BaseStepDialog implements StepDialogInterface {
+	
+	private static Class<?> PKG = SparqlUpdateInsertStepMeta.class;
 
 	private SparqlUpdateInsertStepMeta input;
 	private SwtHelper swthlp;
+	private String dialogTitle;
 
 	private TextVar wGraphUri;
 	private ComboVar wRdfFieldName;
@@ -56,6 +60,8 @@ public class SparqlUpdateInsertStepDialog extends BaseStepDialog implements Step
 
 		input = (SparqlUpdateInsertStepMeta) baseStepMeta;
 		swthlp = new SwtHelper(transMeta, this.props);
+		
+		dialogTitle = BaseMessages.getString(PKG, "SparqlUpdateOutputStep.Title");
 	}
 
 	public String open() {
@@ -81,14 +87,14 @@ public class SparqlUpdateInsertStepDialog extends BaseStepDialog implements Step
 
 		shell.setLayout(formLayout);
 
-		shell.setText("Sparql Update Output");
+		shell.setText(this.dialogTitle);
 
 		int middle = props.getMiddlePct();
 		int margin = Const.MARGIN;
 
 		// Adiciona um label e um input text no topo do dialog shell
 		wlStepname = new Label(shell, SWT.RIGHT);
-		wlStepname.setText("Nome do step");
+		wlStepname.setText(BaseMessages.getString(PKG, "SparqlUpdateOutputStep.StepNameField.Label"));
 		props.setLook(wlStepname);
 
 		fdlStepname = new FormData();
@@ -110,12 +116,12 @@ public class SparqlUpdateInsertStepDialog extends BaseStepDialog implements Step
 		Control lastControl = wStepname;
 
 		// Adiciona
-		Group wGroup1 = swthlp.appendGroup(shell, lastControl, "Grafo e triplas");
+		Group wGroup1 = swthlp.appendGroup(shell, lastControl, BaseMessages.getString(PKG, "SparqlUpdateOutputStep.Graph"));
 		{
-			wRdfFieldName = swthlp.appendComboVarRow(wGroup1, null, "Campo com NTriplas", lsMod);
+			wRdfFieldName = swthlp.appendComboVarRow(wGroup1, null, BaseMessages.getString(PKG, "SparqlUpdateOutputStep.Graph.NTriples"), lsMod);
 			wRdfFieldName.setItems(this.getFields(ValueMetaInterface.TYPE_STRING));
-			wGraphUri = swthlp.appendTextVarRow(wGroup1, wRdfFieldName, "URI do grafo", lsMod);
-			wClearGraph = swthlp.appendCheckboxRow(wGroup1, wGraphUri, "Limpar grafo antes da inserção",
+			wGraphUri = swthlp.appendTextVarRow(wGroup1, wRdfFieldName, BaseMessages.getString(PKG, "SparqlUpdateOutputStep.Graph.URI"), lsMod);
+			wClearGraph = swthlp.appendCheckboxRow(wGroup1, wGraphUri, BaseMessages.getString(PKG, "SparqlUpdateOutputStep.Graph.Drop"),
 					new SelectionListener() {
 
 						public void widgetSelected(SelectionEvent arg0) {
@@ -128,28 +134,28 @@ public class SparqlUpdateInsertStepDialog extends BaseStepDialog implements Step
 					});
 		}
 
-		Group wGroup2 = swthlp.appendGroup(shell, wGroup1, "Configuração de conexão");
+		Group wGroup2 = swthlp.appendGroup(shell, wGroup1, BaseMessages.getString(PKG, "SparqlUpdateOutputStep.Connection"));
 		{
-			wEndpointUrl = swthlp.appendTextVarRow(wGroup2, null, "URL do Sparql Update Endpoint", lsMod);
+			wEndpointUrl = swthlp.appendTextVarRow(wGroup2, null, BaseMessages.getString(PKG, "SparqlUpdateOutputStep.Connection.Endpoint"), lsMod);
 
-			wUserName = swthlp.appendTextVarRow(wGroup2, wEndpointUrl, "Nome de usuário", lsMod);
+			wUserName = swthlp.appendTextVarRow(wGroup2, wEndpointUrl, BaseMessages.getString(PKG, "SparqlUpdateOutputStep.Connection.User"), lsMod);
 
-			wPassword = swthlp.appendTextVarRow(wGroup2, wUserName, "Senha", lsMod, true);
+			wPassword = swthlp.appendTextVarRow(wGroup2, wUserName, BaseMessages.getString(PKG, "SparqlUpdateOutputStep.Connection.Output"), lsMod, true);
 		}
 
-		Group wGroup3 = swthlp.appendGroup(shell, wGroup2, "Campos de saída");
+		Group wGroup3 = swthlp.appendGroup(shell, wGroup2, BaseMessages.getString(PKG, "SparqlUpdateOutputStep.Output"));
 		{
-			wStatusCode = swthlp.appendTextVarRow(wGroup3, null, "Campo do código de status", lsMod);
-			wStatusMsg = swthlp.appendTextVarRow(wGroup3, wStatusCode, "Campo da mensagem de status", lsMod);
+			wStatusCode = swthlp.appendTextVarRow(wGroup3, null, BaseMessages.getString(PKG, "SparqlUpdateOutputStep.Output.StatusCode"), lsMod);
+			wStatusMsg = swthlp.appendTextVarRow(wGroup3, wStatusCode, BaseMessages.getString(PKG, "SparqlUpdateOutputStep.Output.StatusMessage"), lsMod);
 		}
 
 		lastControl = wGroup3;
 
 		// Some buttons
 		wOK = new Button(shell, SWT.PUSH);
-		wOK.setText("OK"); //$NON-NLS-1$
+		wOK.setText(BaseMessages.getString(PKG, "SparqlUpdateOutputStep.Btn.OK")); //$NON-NLS-1$
 		wCancel = new Button(shell, SWT.PUSH);
-		wCancel.setText("Cancelar"); //$NON-NLS-1$
+		wCancel.setText(BaseMessages.getString(PKG, "SparqlUpdateOutputStep.Btn.Cancel")); //$NON-NLS-1$
 
 		setButtonPositions(new Button[] { wOK, wCancel }, margin, lastControl);
 

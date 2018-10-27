@@ -31,6 +31,7 @@ import org.pentaho.di.core.exception.KettleStepException;
 import org.pentaho.di.core.row.RowMetaInterface;
 import org.pentaho.di.core.row.ValueMetaInterface;
 import org.pentaho.di.core.util.StringUtil;
+import org.pentaho.di.i18n.BaseMessages;
 import org.pentaho.di.trans.TransMeta;
 import org.pentaho.di.trans.step.BaseStepMeta;
 import org.pentaho.di.trans.step.StepDialogInterface;
@@ -43,6 +44,8 @@ import br.ufrj.ppgi.greco.kettle.plugin.tools.datatable.DataTable;
 import br.ufrj.ppgi.greco.kettle.plugin.tools.swthelper.SwtHelper;
 
 public class DataCubeStepDialog extends BaseStepDialog implements StepDialogInterface {
+	
+	private static Class<?> PKG = DataCubeStepMeta.class;
 
 	private DataCubeStepMeta input;
 	private SwtHelper swthlp;
@@ -69,7 +72,7 @@ public class DataCubeStepDialog extends BaseStepDialog implements StepDialogInte
 		input = (DataCubeStepMeta) baseStepMeta;
 		swthlp = new SwtHelper(transMeta, this.props);
 
-		dialogTitle = "Data Cube Transformator";
+		dialogTitle = BaseMessages.getString(PKG, "DataCubeStep.Title");
 	}
 
 	private Control buildContents(Control lastControl, ModifyListener defModListener) {
@@ -77,26 +80,27 @@ public class DataCubeStepDialog extends BaseStepDialog implements StepDialogInte
 		CTabFolder wTabFolder = swthlp.appendTabFolder(shell, lastControl, 90);
 		CTabItem item = new CTabItem(wTabFolder, SWT.NONE);
 
-		item.setText("Definicao das dimensoes");
+		item.setText(BaseMessages.getString(PKG, "DataCubeStep.Tab.Dimension"));
 		Composite cpt = swthlp.appendComposite(wTabFolder, lastControl);
 		ColumnInfo[] columns = new ColumnInfo[] {
-				new ColumnInfo("Dimensão", ColumnInfo.COLUMN_TYPE_CCOMBO, this.getFields(), true),
-				new ColumnInfo("URI da Dimensão                     \u00A0", ColumnInfo.COLUMN_TYPE_TEXT),
-				new ColumnInfo("Label da Dimensão", ColumnInfo.COLUMN_TYPE_TEXT),
-				new ColumnInfo("URI do Tipo se for medida", ColumnInfo.COLUMN_TYPE_TEXT) };
+				new ColumnInfo(BaseMessages.getString(PKG, "DataCubeStep.Tab.Dimension.ColumnA"), ColumnInfo.COLUMN_TYPE_CCOMBO, this.getFields(), true),
+				new ColumnInfo(BaseMessages.getString(PKG, "DataCubeStep.Tab.Dimension.ColumnB"), ColumnInfo.COLUMN_TYPE_TEXT),
+				new ColumnInfo(BaseMessages.getString(PKG, "DataCubeStep.Tab.Dimension.ColumnC"), ColumnInfo.COLUMN_TYPE_TEXT),
+				new ColumnInfo(BaseMessages.getString(PKG, "DataCubeStep.Tab.Dimension.ColumnD"), ColumnInfo.COLUMN_TYPE_TEXT) };
 		wDimensionTable = swthlp.appendTableView(cpt, null, columns, defModListener, 98);
 
 		item.setControl(cpt);
 
 		item = new CTabItem(wTabFolder, SWT.NONE);
-		item.setText("Definicao dos vocabularios");
+		item.setText(BaseMessages.getString(PKG, "DataCubeStep.Tab.Vocabulary"));
 		cpt = swthlp.appendComposite(wTabFolder, lastControl);
 
-		columns = new ColumnInfo[] { new ColumnInfo("Prefixo", ColumnInfo.COLUMN_TYPE_TEXT),
-				new ColumnInfo("URI do vocabulario                     \u00A0", ColumnInfo.COLUMN_TYPE_TEXT) };
+		columns = new ColumnInfo[] { new ColumnInfo(BaseMessages.getString(PKG, "DataCubeStep.Tab.Vocabulary.ColumnA"), ColumnInfo.COLUMN_TYPE_TEXT),
+				new ColumnInfo(BaseMessages.getString(PKG, "DataCubeStep.Tab.Vocabulary.ColumnB"), ColumnInfo.COLUMN_TYPE_TEXT) };
 		wVocabularyTable = swthlp.appendTableView(cpt, null, columns, defModListener, 90);
 
-		swthlp.appendButtonsRow(cpt, wVocabularyTable, new String[] { "Clear", "Defaults" },
+		swthlp.appendButtonsRow(cpt, wVocabularyTable, new String[] { BaseMessages.getString(PKG, "DataCubeStep.Btn.Clear"), 
+				BaseMessages.getString(PKG, "DataCubeStep.Btn.Default") },
 				new SelectionListener[] { new SelectionListener() {
 
 					public void widgetSelected(SelectionEvent arg0) {
@@ -122,7 +126,7 @@ public class DataCubeStepDialog extends BaseStepDialog implements StepDialogInte
 		item.setControl(cpt);
 
 		item = new CTabItem(wTabFolder, SWT.NONE);
-		item.setText("Campos de saída");
+		item.setText(BaseMessages.getString(PKG, "DataCubeStep.Tab.Output") );
 		cpt = swthlp.appendComposite(wTabFolder, lastControl);
 		/*wKeepInputFields = swthlp.appendCheckboxRow(cpt, null, "Repassar campos de entrada para saída",
 				new SelectionListener() {
@@ -134,7 +138,7 @@ public class DataCubeStepDialog extends BaseStepDialog implements StepDialogInte
 						input.setChanged(true);
 					}
 				});*/
-		wDataCubeOutputFieldName = swthlp.appendTextVarRow(cpt, null, "Campo de saída", defModListener);
+		wDataCubeOutputFieldName = swthlp.appendTextVarRow(cpt, null, BaseMessages.getString(PKG, "DataCubeStep.Tab.Output.Field") , defModListener);
 		item.setControl(cpt);
 
 		wTabFolder.setSelection(0);
@@ -204,7 +208,7 @@ public class DataCubeStepDialog extends BaseStepDialog implements StepDialogInte
 
 		// Adiciona um label e um input text no topo do dialog shell
 		wlStepname = new Label(shell, SWT.RIGHT);
-		wlStepname.setText("Data Cube Transformation");
+		wlStepname.setText(BaseMessages.getString(PKG, "DataCubeStep.StepNameField.Label"));
 		props.setLook(wlStepname);
 
 		fdlStepname = new FormData();
@@ -230,9 +234,9 @@ public class DataCubeStepDialog extends BaseStepDialog implements StepDialogInte
 
 		// Bottom buttons
 		wOK = new Button(shell, SWT.PUSH);
-		wOK.setText("OK"); //$NON-NLS-1$
+		wOK.setText(BaseMessages.getString(PKG, "DataCubeStep.Btn.OK")); //$NON-NLS-1$
 		wCancel = new Button(shell, SWT.PUSH);
-		wCancel.setText("Cancel"); //$NON-NLS-1$
+		wCancel.setText(BaseMessages.getString(PKG, "DataCubeStep.Btn.Cancel")); //$NON-NLS-1$
 		setButtonPositions(new Button[] { wOK, wCancel }, margin, lastControl);
 
 		// Add listeners

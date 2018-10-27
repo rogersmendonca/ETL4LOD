@@ -36,6 +36,7 @@ import org.pentaho.di.core.exception.KettleStepException;
 import org.pentaho.di.core.row.RowMetaInterface;
 import org.pentaho.di.core.row.ValueMetaInterface;
 import org.pentaho.di.core.util.StringUtil;
+import org.pentaho.di.i18n.BaseMessages;
 import org.pentaho.di.trans.TransMeta;
 import org.pentaho.di.trans.step.BaseStepMeta;
 import org.pentaho.di.trans.step.StepDialogInterface;
@@ -50,6 +51,8 @@ import br.ufrj.ppgi.greco.kettle.plugin.tools.swthelper.SwtHelper;
 
 public class DataPropertyMappingStepDialog extends BaseStepDialog implements StepDialogInterface {
 
+	private static Class<?> PKG = DataPropertyMappingStepMeta.class;
+	
 	private DataPropertyMappingStepMeta input;
 	private SwtHelper swthlp;
 	private String dialogTitle;
@@ -74,7 +77,7 @@ public class DataPropertyMappingStepDialog extends BaseStepDialog implements Ste
 		input = (DataPropertyMappingStepMeta) baseStepMeta;
 		swthlp = new SwtHelper(transMeta, this.props);
 
-		dialogTitle = "Mapeamento de triplas DataProperty";
+		dialogTitle = BaseMessages.getString(PKG, "DataPropertyMappingStep.Title");
 	}
 
 	private Control buildContents(Control lastControl, ModifyListener defModListener) {
@@ -82,15 +85,15 @@ public class DataPropertyMappingStepDialog extends BaseStepDialog implements Ste
 		CTabFolder wTabFolder = swthlp.appendTabFolder(shell, lastControl, 90);
 
 		CTabItem item = new CTabItem(wTabFolder, SWT.NONE);
-		item.setText("Mapeamento");
+		item.setText(BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Mapping"));
 		Composite cpt = swthlp.appendComposite(wTabFolder, lastControl);
 
-		wSubjectFieldName = swthlp.appendComboVarRow(cpt, null, "Campo contendo URI do sujeito", defModListener);
+		wSubjectFieldName = swthlp.appendComboVarRow(cpt, null, BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Mapping.Subject"), defModListener);
 		wSubjectFieldName.setEditable(false);
 		wSubjectFieldName.setItems(this.getFields(ValueMetaInterface.TYPE_STRING));
 
-		Group wGroup = swthlp.appendGroup(cpt, wSubjectFieldName, "RDF Types (rdf:type da linha)", 50);
-		wRdfType = swthlp.appendTextVarWithButtonRow(wGroup, null, "RDF Type a adicionar", defModListener, "+",
+		Group wGroup = swthlp.appendGroup(cpt, wSubjectFieldName, BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Mapping.Rdftype"), 50);
+		wRdfType = swthlp.appendTextVarWithButtonRow(wGroup, null, BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Mapping.NewRdftype"), defModListener, "+",
 				new SelectionListener() {
 					public void widgetSelected(SelectionEvent arg0) {
 						widgetDefaultSelected(arg0);
@@ -105,9 +108,9 @@ public class DataPropertyMappingStepDialog extends BaseStepDialog implements Ste
 						input.setChanged(true);
 					}
 				});
-		wRdfType.setToolTipText("Digite o rdf:type de cada linha vinda do fluxo e clique no botão '+' para adicionar");
+		wRdfType.setToolTipText(BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Mapping.Tooltip"));
 
-		wRdfTypeList = swthlp.appendListRow(wGroup, wRdfType, "Tipos RDF da linha", new SelectionAdapter() {
+		wRdfTypeList = swthlp.appendListRow(wGroup, wRdfType, BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Mapping.Rdftypelist"), new SelectionAdapter() {
 		}, 90);
 		wRdfTypeList.addKeyListener(new KeyListener() {
 			public void keyPressed(KeyEvent e) {
@@ -132,19 +135,19 @@ public class DataPropertyMappingStepDialog extends BaseStepDialog implements Ste
 		});
 
 		Label wListLabel = swthlp.appendLabel(wGroup, wRdfTypeList,
-				"Para remover um linha selecione-a e pressione DEL. Para editar dê um duplo-clique.");
+				BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Mapping.Label"));
 		wListLabel.setAlignment(SWT.RIGHT);
 
 		ColumnInfo[] columns = new ColumnInfo[] {
-				new ColumnInfo("Predicado (DataProperty)                             \u00A0",
+				new ColumnInfo(BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Mapping.ColumnA"),
 						ColumnInfo.COLUMN_TYPE_TEXT),
-				new ColumnInfo("Campo com valor do objeto", ColumnInfo.COLUMN_TYPE_CCOMBO, this.getFields(), true),
-				new ColumnInfo("Tipo do literal           \u00A0", ColumnInfo.COLUMN_TYPE_CCOMBO,
+				new ColumnInfo(BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Mapping.ColumnB"), ColumnInfo.COLUMN_TYPE_CCOMBO, this.getFields(), true),
+				new ColumnInfo(BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Mapping.ColumnC"), ColumnInfo.COLUMN_TYPE_CCOMBO,
 						new String[] { "Tentar descobrir", "xsd:integer", "xsd:float", "xsd:double", "xsd:decimal",
 								"xsd:date", "xsd:dateTime", "xsd:string" }),
-				new ColumnInfo("Tag de linguagem", ColumnInfo.COLUMN_TYPE_CCOMBO,
+				new ColumnInfo(BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Mapping.ColumnD"), ColumnInfo.COLUMN_TYPE_CCOMBO,
 						new String[] { "en", "pt", "fr", "" }),
-				new ColumnInfo("Campo contendo tag de linguagem", ColumnInfo.COLUMN_TYPE_CCOMBO, this.getFields(),
+				new ColumnInfo(BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Mapping.ColumnE"), ColumnInfo.COLUMN_TYPE_CCOMBO, this.getFields(),
 						true),
 
 		};
@@ -152,9 +155,9 @@ public class DataPropertyMappingStepDialog extends BaseStepDialog implements Ste
 		item.setControl(cpt);
 
 		item = new CTabItem(wTabFolder, SWT.NONE);
-		item.setText("Campos de saída");
+		item.setText(BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Output"));
 		cpt = swthlp.appendComposite(wTabFolder, lastControl);
-		wKeepInputFields = swthlp.appendCheckboxRow(cpt, null, "Repassar campos de entrada para saída",
+		wKeepInputFields = swthlp.appendCheckboxRow(cpt, null, BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Output.KeepInputFields"),
 				new SelectionListener() {
 
 					public void widgetDefaultSelected(SelectionEvent arg0) {
@@ -165,21 +168,21 @@ public class DataPropertyMappingStepDialog extends BaseStepDialog implements Ste
 						input.setChanged(true);
 					}
 				});
-		wSubjectOutputFieldName = swthlp.appendTextVarRow(cpt, wKeepInputFields, "Nome do campo do sujeito",
+		wSubjectOutputFieldName = swthlp.appendTextVarRow(cpt, wKeepInputFields, BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Output.SubjectField"),
 				defModListener);
-		wPredicateOutputFieldName = swthlp.appendTextVarRow(cpt, wSubjectOutputFieldName, "Nome do campo do predicado",
+		wPredicateOutputFieldName = swthlp.appendTextVarRow(cpt, wSubjectOutputFieldName, BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Output.PredicateField"),
 				defModListener);
-		wObjectOutputFieldName = swthlp.appendTextVarRow(cpt, wPredicateOutputFieldName, "Nome do campo do objeto",
+		wObjectOutputFieldName = swthlp.appendTextVarRow(cpt, wPredicateOutputFieldName, BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Output.ObjectField"),
 				defModListener);
 		wDatatypeOutputFieldName = swthlp.appendTextVarRow(cpt, wObjectOutputFieldName,
-				"Nome do campo do tipo do literal (objeto)", defModListener);
+				BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Output.Rdftype"), defModListener);
 		wLangTagOutputFieldName = swthlp.appendTextVarRow(cpt, wDatatypeOutputFieldName,
-				"Nome do campo contendo marca de linguagem (objeto)", defModListener);
+				BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Output.Rdflangtag"), defModListener);
 		item.setControl(cpt);
 
 		wSubjectOutputFieldName
-				.setToolTipText("Para utilizar o mesmo campo de entrada, deixe em branco ou repita o nome");
-		wLangTagOutputFieldName.setToolTipText("Será repassado para a saída apenas se datatype for \"\" ou xsd:string");
+				.setToolTipText(BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Output.Tooltipsubject"));
+		wLangTagOutputFieldName.setToolTipText(BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Output.Tooltiplangtag"));
 
 		wTabFolder.setSelection(0);
 
@@ -255,7 +258,7 @@ public class DataPropertyMappingStepDialog extends BaseStepDialog implements Ste
 
 		// Adiciona um label e um input text no topo do dialog shell
 		wlStepname = new Label(shell, SWT.RIGHT);
-		wlStepname.setText("Nome do step");
+		wlStepname.setText(BaseMessages.getString(PKG, "DataPropertyMappingStep.StepNameField.Label"));
 		props.setLook(wlStepname);
 
 		fdlStepname = new FormData();
@@ -280,9 +283,9 @@ public class DataPropertyMappingStepDialog extends BaseStepDialog implements Ste
 
 		// Bottom buttons
 		wOK = new Button(shell, SWT.PUSH);
-		wOK.setText("OK");
+		wOK.setText(BaseMessages.getString(PKG, "DataPropertyMappingStep.Btn.OK"));
 		wCancel = new Button(shell, SWT.PUSH);
-		wCancel.setText("Cancelar");
+		wCancel.setText(BaseMessages.getString(PKG, "DataPropertyMappingStep.Btn.Cancel"));
 		setButtonPositions(new Button[] { wOK, wCancel }, margin, lastControl);
 
 		// Add listeners

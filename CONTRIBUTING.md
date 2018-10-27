@@ -34,3 +34,29 @@ O ``pom.xml`` do filho também precisa ser atualizado para copiar essa dependên
 1. Adicionar uma nova dependência ao pom do plugin em ``<dependency>``.
 2. Adicionar um ``<artifactItem>`` ao goal ``copy``. Isso vai garantir que a dependência adicionada seja copiada para a pasta lib do plugin. 
 2. Adicionar um novo ``<replace>`` ao goal ``copy-files-to-kettle``. O replace vai substituir no ``plugin.xml`` o valor da variável ``{dependency.version}`` com o valor que foi colocado no pom do projeto pai em ``${dependency.version}``. Mais informações em [maven-ant-run replace task](https://ant.apache.org/manual/Tasks/replace.html).
+
+## i18n
+
+O Kettle 6+ aparentemente tem um bug no qual a i18n não funciona para múltiplos plugins da forma que o Kettle ensina a fazer a i18n. Para resolver esse problema, existe um hack no qual todos os arquivos properties ``messages_xx_XX.properties`` precisam ser iguais e conter a tradução de TODOS os plugins!
+
+Esse hack foi implementado neste repositório para permitir o uso da i18n da seguinte forma:
+
+1. Ao invés de existir arquivos properties na pasta messages de cada plugin, existe apenas uma pasta messages no parent dos plugins com arquivos properties que contém a tradução de TODOS os plugins;
+2. Foi adicionado um ``copy`` no pom do parent para cada plugin que copia essa pasta messages para os filhos:
+
+```
+<copy todir="${basedir}/%nome_plugin%/src/main/java" overwrite="true">
+   <fileset dir="${basedir}/src/main/java" includes="**/*.properties" />
+</copy>
+```
+
+3. Foi adicionado uma linha no ``.gitignore`` para ignorar a pasta messages dos filhos.
+
+Dessa forma, quando ``mvn clean install`` é executado no parent, o parent copia a pasta messages para todos os filhos antes de buildar os filhos. Assim a i18n funciona para todos os plugins. 
+
+### Adiconando uma nova tradução
+
+Para adicionar uma nova tradução é necessário:
+
+1. Adicionar essas traduções nos arquivos .properties no parent;
+2. Adicionar um ``copy`` no pom do parent para o seu novo plugin. 

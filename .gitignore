@@ -48,3 +48,6 @@ buildNumber.properties
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# i18n hack
+**/plugins/*/src/main/java/br/ufrj/ppgi/greco/kettle/messages

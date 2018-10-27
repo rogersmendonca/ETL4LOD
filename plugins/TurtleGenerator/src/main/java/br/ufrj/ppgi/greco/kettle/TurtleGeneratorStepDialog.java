@@ -32,6 +32,7 @@ import org.pentaho.di.core.exception.KettleStepException;
 import org.pentaho.di.core.row.RowMetaInterface;
 import org.pentaho.di.core.row.ValueMetaInterface;
 import org.pentaho.di.core.util.StringUtil;
+import org.pentaho.di.i18n.BaseMessages;
 import org.pentaho.di.trans.TransMeta;
 import org.pentaho.di.trans.step.BaseStepMeta;
 import org.pentaho.di.trans.step.StepDialogInterface;
@@ -44,6 +45,8 @@ import br.ufrj.ppgi.greco.kettle.plugin.tools.datatable.DataTable;
 import br.ufrj.ppgi.greco.kettle.plugin.tools.swthelper.SwtHelper;
 
 public class TurtleGeneratorStepDialog extends BaseStepDialog implements StepDialogInterface {
+	
+	private static Class<?> PKG = TurtleGeneratorStepMeta.class;
 
 	private TurtleGeneratorStepMeta input;
 	private SwtHelper swthlp;
@@ -73,7 +76,7 @@ public class TurtleGeneratorStepDialog extends BaseStepDialog implements StepDia
 		swthlp = new SwtHelper(transMeta, this.props);
 
 		// Additional initialization here
-		dialogTitle = "Turtle Generator Transformator";
+		dialogTitle = BaseMessages.getString(PKG, "TurtleGeneratorStep.Title");
 		// ...
 	}
 
@@ -83,23 +86,23 @@ public class TurtleGeneratorStepDialog extends BaseStepDialog implements StepDia
 		CTabFolder wTabFolder = swthlp.appendTabFolder(shell, lastControl, 90);
 
 		CTabItem item = new CTabItem(wTabFolder, SWT.NONE);
-		item.setText("Definição e descrição das Propriedades");
+		item.setText(BaseMessages.getString(PKG, "TurtleGeneratorStep.Properties"));
 		Composite cpt = swthlp.appendComposite(wTabFolder, lastControl);
 		ColumnInfo[] columns = new ColumnInfo[] {
-				new ColumnInfo("Propriedades", ColumnInfo.COLUMN_TYPE_CCOMBO, this.getFields(), true),
-				new ColumnInfo("Label da Propriedade (Descrição)", ColumnInfo.COLUMN_TYPE_TEXT),
-				new ColumnInfo("URI (owl:sameAs)", ColumnInfo.COLUMN_TYPE_TEXT) };
+				new ColumnInfo(BaseMessages.getString(PKG, "TurtleGeneratorStep.Properties.ColumnA"), ColumnInfo.COLUMN_TYPE_CCOMBO, this.getFields(), true),
+				new ColumnInfo(BaseMessages.getString(PKG, "TurtleGeneratorStep.Properties.ColumnB"), ColumnInfo.COLUMN_TYPE_TEXT),
+				new ColumnInfo(BaseMessages.getString(PKG, "TurtleGeneratorStep.Properties.ColumnC"), ColumnInfo.COLUMN_TYPE_TEXT) };
 		wMapTable = swthlp.appendTableView(cpt, null, columns, defModListener, 98);
 		item.setControl(cpt);
 
 		item = new CTabItem(wTabFolder, SWT.NONE);
-		item.setText("Prefixos");
-		ColumnInfo[] columns3 = new ColumnInfo[] { new ColumnInfo("Prefixo", ColumnInfo.COLUMN_TYPE_TEXT),
-				new ColumnInfo("Namespace", ColumnInfo.COLUMN_TYPE_TEXT) };
+		item.setText(BaseMessages.getString(PKG, "TurtleGeneratorStep.Prefix"));
+		ColumnInfo[] columns3 = new ColumnInfo[] { new ColumnInfo(BaseMessages.getString(PKG, "TurtleGeneratorStep.Prefix.ColumnA"), ColumnInfo.COLUMN_TYPE_TEXT),
+				new ColumnInfo(BaseMessages.getString(PKG, "TurtleGeneratorStep.Prefix.ColumnB"), ColumnInfo.COLUMN_TYPE_TEXT) };
 		cpt = swthlp.appendComposite(wTabFolder, null);
 		wPrefixes = swthlp.appendTableView(cpt, null, columns3, defModListener, 90);
 
-		swthlp.appendButtonsRow(cpt, wPrefixes, new String[] { "Clear", "Defaults" },
+		swthlp.appendButtonsRow(cpt, wPrefixes, new String[] { BaseMessages.getString(PKG, "TurtleGeneratorStep.Prefix.Clear"), BaseMessages.getString(PKG, "TurtleGeneratorStep.Prefix.Default") },
 				new SelectionListener[] { new SelectionListener() {
 					@Override
 					public void widgetSelected(SelectionEvent arg0) {
@@ -127,22 +130,22 @@ public class TurtleGeneratorStepDialog extends BaseStepDialog implements StepDia
 
 		// Quarta tab (Descri��o da unidade)
 		item = new CTabItem(wTabFolder, SWT.NONE);
-		item.setText("Descrição da unidade");
+		item.setText(BaseMessages.getString(PKG, "TurtleGeneratorStep.Unit"));
 		cpt = swthlp.appendComposite(wTabFolder, lastControl);
-		unity = swthlp.appendTextVarRow(cpt, unity, "Descrição da unidade do DataSet (descrever sobre o que ele trata)",
+		unity = swthlp.appendTextVarRow(cpt, unity, BaseMessages.getString(PKG, "TurtleGeneratorStep.Unit.Field"),
 				defModListener);
 		item.setControl(cpt);
 
 		// Quinta tab (Hierarquias)
 		item = new CTabItem(wTabFolder, SWT.NONE);
-		item.setText("Definição das hierarquias (de -> para: xx is a part_of yy)");
+		item.setText(BaseMessages.getString(PKG, "TurtleGeneratorStep.Hierarchy"));
 		cpt = swthlp.appendComposite(wTabFolder, lastControl);
 		ColumnInfo[] columns2 = new ColumnInfo[] {
-				new ColumnInfo("Propriedade em que o valor (atributo) está", ColumnInfo.COLUMN_TYPE_CCOMBO,
+				new ColumnInfo(BaseMessages.getString(PKG, "TurtleGeneratorStep.Hierarchy.ColumnA"), ColumnInfo.COLUMN_TYPE_CCOMBO,
 						this.getFields(), true),
-				new ColumnInfo("Inserir o valor do atributo (\"de\", \"xx\")", ColumnInfo.COLUMN_TYPE_TEXT),
-				new ColumnInfo("Inserir uma label para esse atributo (uma descrição)", ColumnInfo.COLUMN_TYPE_TEXT),
-				new ColumnInfo("Inserir a qual hierarquia esse atributo pertence (\"para\", \"yy\")",
+				new ColumnInfo(BaseMessages.getString(PKG, "TurtleGeneratorStep.Hierarchy.ColumnB"), ColumnInfo.COLUMN_TYPE_TEXT),
+				new ColumnInfo(BaseMessages.getString(PKG, "TurtleGeneratorStep.Hierarchy.ColumnC"), ColumnInfo.COLUMN_TYPE_TEXT),
+				new ColumnInfo(BaseMessages.getString(PKG, "TurtleGeneratorStep.Hierarchy.ColumnD"),
 						ColumnInfo.COLUMN_TYPE_TEXT) };
 		wMapTable2 = swthlp.appendTableView(cpt, null, columns2, defModListener, 98);
 		item.setControl(cpt);
@@ -218,7 +221,7 @@ public class TurtleGeneratorStepDialog extends BaseStepDialog implements StepDia
 
 		// Adiciona um label e um input text no topo do dialog shell
 		wlStepname = new Label(shell, SWT.RIGHT);
-		wlStepname.setText("Turtle Generator Transformation");
+		wlStepname.setText(BaseMessages.getString(PKG, "TurtleGeneratorStep.StepNameField.Label"));
 		props.setLook(wlStepname);
 
 		fdlStepname = new FormData();
@@ -244,9 +247,9 @@ public class TurtleGeneratorStepDialog extends BaseStepDialog implements StepDia
 
 		// Bottom buttons
 		wOK = new Button(shell, SWT.PUSH);
-		wOK.setText("OK"); //$NON-NLS-1$
+		wOK.setText(BaseMessages.getString(PKG, "TurtleGeneratorStep.Btn.OK")); //$NON-NLS-1$
 		wCancel = new Button(shell, SWT.PUSH);
-		wCancel.setText("Cancelar"); //$NON-NLS-1$
+		wCancel.setText(BaseMessages.getString(PKG, "TurtleGeneratorStep.Btn.Cancel")); //$NON-NLS-1$
 		setButtonPositions(new Button[] { wOK, wCancel }, margin, lastControl);
 
 		// Add listeners

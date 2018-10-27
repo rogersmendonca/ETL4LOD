@@ -11,6 +11,85 @@
 	<name>ETL4LOD</name>
 	<description>Plugins do Kettle para uso de RDF</description>
 	<url>https://github.com/johncurcio/ETL4LODPlus.git</url>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<id>i18n-hack</id>
+						<phase>install</phase>
+						<inherited>false</inherited>
+						<configuration>
+							<target name="i18n-hack">
+								<echo message="Copying i18n files" />
+								<copy todir="${basedir}/Annotator/src/main/java" overwrite="true">
+									<fileset dir="${basedir}/src/main/java" includes="**/*.properties" />
+								</copy>
+								<copy todir="${basedir}/DataCube/src/main/java" overwrite="true">
+									<fileset dir="${basedir}/src/main/java" includes="**/*.properties" />
+								</copy>
+								<copy todir="${basedir}/DataPropertyMapping/src/main/java" overwrite="true">
+									<fileset dir="${basedir}/src/main/java" includes="**/*.properties" />
+								</copy>
+								<copy todir="${basedir}/GraphTriplify/src/main/java" overwrite="true">
+									<fileset dir="${basedir}/src/main/java" includes="**/*.properties" />
+								</copy>
+								<copy todir="${basedir}/GraphSemanticLevelMarker/src/main/java" overwrite="true">
+									<fileset dir="${basedir}/src/main/java" includes="**/*.properties" />
+								</copy>
+								<copy todir="${basedir}/GraphSparqlEndpoint/src/main/java" overwrite="true">
+									<fileset dir="${basedir}/src/main/java" includes="**/*.properties" />
+								</copy>
+								<copy todir="${basedir}/ntriplegenerator/src/main/java" overwrite="true">
+									<fileset dir="${basedir}/src/main/java" includes="**/*.properties" />
+								</copy>
+								<copy todir="${basedir}/ObjectPropertyMapping/src/main/java" overwrite="true">
+									<fileset dir="${basedir}/src/main/java" includes="**/*.properties" />
+								</copy>
+								<copy todir="${basedir}/OwlInput/src/main/java" overwrite="true">
+									<fileset dir="${basedir}/src/main/java" includes="**/*.properties" />
+								</copy>
+								<copy todir="${basedir}/SparqlEndpoint/src/main/java" overwrite="true">
+									<fileset dir="${basedir}/src/main/java" includes="**/*.properties" />
+								</copy>
+								<copy todir="${basedir}/SparqlRunQuery/src/main/java" overwrite="true">
+									<fileset dir="${basedir}/src/main/java" includes="**/*.properties" />
+								</copy>
+								<copy todir="${basedir}/SparqlUpdateOutput/src/main/java" overwrite="true">
+									<fileset dir="${basedir}/src/main/java" includes="**/*.properties" />
+								</copy>
+								<copy todir="${basedir}/TurtleGenerator/src/main/java" overwrite="true">
+									<fileset dir="${basedir}/src/main/java" includes="**/*.properties" />
+								</copy>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>plugin/*.*</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+		</resources>
+	</build>	
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

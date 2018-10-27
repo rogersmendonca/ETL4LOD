@@ -23,6 +23,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.pentaho.di.core.Const;
 import org.pentaho.di.core.util.StringUtil;
+import org.pentaho.di.i18n.BaseMessages;
 import org.pentaho.di.trans.TransMeta;
 import org.pentaho.di.trans.step.BaseStepMeta;
 import org.pentaho.di.trans.step.StepDialogInterface;
@@ -37,6 +38,9 @@ import org.pentaho.di.ui.trans.step.BaseStepDialog;
  * 
  */
 public class AnnotatorStepDialog extends BaseStepDialog implements StepDialogInterface {
+	
+	private static Class<?> PKG = AnnotatorStepMeta.class;
+	
 	private AnnotatorStepMeta input;
 	private String dialogTitle;
 
@@ -72,7 +76,7 @@ public class AnnotatorStepDialog extends BaseStepDialog implements StepDialogInt
 		input = (AnnotatorStepMeta) baseStepMeta;
 
 		// Additional initialization here
-		dialogTitle = "Anotator";
+		dialogTitle = BaseMessages.getString(PKG, "AnnotatorStep.Title");
 	}
 
 	public String open() {
@@ -106,7 +110,7 @@ public class AnnotatorStepDialog extends BaseStepDialog implements StepDialogInt
 
 		// Adiciona um label e um input text no topo do dialog shell
 		wlStepname = new Label(shell, SWT.RIGHT);
-		wlStepname.setText("Nome do Step");
+		wlStepname.setText(BaseMessages.getString(PKG, "AnnotatorStep.StepNameField.Label"));
 		props.setLook(wlStepname);
 		fdlStepname = new FormData();
 		fdlStepname.left = new FormAttachment(0, 0);
@@ -125,7 +129,7 @@ public class AnnotatorStepDialog extends BaseStepDialog implements StepDialogInt
 
 		// Adiciona label e combo do campo sujeito
 		wlSubject = new Label(shell, SWT.RIGHT);
-		wlSubject.setText("Campo Sujeito");
+		wlSubject.setText(BaseMessages.getString(PKG, "AnnotatorStep.SubjectField.Label"));
 		props.setLook(wlSubject);
 		fdlSubject = new FormData();
 		fdlSubject.left = new FormAttachment(0, 0);
@@ -156,7 +160,7 @@ public class AnnotatorStepDialog extends BaseStepDialog implements StepDialogInt
 
 		// Adiciona label e combo do campo predicado
 		wlPredicate = new Label(shell, SWT.RIGHT);
-		wlPredicate.setText("Campo Predicado");
+		wlPredicate.setText(BaseMessages.getString(PKG, "AnnotatorStep.PredicateField.Label"));
 		props.setLook(wlPredicate);
 		fdlPredicate = new FormData();
 		fdlPredicate.left = new FormAttachment(0, 0);
@@ -187,7 +191,7 @@ public class AnnotatorStepDialog extends BaseStepDialog implements StepDialogInt
 
 		// Adiciona label e combo do campo objeto
 		wlObject = new Label(shell, SWT.RIGHT);
-		wlObject.setText("Campo Objeto");
+		wlObject.setText(BaseMessages.getString(PKG, "AnnotatorStep.ObjectField.Label"));
 		props.setLook(wlObject);
 		fdlObject = new FormData();
 		fdlObject.left = new FormAttachment(0, 0);
@@ -218,7 +222,7 @@ public class AnnotatorStepDialog extends BaseStepDialog implements StepDialogInt
 
 		// Adiciona label e text do campo saida
 		wlNTriple = new Label(shell, SWT.RIGHT);
-		wlNTriple.setText("Campo NTriple"); //$NON-NLS-1$
+		wlNTriple.setText(BaseMessages.getString(PKG, "AnnotatorStep.NTripleField.Label")); //$NON-NLS-1$
 		props.setLook(wlNTriple);
 		fdlNTriple = new FormData();
 		fdlNTriple.left = new FormAttachment(0, 0);
@@ -238,13 +242,13 @@ public class AnnotatorStepDialog extends BaseStepDialog implements StepDialogInt
 
 		// Bottom buttons
 		wOK = new Button(shell, SWT.PUSH);
-		wOK.setText("OK"); //$NON-NLS-1$
+		wOK.setText(BaseMessages.getString(PKG, "AnnotatorStep.Btn.OK")); //$NON-NLS-1$
 		wCancel = new Button(shell, SWT.PUSH);
-		wCancel.setText("Cancelar"); //$NON-NLS-1$
+		wCancel.setText(BaseMessages.getString(PKG, "AnnotatorStep.Btn.Cancel")); //$NON-NLS-1$
 		setButtonPositions(new Button[] { wOK, wCancel }, margin, wBrowse);
 
 		wlShape = new Label(shell, SWT.RIGHT);
-		wlShape.setText("Arquivo de mapeamento ");
+		wlShape.setText(BaseMessages.getString(PKG, "AnnotatorStep.MappingFile.Label"));
 		props.setLook(wlShape);
 		fdlShape = new FormData();
 		fdlShape.left = new FormAttachment(0, 0);
@@ -255,7 +259,7 @@ public class AnnotatorStepDialog extends BaseStepDialog implements StepDialogInt
 		// Botoes para busca de arquivo
 		wbBrowse = new Button(shell, SWT.PUSH | SWT.CENTER);
 		props.setLook(wbBrowse);
-		wbBrowse.setText("Buscar...");
+		wbBrowse.setText(BaseMessages.getString(PKG, "AnnotatorStep.Btn.Browse"));
 		fdbBrowse = new FormData();
 		fdbBrowse.right = new FormAttachment(100, 0);
 		fdbBrowse.top = new FormAttachment(wtNTriple, margin);

@@ -24,6 +24,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.pentaho.di.core.Const;
 import org.pentaho.di.core.util.StringUtil;
+import org.pentaho.di.i18n.BaseMessages;
 import org.pentaho.di.trans.TransMeta;
 import org.pentaho.di.trans.step.BaseStepMeta;
 import org.pentaho.di.trans.step.StepDialogInterface;
@@ -34,6 +35,9 @@ import org.pentaho.di.ui.trans.step.BaseStepDialog;
 import br.ufrj.ppgi.greco.kettle.plugin.tools.swthelper.SwtHelper;
 
 public class NTripleGeneratorStepDialog extends BaseStepDialog implements StepDialogInterface {
+
+	private static Class<?> PKG = NTripleGeneratorStepMeta.class;
+
 	private NTripleGeneratorStepMeta input;
 	private SwtHelper swthlp;
 	private String dialogTitle;
@@ -60,7 +64,7 @@ public class NTripleGeneratorStepDialog extends BaseStepDialog implements StepDi
 		swthlp = new SwtHelper(transMeta, this.props);
 
 		// Additional initialization here
-		dialogTitle = "NTriple Generator";
+		dialogTitle = BaseMessages.getString(PKG, "NTripleGeneratorStep.Title");
 	}
 
 	private ComboVar appendComboVar(Control lastControl, ModifyListener defModListener, Composite parent,
@@ -72,11 +76,11 @@ public class NTripleGeneratorStepDialog extends BaseStepDialog implements StepDi
 
 	// Criar widgets especificos da janela
 	private Control buildContents(Control lastControl, ModifyListener defModListener) {
-		wInputGroup = swthlp.appendGroup(shell, lastControl, "Campos de Entrada");
-		wInputSubject = appendComboVar(wInputGroup, defModListener, wInputGroup, "Campo Sujeito");
-		wInputPredicate = appendComboVar(wInputSubject, defModListener, wInputGroup, "Campo Predicado");
-		wInputObject = appendComboVar(wInputPredicate, defModListener, wInputGroup, "Campo Objeto");
-		wInnerIsLiteral = swthlp.appendCheckboxRow(wInputGroup, wInputObject, "Objeto é Literal?",
+		wInputGroup = swthlp.appendGroup(shell, lastControl, BaseMessages.getString(PKG, "NTripleGeneratorStep.Group.Input.Label"));
+		wInputSubject = appendComboVar(wInputGroup, defModListener, wInputGroup, BaseMessages.getString(PKG, "NTripleGeneratorStep.SubjectField.Label"));
+		wInputPredicate = appendComboVar(wInputSubject, defModListener, wInputGroup, BaseMessages.getString(PKG, "NTripleGeneratorStep.PredicateField.Label"));
+		wInputObject = appendComboVar(wInputPredicate, defModListener, wInputGroup, BaseMessages.getString(PKG, "NTripleGeneratorStep.ObjectField.Label"));
+		wInnerIsLiteral = swthlp.appendCheckboxRow(wInputGroup, wInputObject, BaseMessages.getString(PKG, "NTripleGeneratorStep.LiteralCheckField.Label"),
 				new SelectionListener() {
 
 					public void widgetDefaultSelected(SelectionEvent arg0) {
@@ -88,11 +92,12 @@ public class NTripleGeneratorStepDialog extends BaseStepDialog implements StepDi
 						input.setChanged(true);
 					}
 				});
-		wInputDataType = appendComboVar(wInnerIsLiteral, defModListener, wInputGroup, "Campo Tipo do Literal");
-		wInputLangTag = appendComboVar(wInputDataType, defModListener, wInputGroup, "Campo Marca de Linguagem");
+		wInputDataType = appendComboVar(wInnerIsLiteral, defModListener, wInputGroup, BaseMessages.getString(PKG, "NTripleGeneratorStep.LiteralTypeField.Label"));
+		wInputLangTag = appendComboVar(wInputDataType, defModListener, wInputGroup, BaseMessages.getString(PKG, "NTripleGeneratorStep.LangtagField.Label"));
 
-		wOutputGroup = swthlp.appendGroup(shell, wInputGroup, "Campos de Saída");
-		wInnerKeepInput = swthlp.appendCheckboxRow(wOutputGroup, wOutputGroup, "Repassar Campos de Entrada para Saída",
+		wOutputGroup = swthlp.appendGroup(shell, wInputGroup, BaseMessages.getString(PKG, "NTripleGeneratorStep.Group.Output.Label"));
+		wInnerKeepInput = swthlp.appendCheckboxRow(wOutputGroup, wOutputGroup, 
+				BaseMessages.getString(PKG,"NTripleGeneratorStep.PassCheckField.Label"),
 				new SelectionListener() {
 
 					public void widgetDefaultSelected(SelectionEvent arg0) {
@@ -103,7 +108,8 @@ public class NTripleGeneratorStepDialog extends BaseStepDialog implements StepDi
 						input.setChanged(true);
 					}
 				});
-		wOutputNTriple = swthlp.appendTextVarRow(wOutputGroup, wInnerKeepInput, "Campo NTriple", defModListener);
+		wOutputNTriple = swthlp.appendTextVarRow(wOutputGroup, 
+				wInnerKeepInput, BaseMessages.getString(PKG, "NTripleGeneratorStep.NTripleField.Label"), defModListener);
 
 		return wOutputGroup;
 	}
@@ -152,7 +158,7 @@ public class NTripleGeneratorStepDialog extends BaseStepDialog implements StepDi
 
 		// Adiciona um label e um input text no topo do dialog shell
 		wlStepname = new Label(shell, SWT.RIGHT);
-		wlStepname.setText("Nome do Step");
+		wlStepname.setText(BaseMessages.getString(PKG, "NTripleGeneratorStep.StepNameField.Label"));
 		props.setLook(wlStepname);
 
 		fdlStepname = new FormData();
@@ -178,9 +184,9 @@ public class NTripleGeneratorStepDialog extends BaseStepDialog implements StepDi
 
 		// Bottom buttons
 		wOK = new Button(shell, SWT.PUSH);
-		wOK.setText("OK");
+		wOK.setText(BaseMessages.getString(PKG, "NTripleGeneratorStep.Btn.OK"));
 		wCancel = new Button(shell, SWT.PUSH);
-		wCancel.setText("Cancelar");
+		wCancel.setText(BaseMessages.getString(PKG, "NTripleGeneratorStep.Btn.Cancel"));
 		setButtonPositions(new Button[] { wOK, wCancel }, margin, lastControl);
 
 		// Add listeners
