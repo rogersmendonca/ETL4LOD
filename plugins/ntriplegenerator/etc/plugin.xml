@@ -10,4 +10,16 @@
 		<library name="ntriplegenerator.jar"/>
 		<library name="lib/KettlePluginTools-1.0.jar"/>
 	</libraries>
+   <localized_category>
+     <category locale="en_US">LinkedDataBR</category>
+     <category locale="pt_BR">LinkedDataBR</category>
+   </localized_category>
+   <localized_description>
+     <description locale="en_US">NTriple Generator</description>
+    <description locale="pt_BR">NTriple Generator</description>
+   </localized_description>
+   <localized_tooltip>
+     <tooltip locale="en_US">Generate NTriple format's RDF statements.</tooltip>
+    <tooltip locale="pt_BR">Gera triplas RDF no formato NTriple.</tooltip>
+   </localized_tooltip>
 </plugin>

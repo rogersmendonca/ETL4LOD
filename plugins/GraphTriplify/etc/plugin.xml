@@ -10,4 +10,16 @@
 		<library name="GraphTriplify.jar"/>
 		<library name="lib/KettlePluginTools-1.0.jar"/>
 	</libraries>
+   <localized_category>
+     <category locale="en_US">LinkedDataBR</category>
+     <category locale="pt_BR">LinkedDataBR</category>
+   </localized_category>
+   <localized_description>
+     <description locale="en_US">Graph Triplify</description>
+    <description locale="pt_BR">Graph Triplify</description>
+   </localized_description>
+   <localized_tooltip>
+     <tooltip locale="en_US">Read a RDF Graph and generates the corresponding triples.</tooltip>
+    <tooltip locale="pt_BR">Lê um grafo RDF e gera as triplas rdf correspondentes.</tooltip>
+   </localized_tooltip>
 </plugin>

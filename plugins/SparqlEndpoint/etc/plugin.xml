@@ -19,4 +19,16 @@
 		<library name="lib/xstream-{xstream.version}.jar"/>	
 		<library name="lib/xmlpull-{xmlpull.version}.jar"/>
     </libraries>
+    <localized_category>
+     <category locale="en_US">LinkedDataBR</category>
+     <category locale="pt_BR">LinkedDataBR</category>
+   </localized_category>
+   <localized_description>
+     <description locale="en_US">Sparql Endpoint</description>
+    <description locale="pt_BR">Sparql Endpoint</description>
+   </localized_description>
+   <localized_tooltip>
+     <tooltip locale="en_US">Executes a SELECT query against a SPARQL Endpoint and gets the information.</tooltip>
+    <tooltip locale="pt_BR">Executa uma query SELECT num Endpoint SPARQL e retorna o seu resultado.</tooltip>
+   </localized_tooltip>
 </plugin>

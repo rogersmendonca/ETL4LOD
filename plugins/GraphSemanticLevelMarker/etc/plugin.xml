@@ -13,4 +13,16 @@
 		<library name="lib/jena-base-{apache.jena.version}.jar"/>
 		<library name="lib/jena-shaded-guava-{apache.jena.version}.jar"/>
 	</libraries>
+   <localized_category>
+     <category locale="en_US">LinkedDataBR</category>
+     <category locale="pt_BR">LinkedDataBR</category>
+   </localized_category>
+   <localized_description>
+     <description locale="en_US">Graph Semantic Level Marker</description>
+    <description locale="pt_BR">Graph Semantic Level Marker</description>
+   </localized_description>
+   <localized_tooltip>
+     <tooltip locale="en_US">Reads a RDF Graph, evaluate its semantic expressivity level and creates a new triple stamping its level.</tooltip>
+    <tooltip locale="pt_BR">Lê um grafo RDF, avalia seu nível de expressividade semântica e cria uma nova triple com uma estampa do seu nível.</tooltip>
+   </localized_tooltip>
 </plugin>

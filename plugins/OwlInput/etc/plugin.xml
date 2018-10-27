@@ -6,28 +6,40 @@
    tooltip="Reads .owl files and URI"
    category="LinkedDataBR"
    classname="br.ufrj.ppgi.greco.kettle.OwlInputStepMeta">
-		<libraries>
-    		<library name="OwlInput.jar"/>
-			<library name="lib/KettlePluginTools-1.0.jar"/>
-			<library name="lib/httpcore-{apache.httpcore.version}.jar"/>
-			<library name="lib/httpclient-{apache.httpclient.version}.jar"/>
-			<library name="lib/httpclient-cache-{apache.httpclient.version}.jar"/>
-						
-			<library name="lib/jena-core-{apache.jena.version}.jar"/>
-			<library name="lib/jena-base-{apache.jena.version}.jar"/>
-			<library name="lib/jena-shaded-guava-{apache.jena.version}.jar"/>
-			<library name="lib/jena-arq-{apache.jena.version}.jar"/>
-			<library name="lib/jena-iri-{apache.jena.version}.jar"/>
-			<library name="lib/libthrift-{apache.libthrift.version}.jar"/>
-			<library name="lib/commons-compress-{apache.commons-compress.version}.jar"/>
-			
-			<library name="lib/json-{json.version}.jar"/>
-			<library name="lib/jsonld-java-{json-ld.version}.jar"/>
-			<library name="lib/jackson-core-{jackson.version}.jar"/>
-			<library name="lib/jackson-databind-{jackson.version}.jar"/>
-			<library name="lib/jackson-annotations-{jackson.version}.jar"/>
-			
-			<library name="lib/xstream-{xstream.version}.jar"/>	
-			<library name="lib/xmlpull-{xmlpull.version}.jar"/>	
-		</libraries>
+        <libraries>
+            <library name="OwlInput.jar"/>
+            <library name="lib/KettlePluginTools-1.0.jar"/>
+            <library name="lib/httpcore-{apache.httpcore.version}.jar"/>
+            <library name="lib/httpclient-{apache.httpclient.version}.jar"/>
+            <library name="lib/httpclient-cache-{apache.httpclient.version}.jar"/>
+                        
+            <library name="lib/jena-core-{apache.jena.version}.jar"/>
+            <library name="lib/jena-base-{apache.jena.version}.jar"/>
+            <library name="lib/jena-shaded-guava-{apache.jena.version}.jar"/>
+            <library name="lib/jena-arq-{apache.jena.version}.jar"/>
+            <library name="lib/jena-iri-{apache.jena.version}.jar"/>
+            <library name="lib/libthrift-{apache.libthrift.version}.jar"/>
+            <library name="lib/commons-compress-{apache.commons-compress.version}.jar"/>
+            
+            <library name="lib/json-{json.version}.jar"/>
+            <library name="lib/jsonld-java-{json-ld.version}.jar"/>
+            <library name="lib/jackson-core-{jackson.version}.jar"/>
+            <library name="lib/jackson-databind-{jackson.version}.jar"/>
+            <library name="lib/jackson-annotations-{jackson.version}.jar"/>
+            
+            <library name="lib/xstream-{xstream.version}.jar"/> 
+            <library name="lib/xmlpull-{xmlpull.version}.jar"/> 
+        </libraries>
+        <localized_category>
+         <category locale="en_US">LinkedDataBR</category>
+         <category locale="pt_BR">LinkedDataBR</category>
+       </localized_category>
+       <localized_description>
+         <description locale="en_US">Owl Input</description>
+        <description locale="pt_BR">Owl Input</description>
+       </localized_description>
+       <localized_tooltip>
+         <tooltip locale="en_US">Reads .owl files and LOV vocabularies.</tooltip>
+        <tooltip locale="pt_BR">Lê arquivos .owl e vocabulários do LOV.</tooltip>
+       </localized_tooltip>
 </plugin>

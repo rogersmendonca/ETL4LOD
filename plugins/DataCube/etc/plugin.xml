@@ -12,4 +12,16 @@
 		<library name="lib/xstream-{xstream.version}.jar"/>	
 		<library name="lib/xmlpull-{xmlpull.version}.jar"/>
 	</libraries>
+   <localized_category>
+     <category locale="en_US">LinkedDataBR</category>
+     <category locale="pt_BR">LinkedDataBR</category>
+   </localized_category>
+   <localized_description>
+     <description locale="en_US">Data Cube</description>
+    <description locale="pt_BR">Data Cube</description>
+   </localized_description>
+   <localized_tooltip>
+     <tooltip locale="en_US">Generate rdf triples using the Data Cube vocabulary</tooltip>
+    <tooltip locale="pt_BR">Gera um rdf no formato Data Cube</tooltip>
+   </localized_tooltip>
 </plugin>

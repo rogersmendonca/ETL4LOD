@@ -13,4 +13,16 @@
 		<library name="lib/jena-base-{apache.jena.version}.jar"/>
 		<library name="lib/jena-shaded-guava-{apache.jena.version}.jar"/>
     </libraries>
+    <localized_category>
+     <category locale="en_US">LinkedDataBR</category>
+     <category locale="pt_BR">LinkedDataBR</category>
+   </localized_category>
+   <localized_description>
+     <description locale="en_US">Sparql Run Query</description>
+    <description locale="pt_BR">Sparql Run Query</description>
+   </localized_description>
+   <localized_tooltip>
+     <tooltip locale="en_US">Run a Sparql Query through a SPARQL 1.1 Endpoint.</tooltip>
+    <tooltip locale="pt_BR">Roda uma query Sparql num Enpoint SPARQL 1.1.</tooltip>
+   </localized_tooltip>
 </plugin>

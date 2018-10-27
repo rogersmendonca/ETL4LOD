@@ -19,4 +19,16 @@
 		<library name="lib/xstream-{xstream.version}.jar"/>	
 		<library name="lib/xmlpull-{xmlpull.version}.jar"/>
     </libraries>
+    <localized_category>
+     <category locale="en_US">LinkedDataBR</category>
+     <category locale="pt_BR">LinkedDataBR</category>
+   </localized_category>
+   <localized_description>
+     <description locale="en_US">Graph Sparql Query</description>
+    <description locale="pt_BR">Graph Sparql Query</description>
+   </localized_description>
+   <localized_tooltip>
+     <tooltip locale="en_US">Execute a DESCRIBE or a CONSTRUCT command on SPARQL 1.1 Endpoint and returns SubjectItem RDF Graphs.</tooltip>
+    <tooltip locale="pt_BR">Executa um DESCRIBE ou CONSTRUCT num endpoin SPARQL 1.1 e retorna um grafo RDF.</tooltip>
+   </localized_tooltip>
 </plugin>

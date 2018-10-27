@@ -21,4 +21,16 @@
 		<library name="lib/jena-base-{apache.jena.version}.jar"/>
 		<library name="lib/jena-shaded-guava-{apache.jena.version}.jar"/>
     </libraries>
+    <localized_category>
+     <category locale="en_US">LinkedDataBR</category>
+     <category locale="pt_BR">LinkedDataBR</category>
+   </localized_category>
+   <localized_description>
+     <description locale="en_US">Sparql Update Output</description>
+    <description locale="pt_BR">Sparql Update Output</description>
+   </localized_description>
+   <localized_tooltip>
+     <tooltip locale="en_US">Insert triples in a Triple Store (e.g. Virtuoso) through a SPARQL 1.1 Endpoint.</tooltip>
+    <tooltip locale="pt_BR">Insere triplas em um banco de triplas através de um Endpoint SPARQL 1.1.</tooltip>
+   </localized_tooltip>
 </plugin>

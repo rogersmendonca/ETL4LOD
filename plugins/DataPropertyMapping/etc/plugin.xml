@@ -12,4 +12,16 @@
 		<library name="lib/xstream-{xstream.version}.jar"/>	
 		<library name="lib/xmlpull-{xmlpull.version}.jar"/>
     </libraries>
+    <localized_category>
+     <category locale="en_US">LinkedDataBR</category>
+     <category locale="pt_BR">LinkedDataBR</category>
+   </localized_category>
+   <localized_description>
+     <description locale="en_US">Data Property Mapping</description>
+    <description locale="pt_BR">Data Property Mapping</description>
+   </localized_description>
+   <localized_tooltip>
+     <tooltip locale="en_US">Transform input data into RDF triples, using a defined Data Property mapping.</tooltip>
+    <tooltip locale="pt_BR">Transforma dados de entrada em triplas RDF usando o mapeamento definido.</tooltip>
+   </localized_tooltip>
 </plugin>
