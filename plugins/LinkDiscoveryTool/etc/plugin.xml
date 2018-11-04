@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+   id="LinkDiscoveryToolPlugin"
+   iconfile="icon.png"
+   description="Link Discovery Tool"
+   tooltip="Find links between two different RDF graphs."
+   category="LinkedDataBR"
+   classname="br.ufrj.ppgi.greco.kettle.LinkDiscoveryToolStepMeta">
+   <libraries>
+		<library name="LinkDiscoveryTool.jar"/>
+		<library name="lib/KettlePluginTools-1.0.jar"/>
+		<library name="lib/xstream-{xstream.version}.jar"/>	
+		<library name="lib/xmlpull-{xmlpull.version}.jar"/>	
+    </libraries>
+    <localized_category>
+     <category locale="en_US">LinkedDataBR</category>
+     <category locale="pt_BR">LinkedDataBR</category>
+   </localized_category>
+   <localized_description>
+     <description locale="en_US">Link Discovery Tool</description>
+    <description locale="pt_BR">Link Discovery Tool</description>
+   </localized_description>
+   <localized_tooltip>
+     <tooltip locale="en_US">Find links between two different RDF graphs.</tooltip>
+    <tooltip locale="pt_BR">Ligação de grafos RDF.</tooltip>
+   </localized_tooltip>
+</plugin>

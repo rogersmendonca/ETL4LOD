@@ -230,6 +230,7 @@
 		<module>GraphTriplify</module>
 		<module>GraphSemanticLevelMarker</module>
 		<module>GraphSparqlEndpoint</module>
+		<module>LinkDiscoveryTool</module>
 		<module>ntriplegenerator</module>
 		<module>ObjectPropertyMapping</module>
 		<module>OwlInput</module>

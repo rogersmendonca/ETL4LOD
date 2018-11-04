@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>br.ufrj.ppgi.greco.kettle</groupId>
+		<artifactId>plugins</artifactId>
+		<version>2.0</version>
+	</parent>
+
+	<groupId>br.ufrj.ppgi.greco.kettle.LinkDiscoveryTool</groupId>
+	<artifactId>LinkDiscoveryTool</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<name>LinkDiscoveryTool</name>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<id>copy-files-to-kettle</id>
+						<phase>install</phase>
+						<configuration>
+							<target name="copy-files-to-kettle">
+								<echo
+									message="Copying ${basedir}\etc\*.[png,xml,properties,jar] to ${pdi.home}/${pdi.plugin.dir}" />
+								<copy todir="${pdi.home}/${pdi.plugin.dir}" overwrite="true">
+									<fileset dir="${basedir}/etc" includes="**/*.png,**/*.xml,**/*.properties,**/*.jar" />
+								</copy>
+
+								<echo
+									message="Copying ${basedir}\libs\*.jar to ${pdi.home}/${pdi.plugin.dir}" />
+								<copy todir="${pdi.home}/${pdi.plugin.dir}/lib" overwrite="true">
+									<fileset dir="${project.build.directory}/lib" includes="**/*.jar" />
+								</copy>
+
+								<echo
+									message="Copying ${project.build.directory}\${project.build.finalName}.${project.packaging} to ${pdi.home}/${pdi.plugin.dir}" />
+								<copy
+									file="${project.build.directory}/${project.build.finalName}.${project.packaging}"
+									tofile="${pdi.home}/${pdi.plugin.dir}/${pdi.plugin.lib_name}.${project.packaging}"
+									overwrite="true" />
+								<replace token='{xstream.version}' value='${xstream.version}'
+									dir="${pdi.home}/${pdi.plugin.dir}">
+									<include name="plugin.xml" />
+								</replace>
+								<replace token='{xmlpull.version}' value='${xstream.xmlpull.version}'
+									dir="${pdi.home}/${pdi.plugin.dir}">
+									<include name="plugin.xml" />
+								</replace>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.8</version>
+				<executions>
+					<execution>
+						<id>copy</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>com.thoughtworks.xstream</groupId>
+									<artifactId>xstream</artifactId>
+									<version>${xstream.version}</version>
+									<type>jar</type>
+									<overWrite>true</overWrite>
+									<outputDirectory>${project.build.directory}/lib</outputDirectory>
+								</artifactItem>
+
+								<artifactItem>
+									<groupId>xmlpull</groupId>
+									<artifactId>xmlpull</artifactId>
+									<version>${xstream.xmlpull.version}</version>
+									<type>jar</type>
+									<overWrite>true</overWrite>
+									<outputDirectory>${project.build.directory}/lib</outputDirectory>
+								</artifactItem>
+
+								<artifactItem>
+									<groupId>br.ufrj.ppgi.greco.kettle</groupId>
+									<artifactId>KettlePluginTools</artifactId>
+									<version>1.0</version>
+									<type>jar</type>
+									<overWrite>true</overWrite>
+									<outputDirectory>${project.build.directory}/lib</outputDirectory>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>plugin/*.*</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+		</resources>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>de.fuberlin.wiwiss.silk</groupId>
+			<artifactId>silk</artifactId>
+			<version>2.5.3</version>
+			<type>pom</type>
+		</dependency>
+
+		<dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>${xstream.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>xmlpull</groupId>
+			<artifactId>xmlpull</artifactId>
+			<version>${xstream.xmlpull.version}</version>
+		</dependency>
+	</dependencies>
+</project>
