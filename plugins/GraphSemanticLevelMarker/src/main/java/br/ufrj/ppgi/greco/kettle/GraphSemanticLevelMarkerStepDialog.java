@@ -166,7 +166,7 @@ public class GraphSemanticLevelMarkerStepDialog extends BaseStepDialog implement
 
 		// Bot�es para busca de arquivo
 		wlBrowse = new Label(shell, SWT.RIGHT);
-		wlBrowse.setText("Linked Open Vocabulary file:");
+		wlBrowse.setText(BaseMessages.getString(PKG, "GraphSemanticLevelMarkerStep.LOV.File"));
 		props.setLook(wlBrowse);
 		fdlBrowse = new FormData();
 		fdlBrowse.left = new FormAttachment(0, 0);
@@ -192,7 +192,7 @@ public class GraphSemanticLevelMarkerStepDialog extends BaseStepDialog implement
 		wBrowse.setLayoutData(fdBrowse);
 
 		wlRules = new Label(shell, SWT.RIGHT);
-		wlRules.setText("Semantic Framework File:");
+		wlRules.setText(BaseMessages.getString(PKG, "GraphSemanticLevelMarkerStep.SemanticFramework.File"));
 		props.setLook(wlRules);
 		fdlRules = new FormData();
 		fdlRules.left = new FormAttachment(0, 0);
