@@ -271,7 +271,7 @@ public class LinkDiscoveryToolStepMeta extends BaseStepMeta implements StepMetaI
 				Field.PREFIXES_TABLE_NAMESPACE.name());
 
 		this.linkageType = "owl:sameAs";
-		this.aggregationType = "min";
+		this.aggregationType = "";
 		this.metrics = new DataTable<String>(Field.METRICS_TABLE.name(), Field.METRICS_TABLE_SOURCE.name(),
 				Field.METRICS_TABLE_TARGET.name(), Field.METRICS_TABLE_METRIC.name());
 
@@ -396,7 +396,7 @@ public class LinkDiscoveryToolStepMeta extends BaseStepMeta implements StepMetaI
 	public void setOutputFolder(String outputFolder) {
 		Path p = Paths.get(outputFolder);
 		this.setOutputFilename(p.getFileName().toString());
-		this.outputFolder = p.getParent().toString();
+		this.outputFolder = p.getParent() != null ? p.getParent().toString() : "";
 	}
 
 	public String getOutputFilename() {

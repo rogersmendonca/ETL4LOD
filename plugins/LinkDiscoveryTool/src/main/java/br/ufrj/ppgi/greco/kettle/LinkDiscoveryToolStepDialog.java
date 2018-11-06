@@ -120,7 +120,7 @@ public class LinkDiscoveryToolStepDialog extends BaseStepDialog implements StepD
 		item.setText("Data Sources");
 		Composite cpt = swthlp.appendComposite(wTabFolder, lastControl);
 
-		wConfigFile = textVarWithButton(cpt, null, "Config XML file", defModListener, "...", new SelectionAdapter() {
+		wConfigFile = textVarWithButton(cpt, null, "Config file", defModListener, "...", new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				fileDialogFunction(SWT.OPEN, new String[] { "*.xml" }, wConfigFile, new String[] { "XML files" });
 			}
