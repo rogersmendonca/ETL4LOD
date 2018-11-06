@@ -288,11 +288,15 @@ public class LinkDiscoveryToolStepMeta extends BaseStepMeta implements StepMetaI
 			VariableSpace space) throws KettleStepException {
 		ValueMetaInterface field = null;
 
-		field = new ValueMetaString("path");
+		field = new ValueMetaString("subject");
 		field.setOrigin(name);
 		inputRowMeta.addValueMeta(field);
 
-		field = new ValueMetaString("filename");
+		field = new ValueMetaString("predicate");
+		field.setOrigin(name);
+		inputRowMeta.addValueMeta(field);
+
+		field = new ValueMetaString("object");
 		field.setOrigin(name);
 		inputRowMeta.addValueMeta(field);
 	}
