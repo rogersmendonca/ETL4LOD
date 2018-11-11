@@ -278,7 +278,7 @@ public class OwlInputStepDialog extends BaseStepDialog implements StepDialogInte
 		wlStepname.setLayoutData(fdlStepname);
 
 		wStepname = new Text(shell, SWT.SINGLE | SWT.LEFT | SWT.BORDER);
-		wStepname.setText(this.dialogTitle);
+		wStepname.setText(stepname);
 		props.setLook(wStepname);
 
 		wStepname.addModifyListener(lsMod);

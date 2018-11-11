@@ -80,7 +80,7 @@ public class ObjectPropertyMappingStepDialog extends BaseStepDialog implements S
 		//
 		ColumnInfo[] columns = new ColumnInfo[] {
 				new ColumnInfo(BaseMessages.getString(PKG, "ObjectPropertyMappingStep.Tab.Mapping.Subject"), ColumnInfo.COLUMN_TYPE_CCOMBO, this.getFields(), true),
-				new ColumnInfo(BaseMessages.getString(PKG, "ObjectPropertyMappingStep.Tab.Mapping.Predicate"), ColumnInfo.COLUMN_TYPE_TEXT),
+				new ColumnInfo(BaseMessages.getString(PKG, "ObjectPropertyMappingStep.Tab.Mapping.Predicate"), ColumnInfo.COLUMN_TYPE_CCOMBO, this.getFields(ValueMetaInterface.TYPE_STRING)),
 				new ColumnInfo(BaseMessages.getString(PKG, "ObjectPropertyMappingStep.Tab.Mapping.Object"), ColumnInfo.COLUMN_TYPE_CCOMBO, this.getFields(), true) };
 		wMapTable = swthlp.appendTableView(cpt, null, columns, defModListener, 98);
 		item.setControl(cpt);

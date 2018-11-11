@@ -140,7 +140,7 @@ public class DataPropertyMappingStepDialog extends BaseStepDialog implements Ste
 
 		ColumnInfo[] columns = new ColumnInfo[] {
 				new ColumnInfo(BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Mapping.ColumnA"),
-						ColumnInfo.COLUMN_TYPE_TEXT),
+						ColumnInfo.COLUMN_TYPE_CCOMBO, this.getFields(ValueMetaInterface.TYPE_STRING)),
 				new ColumnInfo(BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Mapping.ColumnB"), ColumnInfo.COLUMN_TYPE_CCOMBO, this.getFields(), true),
 				new ColumnInfo(BaseMessages.getString(PKG, "DataPropertyMappingStep.Tab.Mapping.ColumnC"), ColumnInfo.COLUMN_TYPE_CCOMBO,
 						new String[] { "Tentar descobrir", "xsd:integer", "xsd:float", "xsd:double", "xsd:decimal",
