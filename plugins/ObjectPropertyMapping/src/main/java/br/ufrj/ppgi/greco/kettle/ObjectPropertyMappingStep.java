@@ -82,7 +82,8 @@ public class ObjectPropertyMappingStep extends BaseStep implements StepInterface
 					ObjectPropertyMappingStepMeta.Field.MAP_TABLE_SUBJECT_FIELD_NAME.name());
 			String subject = getInputRowMeta().getString(row, subjectField, "");
 
-			String predicate = table.getValue(i, ObjectPropertyMappingStepMeta.Field.MAP_TABLE_PREDICATE_URI.name());
+			String predicateField = table.getValue(i, ObjectPropertyMappingStepMeta.Field.MAP_TABLE_PREDICATE_URI.name());
+			String predicate = getInputRowMeta().getString(row, predicateField, predicateField);
 
 			String objectField = table.getValue(i,
 					ObjectPropertyMappingStepMeta.Field.MAP_TABLE_OBJECT_FIELD_NAME.name());

@@ -112,7 +112,7 @@ public class OwlInputStepMeta extends BaseStepMeta implements StepMetaInterface 
 			ontologyOutputFieldName = (String) XMLHandler.getTagValue(stepDomNode,
 					Field.ONTOLOGY_OUT_FIELD_NAME.name());
 			uriOutputFieldName = (String) XMLHandler.getTagValue(stepDomNode, Field.URI_OUT_FIELD_NAME.name());
-			keepInputFields = Boolean.valueOf(XMLHandler.getTagValue(stepDomNode, Field.KEEP_INPUT_FIELDS.name()));
+			keepInputFields = "Y".equals(XMLHandler.getTagValue(stepDomNode, Field.KEEP_INPUT_FIELDS.name()));
 		} catch (Exception e) {
 			throw new KettleXMLException("Owl Input unable to read step info from XML node", e);
 		}

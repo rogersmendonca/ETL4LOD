@@ -140,7 +140,7 @@ public class SparqlUpdateInsertStepDialog extends BaseStepDialog implements Step
 
 			wUserName = swthlp.appendTextVarRow(wGroup2, wEndpointUrl, BaseMessages.getString(PKG, "SparqlUpdateOutputStep.Connection.User"), lsMod);
 
-			wPassword = swthlp.appendTextVarRow(wGroup2, wUserName, BaseMessages.getString(PKG, "SparqlUpdateOutputStep.Connection.Output"), lsMod, true);
+			wPassword = swthlp.appendTextVarRow(wGroup2, wUserName, BaseMessages.getString(PKG, "SparqlUpdateOutputStep.Connection.Password"), lsMod, true);
 		}
 
 		Group wGroup3 = swthlp.appendGroup(shell, wGroup2, BaseMessages.getString(PKG, "SparqlUpdateOutputStep.Output"));

@@ -95,8 +95,9 @@ public class DataPropertyMappingStep extends BaseStep implements StepInterface {
 		DataTable<String> table = meta.getMapTable();
 		for (int i = 0; i < table.size(); i++) {
 
-			String predicate = table.getValue(i, DataPropertyMappingStepMeta.Field.MAP_TABLE_PREDICATE_URI.name());
-
+			String predicateField = table.getValue(i, DataPropertyMappingStepMeta.Field.MAP_TABLE_PREDICATE_URI.name());
+			String predicate = getInputRowMeta().getString(row, predicateField, predicateField);
+			
 			String objectField = table.getValue(i,
 					DataPropertyMappingStepMeta.Field.MAP_TABLE_OBJECT_FIELD_NAME.name());
 			int index = getInputRowMeta().indexOfValue(objectField);
