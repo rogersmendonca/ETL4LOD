@@ -1,0 +1,31 @@
+
+<http://lodbr.ufrj.br/cargos/PRESIDENTE>  <http://www.w3.org/2000/01/rdf-schema#label> "Presidente" .
+<http://lodbr.ufrj.br/cargos/PRESIDENTE> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Role> .
+
+<http://lodbr.ufrj.br/cargos/VICE-PRESIDENTE> <http://www.w3.org/2000/01/rdf-schema#label> "Vice-presidente" .
+<http://lodbr.ufrj.br/cargos/VICE-PRESIDENTE> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Role> .
+
+<http://lodbr.ufrj.br/cargos/GOVERNADOR> <http://www.w3.org/2000/01/rdf-schema#label> "Governador" .
+<http://lodbr.ufrj.br/cargos/GOVERNADOR> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Role> .
+
+<http://lodbr.ufrj.br/cargos/VICE-GOVERNADOR> <http://www.w3.org/2000/01/rdf-schema#label> "Vice-governador" .
+<http://lodbr.ufrj.br/cargos/VICE-GOVERNADOR> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Role> .
+
+<http://lodbr.ufrj.br/cargos/PREFEITO> <http://www.w3.org/2000/01/rdf-schema#label> "Prefeito" .
+<http://lodbr.ufrj.br/cargos/PREFEITO> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Role> .
+
+<http://lodbr.ufrj.br/cargos/VICE-PREFEITO> <http://www.w3.org/2000/01/rdf-schema#label> "Vice-prefeito" .
+<http://lodbr.ufrj.br/cargos/VICE-PREFEITO> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Role> .
+
+<http://lodbr.ufrj.br/cargos/SENADOR> <http://www.w3.org/2000/01/rdf-schema#label> "Senador" .
+<http://lodbr.ufrj.br/cargos/SENADOR> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Role> .
+
+<http://lodbr.ufrj.br/cargos/DEPUTADOFEDERAL> <http://www.w3.org/2000/01/rdf-schema#label> "Deputado Federal" .
+<http://lodbr.ufrj.br/cargos/DEPUTADOFEDERAL> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Role> .
+
+<http://lodbr.ufrj.br/cargos/DEPUTADOESTADUAL> <http://www.w3.org/2000/01/rdf-schema#label> "Deputado Estadual" .
+<http://lodbr.ufrj.br/cargos/DEPUTADOESTADUAL> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Role> .
+
+<http://lodbr.ufrj.br/cargos/VEREADOR> <http://www.w3.org/2000/01/rdf-schema#label> "Vereador" .
+<http://lodbr.ufrj.br/cargos/VEREADOR> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Role> .
+

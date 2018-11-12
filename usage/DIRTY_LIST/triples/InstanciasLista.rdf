@@ -1,0 +1,252 @@
+﻿<rdf:RDF
+	
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	
+	xmlns:skos="http://www.w3.org/2004/02/skos/core"
+
+	
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+    
+	xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    
+	xmlns:dbpedia="http://dbpedia.org/ontology/"
+    
+	xmlns:lodufrj="http://lodbr.ufrj.br/">
+
+    
+
+<!-- Instancias da Lista Suja -->
+    
+
+<rdf:Description rdf:about="lodufrj:listasuja201710">
+      
+	<rdf:type rdf:resource="lodufrj:OntoSlavery#ListaSujaMTE"/>
+      
+	<lodufrj:lista_data_publicacao>2017-10-01</lodufrj:lista_data_publicacao>
+      
+	<lodufrj:lista_fonte_publicacao>Ministério do Trabalho (website)</lodufrj:lista_fonte_publicacao>
+    
+</rdf:Description>
+    
+
+<rdf:Description rdf:about="lodufrj:listasuja201707">
+
+	<rdf:type rdf:resource="lodufrj:OntoSlavery#ListaSujaMTE"/>
+      
+	<lodufrj:lista_data_publicacao>2017-07-01</lodufrj:lista_data_publicacao>
+      
+	<lodufrj:lista_fonte_publicacao>Ministério do Trabalho (website)</lodufrj:lista_fonte_publicacao>
+    
+</rdf:Description>
+    
+
+<rdf:Description rdf:about="lodufrj:listasuja201702">
+      
+	<rdf:type rdf:resource="lodufrj:OntoSlavery#ListaSujaTransparencia"/>
+      
+	<lodufrj:lista_data_publicacao>2017-02-01</lodufrj:lista_data_publicacao>
+      
+	<lodufrj:lista_fonte_publicacao>Lei de acesso à informação (Repórter Brasil)</lodufrj:lista_fonte_publicacao>
+    
+</rdf:Description>
+    
+
+<rdf:Description rdf:about="lodufrj:listasuja201606">
+      
+	<rdf:type rdf:resource="lodufrj:OntoSlavery#ListaSujaTransparencia"/>
+      
+	<lodufrj:lista_data_publicacao>2016-06-01</lodufrj:lista_data_publicacao>
+      
+	<lodufrj:lista_fonte_publicacao>Lei de acesso à informação (Repórter Brasil)</lodufrj:lista_fonte_publicacao>
+    
+</rdf:Description>
+    
+
+<rdf:Description rdf:about="lodufrj:listasuja201509">
+      
+	<rdf:type rdf:resource="lodufrj:OntoSlavery#ListaSujaMTE"/>
+      
+	<lodufrj:lista_data_publicacao>2015-09-01</lodufrj:lista_data_publicacao>
+      
+	<lodufrj:lista_fonte_publicacao>Ministério do Trabalho (website)</lodufrj:lista_fonte_publicacao>
+    
+</rdf:Description>
+
+		
+
+<rdf:Description rdf:about="lodufrj:listasuja201412">
+			
+	<rdf:type rdf:resource="lodufrj:OntoSlavery#ListaSujaMTE"/>
+			
+	<lodufrj:lista_fonte_publicacao>Ministério do Trabalho (website)
+	</lodufrj:lista_fonte_publicacao>
+		
+</rdf:Description>
+
+		
+
+<rdf:Description rdf:about="lodufrj:listasuja201407">
+			
+	<rdf:type rdf:resource="lodufrj:OntoSlavery#ListaSujaMTE"/>
+			
+	<lodufrj:lista_fonte_publicacao>Ministério do Trabalho (website)</lodufrj:lista_fonte_publicacao>
+		
+</rdf:Description>
+
+    
+
+<rdf:Description rdf:about="lodufrj:listasuja200311">
+      
+	<rdf:type rdf:resource="lodufrj:OntoSlavery#ListaSujaCompilada"/>
+      
+	<lodufrj:lista_fonte_publicacao>Dados do MTE processados pela Comissão Pastoral da Terra</lodufrj:lista_fonte_publicacao>
+    
+</rdf:Description>
+
+    
+
+<rdf:Description rdf:about="lodufrj:listasuja200407">
+      
+	<rdf:type rdf:resource="lodufrj:OntoSlavery#ListaSujaCompilada"/>
+      
+	<lodufrj:lista_fonte_publicacao>Dados do MTE processados pela Comissão Pastoral da Terra</lodufrj:lista_fonte_publicacao>
+    
+</rdf:Description>
+
+		
+
+<rdf:Description rdf:about="lodufrj:listasuja200412">
+			
+	<rdf:type rdf:resource="lodufrj:OntoSlavery#ListaSujaCompilada"/>
+			
+	<lodufrj:lista_fonte_publicacao>Dados do MTE processados pela Comissão Pastoral da Terra</lodufrj:lista_fonte_publicacao>
+		
+</rdf:Description>
+
+		
+
+<rdf:Description rdf:about="lodufrj:listasuja200507">
+			
+	<rdf:type rdf:resource="lodufrj:OntoSlavery#ListaSujaCompilada"/>
+			
+	<lodufrj:lista_fonte_publicacao>Dados do MTE processados pela Comissão Pastoral da Terra</lodufrj:lista_fonte_publicacao>
+		
+</rdf:Description>
+
+		
+
+<rdf:Description rdf:about="lodufrj:listasuja200607">
+					
+	<rdf:type rdf:resource="lodufrj:OntoSlavery#ListaSujaCompilada"/>
+					
+	<lodufrj:lista_fonte_publicacao>Dados do MTE processados pela Comissão Pastoral da Terra</lodufrj:lista_fonte_publicacao>
+		
+</rdf:Description>
+
+		
+
+<rdf:Description rdf:about="lodufrj:listasuja200612">
+					
+	<rdf:type rdf:resource="lodufrj:OntoSlavery#ListaSujaCompilada"/>
+					
+	<lodufrj:lista_fonte_publicacao>Dados do MTE processados pela Comissão Pastoral da Terra</lodufrj:lista_fonte_publicacao>
+		
+</rdf:Description>
+
+		
+
+<rdf:Description rdf:about="lodufrj:listasuja200707">
+					
+	<rdf:type rdf:resource="lodufrj:OntoSlavery#ListaSujaCompilada"/>
+					
+	<lodufrj:lista_fonte_publicacao>Dados do MTE processados pela Comissão Pastoral da Terra</lodufrj:lista_fonte_publicacao>
+		
+</rdf:Description>
+
+		
+
+<rdf:Description rdf:about="lodufrj:listasuja200807">
+					
+	<rdf:type rdf:resource="lodufrj:OntoSlavery#ListaSujaCompilada"/>
+					
+	<lodufrj:lista_fonte_publicacao>Dados do MTE processados pela Comissão Pastoral da Terra</lodufrj:lista_fonte_publicacao>
+		
+</rdf:Description>
+
+	
+	
+<rdf:Description rdf:about="lodufrj:listasuja200907">
+					
+	<rdf:type rdf:resource="lodufrj:OntoSlavery#ListaSujaCompilada"/>
+					
+	<lodufrj:lista_fonte_publicacao>Dados do MTE processados pela Comissão Pastoral da Terra</lodufrj:lista_fonte_publicacao>
+		
+</rdf:Description>
+
+		
+
+<rdf:Description rdf:about="lodufrj:listasuja200912">
+					
+	<rdf:type rdf:resource="lodufrj:OntoSlavery#ListaSujaCompilada"/>
+					
+	<lodufrj:lista_fonte_publicacao>Dados do MTE processados pela Comissão Pastoral da Terra</lodufrj:lista_fonte_publicacao>
+		
+</rdf:Description>
+
+		
+
+<rdf:Description rdf:about="lodufrj:listasuja201007">
+					
+	<rdf:type rdf:resource="lodufrj:OntoSlavery#ListaSujaCompilada"/>
+					
+	<lodufrj:lista_fonte_publicacao>Dados do MTE processados pela Comissão Pastoral da Terra</lodufrj:lista_fonte_publicacao>
+		
+</rdf:Description>
+
+		
+
+<rdf:Description rdf:about="lodufrj:listasuja201010">
+					
+	<rdf:type rdf:resource="lodufrj:OntoSlavery#ListaSujaCompilada"/>
+					
+	<lodufrj:lista_fonte_publicacao>Dados do MTE processados pela Comissão Pastoral da Terra</lodufrj:lista_fonte_publicacao>
+		
+</rdf:Description>
+
+		
+
+<rdf:Description rdf:about="lodufrj:listasuja201107">
+					
+	<rdf:type rdf:resource="lodufrj:OntoSlavery#ListaSujaCompilada"/>
+					
+	<lodufrj:lista_fonte_publicacao>Dados do MTE processados pela Comissão Pastoral da Terra</lodufrj:lista_fonte_publicacao>
+		
+</rdf:Description>
+
+		
+
+<rdf:Description rdf:about="lodufrj:listasuja201112">
+					
+	<rdf:type rdf:resource="lodufrj:OntoSlavery#ListaSujaCompilada"/>
+					
+	<lodufrj:lista_fonte_publicacao>Dados do MTE processados pela Comissão Pastoral da Terra</lodufrj:lista_fonte_publicacao>
+		
+</rdf:Description>
+
+		
+
+<rdf:Description rdf:about="lodufrj:listasuja201207">
+					
+	<rdf:type rdf:resource="lodufrj:OntoSlavery#ListaSujaCompilada"/>
+					
+	<lodufrj:lista_fonte_publicacao>Dados do MTE processados pela Comissão Pastoral da Terra</lodufrj:lista_fonte_publicacao>
+		
+</rdf:Description>
+
+
+    
+</rdf:RDF>

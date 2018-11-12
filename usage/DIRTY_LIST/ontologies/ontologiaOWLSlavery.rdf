@@ -1,0 +1,137 @@
+﻿<rdf:RDF
+ 
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	
+	xmlns:skos="http://www.w3.org/2004/02/skos/core"
+
+	
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+    
+	xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    
+	xmlns:dbpedia="http://dbpedia.org/ontology/"
+    
+	xmlns:lodufrj="http://lodbr.ufrj.br/">
+
+	
+
+<owl:Ontology rdf:about="lodufrj:OntoSlavery">
+		
+	<dc:title>Ontologia da Escravidão Contemporânea no Brasil</dc:title>
+		
+	<dc:description>Conceitos sobre a publicação e fiscalização que levam empregadores para a lista suja da escravidão.</dc:description>
+	
+</owl:Ontology>
+
+    
+
+<!-- OWL Class - Lista Suja do Trabalho Escravo -->
+  	
+<owl:Class rdf:about="lodufrj:OntoSlavery#ListaSuja">
+  		
+	<rdfs:label>Classe Lista Suja</rdfs:label>
+  		
+	<rdfs:comment>Classe para todas as listas que publicam nome de empregadores que usaram trabalho escravo no Brasil</rdfs:comment>
+	
+</owl:Class>
+
+  	
+
+<!-- OWL Subclass - Lista Suja Publicada Oficialmente -->
+  	
+<owl:Class rdf:about="lodufrj:OntoSlavery#ListaSujaMTE">
+  		
+	<rdfs:subClassOf rdf:resource="lodufrj:OntoSlavery#ListaSuja"/>
+      
+	<rdfs:label>Lista Suja MTE</rdfs:label>
+  		
+	<rdfs:comment>Lista Suja do Trabalho Escravo oficial publicada pelo MTE (Minitério do Trabalho e Emprego)</rdfs:comment>
+  	
+</owl:Class>
+
+
+
+<!-- OWL Subclass - Lista Suja Publicada por Entidades Nao Governamentais -->
+    
+<owl:Class rdf:about="lodufrj:OntoSlavery#ListaSujaTransparencia">
+      
+	<rdfs:subClassOf rdf:resource="lodufrj:OntoSlavery#ListaSuja"/>
+      
+	<rdfs:label>Lista Suja da Transparencia</rdfs:label>
+      
+	<rdfs:comment>Listas obtidas por organizações não governamentais através da lei de transparêcia</rdfs:comment>
+    
+</owl:Class>
+
+    
+
+<!-- OWL Subclass - Lista Suja Publicada por Entidades Nao Governamentais de forma compilada -->
+    
+<owl:Class rdf:about="lodufrj:OntoSlavery#ListaSujaCompilada">
+      
+	<rdfs:subClassOf rdf:resource="lodufrj:OntoSlavery#ListaSuja"/>
+      
+	<rdfs:label>Lista Suja Compilada</rdfs:label>
+      
+	<rdfs:comment>Listas compiladas por organizações não governamentais contendo varias publicacoes da lista suja</rdfs:comment>
+    
+</owl:Class>
+
+    
+
+<!-- OWL Class - Operaçoes MPT -->
+    	
+<owl:Class rdf:about="lodufrj:OntoSlavery#OperacaoMPT">
+    		
+	<rdfs:label>Classe Operacoes MPT</rdfs:label>
+    		
+	<rdfs:comment>Operações feitas por fiscais do Ministério Publico do Trabalho que observaram o uso de trabalho análogo à escravidão. Eventos que levam, após todos os recursos administrativos, o nome do empregador para a lista suja.</rdfs:comment>
+    	
+</owl:Class>
+
+    
+
+<!-- Propriedades da Lista Suja-->
+    
+<owl:DatatypeProperty rdf:about="lodufrj:OntoSlavery#lista_data_publicacao"/>
+    
+<owl:DatatypeProperty rdf:about="lodufrj:OntoSlavery#lista_fonte_publicacao"/>
+
+    
+<owl:DatatypeProperty rdf:about="lodufrj:OntoSlavery#lista_formato_publicacao"/>
+
+ 
+
+<!-- Propriedades da Operação-->
+    
+<owl:DatatypeProperty rdf:about="lodufrj:OntoSlavery#operacao_ano_acao_fiscal"/>
+    
+<owl:DatatypeProperty rdf:about="lodufrj:OntoSlavery#operacao_empregador_nome"/>
+    
+<owl:DatatypeProperty rdf:about="lodufrj:OntoSlavery#operacao_empregador_cpf"/>
+    
+<owl:DatatypeProperty rdf:about="lodufrj:OntoSlavery#operacao_empregador_cnpj"/>
+    
+<owl:DatatypeProperty rdf:about="lodufrj:OntoSlavery#operacao_estabelecimento"/>
+    
+<owl:DatatypeProperty rdf:about="lodufrj:OntoSlavery#operacao_trabalhadores_envolvidos"/>
+    
+<owl:DatatypeProperty rdf:about="lodufrj:OntoSlavery#cnae"/>
+		
+<owl:DatatypeProperty rdf:about="lodufrj:OntoSlavery#cod_atividade"/>
+		
+<owl:DatatypeProperty rdf:about="lodufrj:OntoSlavery#atividade"/>
+		
+<owl:DatatypeProperty rdf:about="lodufrj:OntoSlavery#localizacao"/>
+    
+<owl:DatatypeProperty rdf:about="lodufrj:OntoSlavery#irrecorribilidade"/>
+    
+<owl:ObjectProperty rdf:about="lodufrj:OntoSlavery#empregador"/>
+
+
+
+</rdf:RDF>

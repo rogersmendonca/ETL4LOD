@@ -1,0 +1,114 @@
+<http://lodbr.ufrj.br/partidos/PT> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PT> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PT" .
+<http://lodbr.ufrj.br/partidos/PT> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "PARTIDO DOS TRABALHADORES" .
+
+<http://lodbr.ufrj.br/partidos/DEM> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/DEM> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "DEM" .
+<http://lodbr.ufrj.br/partidos/DEM> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "DEMOCRATAS" .
+
+<http://lodbr.ufrj.br/partidos/PCDOB> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PCDOB> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PC DO B" .
+<http://lodbr.ufrj.br/partidos/PCDOB> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "PARTIDO COMUNISTA DO BRASIL" .
+
+<http://lodbr.ufrj.br/partidos/PDT> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PDT> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PDT" .
+<http://lodbr.ufrj.br/partidos/PDT> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "PARTIDO DEMOCRATICO TRABALHISTA" .
+
+<http://lodbr.ufrj.br/partidos/PFL> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PFL> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PFL" .
+<http://lodbr.ufrj.br/partidos/PFL> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "PARTIDO DA FRENTE LIBERAL" .
+
+<http://lodbr.ufrj.br/partidos/PL> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PL> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PL" .
+<http://lodbr.ufrj.br/partidos/PL> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "PARTIDO LIBERAL" .
+
+<http://lodbr.ufrj.br/partidos/PMDB> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PMDB> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PMDB" .
+<http://lodbr.ufrj.br/partidos/PMDB> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "PARTIDO DO MOVIMENTO DEMOCRATICO BRASILEIRO" .
+
+<http://lodbr.ufrj.br/partidos/PMN> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PMN> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PMN" .
+<http://lodbr.ufrj.br/partidos/PMN> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "PARTIDO DA MOBILIZACAO NACIONAL" .
+
+<http://lodbr.ufrj.br/partidos/PP> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PP> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PP" .
+<http://lodbr.ufrj.br/partidos/PP> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "PARTIDO PROGRESSISTA" .
+
+<http://lodbr.ufrj.br/partidos/PPB> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PPB> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PPB" .
+<http://lodbr.ufrj.br/partidos/PPB> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "PARTIDO PROGRESSISTA BRASILEIRO" .
+
+<http://lodbr.ufrj.br/partidos/PPS> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PPS> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PPS" .
+<http://lodbr.ufrj.br/partidos/PPS> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "PARTIDO POPULAR SOCIALISTA" .
+
+<http://lodbr.ufrj.br/partidos/PR> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PR> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PR" .
+<http://lodbr.ufrj.br/partidos/PR> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "PARTIDO DA REPUBLICA" .
+
+<http://lodbr.ufrj.br/partidos/PRB> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PRB> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PRB" .
+<http://lodbr.ufrj.br/partidos/PRB> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "PARTIDO REPUBLICANO BRASILEIRO" .
+
+<http://lodbr.ufrj.br/partidos/PRTB> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PRTB> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PRTB" .
+<http://lodbr.ufrj.br/partidos/PRTB> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "PARTIDO RENOVADOR TRABALHISTA BRASILEIRO" .
+
+<http://lodbr.ufrj.br/partidos/PSB> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PSB> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PSB" .
+<http://lodbr.ufrj.br/partidos/PSB> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "PARTIDO SOCIALISTA BRASILEIRO" .
+
+<http://lodbr.ufrj.br/partidos/PSC> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PSC> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PSC" .
+<http://lodbr.ufrj.br/partidos/PSC> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "PARTIDO SOCIAL CRISTAO" .
+
+<http://lodbr.ufrj.br/partidos/PSD> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PSD> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PSD" .
+<http://lodbr.ufrj.br/partidos/PSD> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "PARTIDO SOCIAL DEMOCRATICO" .
+
+<http://lodbr.ufrj.br/partidos/PSDB> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PSDB> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PSDB" .
+<http://lodbr.ufrj.br/partidos/PSDB> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "PARTIDO DA SOCIAL DEMOCRACIA BRASILEIRA" .
+
+<http://lodbr.ufrj.br/partidos/PSDC> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PSDC> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PSDC" .
+<http://lodbr.ufrj.br/partidos/PSDC> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "PARTIDO SOCIAL DEMOCRATA CRISTAO" .
+
+<http://lodbr.ufrj.br/partidos/PSL> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PSL> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PSL" .
+<http://lodbr.ufrj.br/partidos/PSL> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "PARTIDO SOCIAL LIBERAL" .
+
+<http://lodbr.ufrj.br/partidos/PTDOB> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PTDOB> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PT DO B" .
+<http://lodbr.ufrj.br/partidos/PTDOB> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "PARTIDO TRABALHISTA DO BRASIL" .
+
+<http://lodbr.ufrj.br/partidos/PTB> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PTB> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PTB" .
+<http://lodbr.ufrj.br/partidos/PTB> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "PARTIDO TRABALHISTA BRASILEIRO" .
+
+<http://lodbr.ufrj.br/partidos/PTN> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PTN> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PTN" .
+<http://lodbr.ufrj.br/partidos/PTN> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "PARTIDO TRABALHISTA NACIONAL" .
+
+<http://lodbr.ufrj.br/partidos/PV> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PV> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PV" .
+<http://lodbr.ufrj.br/partidos/PV> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "PARTIDO VERDE" .
+
+<http://lodbr.ufrj.br/partidos/SD> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/SD> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "SD" .
+<http://lodbr.ufrj.br/partidos/SD> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#organizationName> "SOLIDARIEDADE" .
+
+<http://lodbr.ufrj.br/partidos/PAN> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PAN> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PAN" .
+
+<http://lodbr.ufrj.br/partidos/PEN> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PEN> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PEN" .
+
+<http://lodbr.ufrj.br/partidos/PHS> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PHS> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PHS" .
+
+<http://lodbr.ufrj.br/partidos/PRP> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PRP> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PRP" .
+
+<http://lodbr.ufrj.br/partidos/PTC> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#PoliticalParty> .
+<http://lodbr.ufrj.br/partidos/PTC> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#partyAcronym> "PTC" .

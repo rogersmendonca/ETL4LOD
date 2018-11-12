@@ -1,0 +1,264 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#"
+     xml:base="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:gov-ont-payments="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#">
+    <owl:Ontology rdf:about="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments">
+        <owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core"/>
+        <owl:imports rdf:resource="http://www.w3.org/2006/time"/>
+        <owl:imports rdf:resource="http://www.w3.org/ns/org#"/>
+        <owl:imports rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    </owl:Ontology>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#prefLabel -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#prefLabel"/>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#donor -->
+
+    <owl:ObjectProperty rdf:about="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#donor">
+        <rdfs:label>donor</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#PaymentItem"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#economicSector -->
+
+    <owl:ObjectProperty rdf:about="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#economicSector">
+        <rdfs:label>economicSector</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#for -->
+
+    <owl:ObjectProperty rdf:about="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#for">
+        <rdfs:label>for</rdfs:label>
+        <rdfs:range rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#Election"/>
+        <rdfs:domain rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#PaymentReport"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#has -->
+
+    <owl:ObjectProperty rdf:about="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#has">
+        <rdfs:label>has</rdfs:label>
+        <rdfs:range rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#PaymentItem"/>
+        <rdfs:domain rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#PaymentReport"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#originalDonor -->
+
+    <owl:ObjectProperty rdf:about="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#originalDonor">
+        <rdfs:label>originalDonor</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#PaymentItem"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#paymentType -->
+
+    <owl:ObjectProperty rdf:about="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#paymentType">
+        <rdfs:label>paymentType</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#PaymentItem"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#provider -->
+
+    <owl:ObjectProperty rdf:about="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#provider">
+        <rdfs:label>provider</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#PaymentItem"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    </owl:ObjectProperty>
+
+
+        <!-- http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#receiver -->
+
+        <owl:ObjectProperty rdf:about="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#receiver">
+            <rdfs:label>receiver</rdfs:label>
+            <rdfs:domain rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#PaymentItem"/>
+            <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+            <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+        </owl:ObjectProperty>
+
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#reports -->
+
+    <owl:ObjectProperty rdf:about="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#reports">
+        <rdfs:label>reports</rdfs:label>
+        <rdfs:range rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#PaymentReport"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    </owl:ObjectProperty>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#code -->
+
+    <owl:DatatypeProperty rdf:about="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#code">
+        <rdfs:label>code</rdfs:label>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#date -->
+
+    <owl:DatatypeProperty rdf:about="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#date">
+        <rdfs:label>date</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#PaymentItem"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#value -->
+
+    <owl:DatatypeProperty rdf:about="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#value">
+        <rdfs:label>value</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#PaymentItem"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#Election -->
+
+    <owl:Class rdf:about="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#Election">
+        <rdfs:label>Election</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#PaymentItem -->
+
+    <owl:Class rdf:about="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#PaymentItem">
+        <rdfs:label>PaymentItem</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#PaymentReport -->
+
+    <owl:Class rdf:about="http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-payments#PaymentReport">
+        <rdfs:label>PaymentReport</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#Concept -->
+
+    <owl:Class rdf:about="http://www.w3.org/2004/02/skos/core#Concept">
+        <rdfs:label>skos:Concept</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+
+
+
+    <!-- http://xmlns.com/foaf/0.1/Agent -->
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Agent">
+        <rdfs:label>foaf:Agent</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+
+
+
+    <!-- http://xmlns.com/foaf/0.1/Organization -->
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Organization">
+        <rdfs:label>foaf:Organization</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    </owl:Class>
+
+
+
+    <!-- http://xmlns.com/foaf/0.1/Person -->
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Person">
+        <rdfs:label>foaf:Person</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    </owl:Class>
+
+
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->

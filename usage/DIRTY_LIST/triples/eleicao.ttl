@@ -1,0 +1,40 @@
+
+<http://lodbr.ufrj.br/eleicoes/1998>  <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#electionYear> "1998" .
+<http://lodbr.ufrj.br/eleicoes/1998> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Description> "Elei\u00E7\u00F5es Gerais 1998" .
+<http://lodbr.ufrj.br/eleicoes/1998> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Election> .
+
+<http://lodbr.ufrj.br/eleicoes/2002>  <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#electionYear> "2002" .
+<http://lodbr.ufrj.br/eleicoes/2002> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Description> "Elei\u00E7\u00F5es Gerais 2002" .
+<http://lodbr.ufrj.br/eleicoes/2002> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Election> .
+
+<http://lodbr.ufrj.br/eleicoes/2006>  <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#electionYear> "2006" .
+<http://lodbr.ufrj.br/eleicoes/2006> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Description> "Elei\u00E7\u00F5es Gerais 2006" .
+<http://lodbr.ufrj.br/eleicoes/2006> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Election> .
+
+<http://lodbr.ufrj.br/eleicoes/2010>  <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#electionYear> "2010" .
+<http://lodbr.ufrj.br/eleicoes/2010> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Description> "Elei\u00E7\u00F5es Gerais 2010" .
+<http://lodbr.ufrj.br/eleicoes/2010> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Election> .
+
+<http://lodbr.ufrj.br/eleicoes/2014>  <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#electionYear> "2014" .
+<http://lodbr.ufrj.br/eleicoes/2014> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Description> "Elei\u00E7\u00F5es Gerais 2014" .
+<http://lodbr.ufrj.br/eleicoes/2014> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Election> .
+
+<http://lodbr.ufrj.br/eleicoes/2000>  <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#electionYear> "2000" .
+<http://lodbr.ufrj.br/eleicoes/2000> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Description> "Elei\u00E7\u00F5es Municipais 2000" .
+<http://lodbr.ufrj.br/eleicoes/2000> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Election> .
+
+<http://lodbr.ufrj.br/eleicoes/2004>  <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#electionYear> "2004" .
+<http://lodbr.ufrj.br/eleicoes/2004> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Description> "Elei\u00E7\u00F5es Municipais 2004" .
+<http://lodbr.ufrj.br/eleicoes/2004> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Election> .
+
+<http://lodbr.ufrj.br/eleicoes/2008>  <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#electionYear> "2008" .
+<http://lodbr.ufrj.br/eleicoes/2008> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Description> "Elei\u00E7\u00F5es Municipais 2008" .
+<http://lodbr.ufrj.br/eleicoes/2008> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Election> .
+
+<http://lodbr.ufrj.br/eleicoes/2012>  <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#electionYear> "2012" .
+<http://lodbr.ufrj.br/eleicoes/2012> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Description> "Elei\u00E7\u00F5es Municipais 2012" .
+<http://lodbr.ufrj.br/eleicoes/2012> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Election> .
+
+<http://lodbr.ufrj.br/eleicoes/2016>  <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#electionYear> "2016" .
+<http://lodbr.ufrj.br/eleicoes/2016> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Description> "Elei\u00E7\u00F5es Municipais 2016" .
+<http://lodbr.ufrj.br/eleicoes/2016> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.tecweb.inf.puc-rio.br/ontologies/gov-ont-candidate#Election> .
