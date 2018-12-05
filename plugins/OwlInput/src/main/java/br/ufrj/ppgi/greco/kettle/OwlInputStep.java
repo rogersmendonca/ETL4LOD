@@ -153,11 +153,13 @@ public class OwlInputStep extends BaseStep implements StepInterface {
 			outputRow = new Object[4];
 		}
 		
-		for (String arg : var) {
-			outputRow = RowDataUtil.addValueData(outputRow, outputRowPos++, arg);
-        }
-
-		putRow(data.outputRowMeta, outputRow);
+		if (outputRow != null){
+			for (String arg : var) {
+				outputRow = RowDataUtil.addValueData(outputRow, outputRowPos++, arg);
+			}
+		
+			putRow(data.outputRowMeta, outputRow);
+		}
 	}
 	
 	private RowMetaInterface getInputRowMeta(boolean hasInputRow) {

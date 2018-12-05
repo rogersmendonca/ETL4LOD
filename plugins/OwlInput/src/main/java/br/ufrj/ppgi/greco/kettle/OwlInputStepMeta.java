@@ -167,16 +167,7 @@ public class OwlInputStepMeta extends BaseStepMeta implements StepMetaInterface 
 		uriName.setOrigin(origin);
 		uriName.setLength(190);
 		row.addValueMeta(uriName);
-
-		ValueMetaInterface ontologyType = new ValueMetaString("property");
-		ontologyType.setOrigin(origin);
-		ontologyType.setLength(165);
-		row.addValueMeta(ontologyType);
-
-		ValueMetaInterface ontologyObject = new ValueMetaString("type");
-		ontologyObject.setOrigin(origin);
-		ontologyObject.setLength(110);
-		row.addValueMeta(ontologyObject);
+		
 	}
 
 	public void check(List<CheckResultInterface> remarks, TransMeta transmeta, StepMeta stepMeta, RowMetaInterface prev,
