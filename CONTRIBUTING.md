@@ -11,6 +11,10 @@ Por favor, note que temos um código de conduta, por favor siga esse código no 
 3. Acrescente o número da versão sempre que algum problema for resolvido usando a [SemVer](http://semver.org/) como guia.
 4. Use o [guia de commits semânticos](https://seesparkbox.com/foundry/semantic_commit_messages) para criar os seus commits no repositório.
 
+## Criando um plugin
+
+É completamente novo a criação de plugins pro Kettle? Existem vários tutoriais sobre como criar um plugin pro Kettle. O oficial é este aqui https://help.pentaho.com/Documentation/8.2/Developer_Center/PDI/Extend/000. Para criar um plugin especificamente pro ETL4LOD+, por favor, verifique o passo a passo disponível em [criando plugins para o Kettle usando Eclipse + Maven](docs/PLUGINS.md)
+
 ## Dependências de Runtime
 
 Alguns plugins possuem dependências de runtime (que são carregadas somente quando o plugin é executado). Esse tipo de dependência precisa ir para a pasta lib/ junto com o .jar do plugin!
