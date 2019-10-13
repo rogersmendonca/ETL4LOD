@@ -6,7 +6,7 @@ ETL4LOD+ é uma extensão do Kettle baseada no [ETL4LOD](https://github.com/roge
 
 ## Usando o Projeto
 
-Usar o projeto é tão simples quanto [baixar a versão mais recente dos plugins](https://github.com/johncurcio/ETL4LODPlus/releases) e extrair o ``.tar.gz`` na pasta ``plugins/`` da sua instalação do Kettle 8.1.
+Usar o projeto é tão simples quanto [baixar a versão mais recente dos plugins](https://github.com/johncurcio/ETL4LODPlus/releases) e extrair o ``.tar.gz`` na pasta ``plugins/`` da sua instalação do Kettle 8.1+.
 
 ## Desenvolvimento
 
@@ -16,7 +16,7 @@ Este projeto tem as seguintes dependências:
 
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) para desenvolvimento.
 * [Maven](https://maven.apache.org/) para gestão das dependências.
-* [Kettle 8.1](https://sourceforge.net/projects/pentaho/) para testes e deploy.
+* [Kettle 8.1+](https://sourceforge.net/projects/pentaho/) para testes e deploy.
 
 Este projeto foi desenvolvido na IDE Eclipse, porém é agnóstico em relação a IDEs - não é necessário o uso do Eclipse para desenvolver neste projeto.
 
