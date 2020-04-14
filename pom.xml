@@ -5,7 +5,7 @@
 	<groupId>br.ufrj.ppgi.greco.kettle</groupId>
 	<artifactId>etl4lod-parent</artifactId>
     <packaging>pom</packaging>
-    <version>2.0</version>
+    <version>1.0</version>
     <name>ETL4LOD</name>
     <description>Componentes do Kettle relacionados a Linked Data</description>
 	<url>https://github.com/rogersmendonca/etl4lod.git</url>
