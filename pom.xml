@@ -21,16 +21,27 @@
 	</developers>
 
 	<repositories>
-		<!-- Pentaho repository. -->
+		<!-- *** Pentaho repository. *** -->
+		<!-- Rogers (04/2020): Repositorio obsoleto -->			
+		<!-- <repository> -->
+			<!-- <id>pentaho-repo</id> -->
+			<!-- <url>http://repo.pentaho.org/artifactory/pentaho/ </url> -->
+		<!-- </repository> -->
+		
+		<!-- *** Pentaho repository (third party). *** -->
+		<!-- Rogers (04/2020): Repositorio obsoleto -->
+		<!-- <repository> -->
+			<!-- <id>pentaho-third-party</id> -->
+			<!-- <url>http://repo.pentaho.org/artifactory/third-party/</url> -->
+		<!-- </repository> -->
+		
+		<!-- *** Pentaho repository. *** -->
+		<!-- Rogers (04/2020): Nova URL -->		
 		<repository>
 			<id>pentaho-repo</id>
-			<url>http://repo.pentaho.org/artifactory/pentaho/</url>
-		</repository>
-		<!-- Pentaho repository (third party). -->
-		<repository>
-			<id>pentaho-third-party</id>
-			<url>http://repo.pentaho.org/artifactory/third-party/</url>
-		</repository>
+			<name>pentaho-repo</name>
+			<url>https://public.nexus.pentaho.org/content/groups/omni/</url>
+		</repository>		
 		
 		<!-- Run ${basedir}/libs/maven_install_libs.bat to install the local libraries 
 			into maven local repository -->
